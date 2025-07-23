@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>conference360__Visibility_Control__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Visibility Control</label>
+    <required>false</required>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Hialeah</fullName>
+                <default>false</default>
+                <label>Hialeah Campus</label>
+            </value>
+            <value>
+                <fullName>Homestead</fullName>
+                <default>false</default>
+                <label>Homestead Campus</label>
+            </value>
+            <value>
+                <fullName>Padron</fullName>
+                <default>false</default>
+                <label>Padron Campus</label>
+            </value>
+            <value>
+                <fullName>Kendall</fullName>
+                <default>false</default>
+                <label>Kendall Campus</label>
+            </value>
+            <value>
+                <fullName>Medical</fullName>
+                <default>false</default>
+                <label>Medical Campus</label>
+            </value>
+            <value>
+                <fullName>North</fullName>
+                <default>false</default>
+                <label>North Campus</label>
+            </value>
+            <value>
+                <fullName>MDC Online</fullName>
+                <default>false</default>
+                <label>MDC Online</label>
+            </value>
+            <value>
+                <fullName>West</fullName>
+                <default>false</default>
+                <label>West Campus</label>
+            </value>
+            <value>
+                <fullName>Wolfson</fullName>
+                <default>false</default>
+                <label>Wolfson Campus</label>
+            </value>
+            <value>
+                <fullName>Member</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Member</label>
+            </value>
+            <value>
+                <fullName>Non-Member</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Non-Member</label>
+            </value>
+            <value>
+                <fullName>Press</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Press</label>
+            </value>
+            <value>
+                <fullName>VIP</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>VIP</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

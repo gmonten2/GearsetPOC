@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>traa_Lead_Score__c</fullName>
+    <deprecated>false</deprecated>
+    <description>This field stores calculated Lead Score</description>
+    <externalId>false</externalId>
+    <formula>IF( ISBLANK( traa_Program_of_Interest__c )  &amp;&amp;  ISBLANK( Email ), &#39;C&#39; , 
+   IF( NOT(ISBLANK( traa_Program_of_Interest__c )) &amp;&amp;  NOT(ISBLANK( Email )), &#39;A&#39; ,  &#39;B&#39;))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Calculated Lead Score</inlineHelpText>
+    <label>Lead Score</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

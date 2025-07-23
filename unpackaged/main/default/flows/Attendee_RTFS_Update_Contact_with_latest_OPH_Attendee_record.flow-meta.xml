@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Populates lookup on Contact to Attendee record when new OPH Attendee created</description>
+    <environments>Default</environments>
+    <interviewLabel>Attendee_RTFS Update Contact with latest OPH Attendee record {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Attendee_RTFS Update Contact with latest OPH Attendee record</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Updates Latest Open House Record on related Contact with Attendee record</description>
+        <name>Update_Contact_with_OPH_Attendee_record</name>
+        <label>Update Contact with OPH Attendee record</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <inputAssignments>
+            <field>Latest_Open_House_Record__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.conference360__Contact__r</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Contact_with_OPH_Attendee_record</targetReference>
+        </connector>
+        <filterFormula>OR(
+  AND(
+     ISNEW(),
+     AND(
+          {!$Record.Event_Category__c} = &quot;Open House&quot;,
+          NOT(ISBLANK({!$Record.conference360__Contact__c})),
+          NOT(ISPICKVAL({!$Record.Attendee_Type__c}, &quot;Guest&quot;))
+          )
+      ),
+  AND(
+      ISCHANGED({!$Record.Event_Category__c}),
+      {!$Record.Event_Category__c} = &quot;Open House&quot;,
+      NOT(ISBLANK({!$Record.conference360__Contact__c})),
+      NOT(ISPICKVAL({!$Record.Attendee_Type__c}, &quot;Guest&quot;))
+      ),
+ AND(
+      {!$Record.Event_Category__c} = &quot;Open House&quot;,
+      NOT(ISBLANK({!$Record.conference360__Contact__c})),
+      ISCHANGED({!$Record.Attendee_Type__c}),
+      ISPICKVAL({!$Record.Attendee_Type__c}, &quot;Prospect/Applicant&quot;)
+      ),
+ AND(
+      {!$Record.Event_Category__c} = &quot;Open House&quot;,
+      NOT(ISBLANK({!$Record.conference360__Contact__c})),
+      ISCHANGED({!$Record.conference360__Contact__c}),
+      ISPICKVAL({!$Record.Attendee_Type__c}, &quot;Prospect/Applicant&quot;)
+      )
+)</filterFormula>
+        <object>conference360__Attendee__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

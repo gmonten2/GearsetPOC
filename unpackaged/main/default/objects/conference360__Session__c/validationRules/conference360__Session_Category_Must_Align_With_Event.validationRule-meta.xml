@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>conference360__Session_Category_Must_Align_With_Event</fullName>
+    <active>true</active>
+    <description>Virtual Events cannot have Venue Sessions and Venue Events cannot have Virtual Sessions</description>
+    <errorConditionFormula>OR(AND(ISPICKVAL(conference360__Event__r.conference360__Event_Location__c, &quot;Virtual&quot;), ISPICKVAL(conference360__Session_Category__c, &quot;Venue&quot;)), 
+AND(ISPICKVAL(conference360__Event__r.conference360__Event_Location__c, &quot;Venue&quot;), ISPICKVAL(conference360__Session_Category__c, &quot;Virtual&quot;)))</errorConditionFormula>
+    <errorMessage>Session Category cannot conflict with the Event Location. Virtual Events must have Virtual Sessions and Venue Events must have Venue Sessions.</errorMessage>
+</ValidationRule>

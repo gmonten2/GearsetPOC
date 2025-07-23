@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Attendee_Type__c</fullName>
+    <description>To be auto-mapped from Form to track if type of Attendee to drive additional automation around Opp and/or Relationship creation</description>
+    <inlineHelpText>This should be mapped automatically from a Form. Required when manually adding attendees. Select Prospect/Applicant when the attendee is a student, select &#39;Guest&#39; when the attendee is a guest of the student, such as a family member. Guests only apply for Open House events.</inlineHelpText>
+    <label>Attendee Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Prospect/Applicant</fullName>
+                <default>false</default>
+                <label>Prospect/Applicant</label>
+            </value>
+            <value>
+                <fullName>Guest</fullName>
+                <default>false</default>
+                <label>Guest</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

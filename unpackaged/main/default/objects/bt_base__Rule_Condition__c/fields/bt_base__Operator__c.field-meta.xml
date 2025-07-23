@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>bt_base__Operator__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Specifies the logical operator for evaluating conditions.</description>
+    <label>Operator</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>CONTAINS</fullName>
+                <default>false</default>
+                <label>CONTAINS</label>
+            </value>
+            <value>
+                <fullName>DOES NOT CONTAIN</fullName>
+                <default>false</default>
+                <label>DOES NOT CONTAIN</label>
+            </value>
+            <value>
+                <fullName>EQUALS</fullName>
+                <default>false</default>
+                <label>EQUALS</label>
+            </value>
+            <value>
+                <fullName>EXCLUDES</fullName>
+                <default>false</default>
+                <label>EXCLUDES</label>
+            </value>
+            <value>
+                <fullName>GREATER OR EQUAL</fullName>
+                <default>false</default>
+                <label>GREATER OR EQUAL</label>
+            </value>
+            <value>
+                <fullName>GREATER THAN</fullName>
+                <default>false</default>
+                <label>GREATER THAN</label>
+            </value>
+            <value>
+                <fullName>INCLUDES</fullName>
+                <default>false</default>
+                <label>INCLUDES</label>
+            </value>
+            <value>
+                <fullName>LESS OR EQUAL</fullName>
+                <default>false</default>
+                <label>LESS OR EQUAL</label>
+            </value>
+            <value>
+                <fullName>LESS THAN</fullName>
+                <default>false</default>
+                <label>LESS THAN</label>
+            </value>
+            <value>
+                <fullName>NOT EQUAL TO</fullName>
+                <default>false</default>
+                <label>NOT EQUAL TO</label>
+            </value>
+            <value>
+                <fullName>STARTS WITH</fullName>
+                <default>false</default>
+                <label>STARTS WITH</label>
+            </value>
+            <value>
+                <fullName>EQUAL</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>EQUAL</label>
+            </value>
+            <value>
+                <fullName>GREATER THAN OR EQUAL</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>GREATER THAN OR EQUAL</label>
+            </value>
+            <value>
+                <fullName>IN</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>IN</label>
+            </value>
+            <value>
+                <fullName>LESS THAN OR EQUAL</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>LESS THAN OR EQUAL</label>
+            </value>
+            <value>
+                <fullName>LIKE</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>LIKE</label>
+            </value>
+            <value>
+                <fullName>NOT EQUAL</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>NOT EQUAL</label>
+            </value>
+            <value>
+                <fullName>NOT IN</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>NOT IN</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,13 @@
+<apex:page StandardController="conference360__Attendee__c"  recordSetVar="Attendee" showHeader="true"
+                                         sidebar="true" applyHtmlTag="true" applyBodyTag="false" docType="html-5.0">
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<head>
+  <apex:slds /> 
+</head>
+
+<body class="slds-scope">
+  <simplesms:SendBulkSMSMessenger sObjectApiName="conference360__Attendee__c" recordId="{!selected}" retURL="{!$CurrentPage.parameters.retURL}"/>   
+</body>
+</html>
+
+</apex:page>

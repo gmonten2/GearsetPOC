@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>traa_Check_Special_Condition__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Extra field which can be used by objects for their any special condition</inlineHelpText>
+    <label>Check Special Condition</label>
+    <type>Checkbox</type>
+</CustomField>

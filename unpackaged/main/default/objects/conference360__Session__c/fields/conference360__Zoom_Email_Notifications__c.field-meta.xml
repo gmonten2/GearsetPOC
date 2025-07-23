@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>conference360__Zoom_Email_Notifications__c</fullName>
+    <deprecated>false</deprecated>
+    <description>This field controls whether Zoom email notifications are sent to registrants for the associated event or session. It allows users to toggle email notifications using the Zoom Meeting API, ensuring flexibility in communication settings.</description>
+    <inlineHelpText>Select an option to manage Zoom email notifications for this event or session. Only applies to Zoom meetings/webinars.</inlineHelpText>
+    <label>Zoom Email Notifications</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Use Zoom Account Settings</fullName>
+                <default>true</default>
+                <label>Use Zoom Account Settings</label>
+            </value>
+            <value>
+                <fullName>Send Zoom Emails</fullName>
+                <default>false</default>
+                <label>Send Zoom Emails</label>
+            </value>
+            <value>
+                <fullName>Do not send Zoom Emails</fullName>
+                <default>false</default>
+                <label>Do not send Zoom Emails</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

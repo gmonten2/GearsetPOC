@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OPH_Start_Time__c</fullName>
+    <description>Used in Pardot programs and templates</description>
+    <externalId>false</externalId>
+    <formula>IF(ISBLANK(Latest_Open_House_Record__r.conference360__Event_Start_Time__c),&quot;&quot;,
+  IF(
+   OR(
+     VALUE(LEFT(TEXT( Latest_Open_House_Record__r.conference360__Event_Start_Time__c ), 2)) = 0,
+     VALUE(LEFT(TEXT(Latest_Open_House_Record__r.conference360__Event_Start_Time__c ), 2)) = 12
+     ),
+     &quot;12&quot;,
+     TEXT(VALUE(LEFT(TEXT(Latest_Open_House_Record__r.conference360__Event_Start_Time__c ), 2))
+     -
+     IF(VALUE(LEFT(TEXT(Latest_Open_House_Record__r.conference360__Event_Start_Time__c ), 2)) &lt; 12, 0, 12))
+     )
+  &amp; &quot;:&quot; &amp;
+   MID(TEXT(Latest_Open_House_Record__r.conference360__Event_Start_Time__c ), 4, 2)
+  &amp; &quot; &quot; &amp;
+   IF(VALUE(LEFT(TEXT(Latest_Open_House_Record__r.conference360__Event_Start_Time__c ), 2)) &lt; 12, &quot;AM&quot;, &quot;PM&quot;)
+)</formula>
+    <label>OPH Start Time</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

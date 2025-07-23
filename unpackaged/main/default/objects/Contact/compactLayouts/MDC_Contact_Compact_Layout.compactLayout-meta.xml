@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MDC_Contact_Compact_Layout</fullName>
+    <fields>Student_Employee_ID__c</fields>
+    <fields>Name</fields>
+    <fields>Email</fields>
+    <fields>Latest_Admit_Term__c</fields>
+    <fields>Is_Student__c</fields>
+    <fields>Attended_Orientation_BT__c</fields>
+    <label>MDC Contact Compact Layout</label>
+</CompactLayout>

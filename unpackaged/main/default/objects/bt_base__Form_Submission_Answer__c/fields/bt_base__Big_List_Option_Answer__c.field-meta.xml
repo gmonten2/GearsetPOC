@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>bt_base__Big_List_Option_Answer__c</fullName>
+    <deprecated>false</deprecated>
+    <description>If the record was from a big list submission, this is the option answer.</description>
+    <externalId>false</externalId>
+    <formula>bt_base__Form_Big_List_Option__r.bt_base__Option_Value__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>If the record was from a big list submission, this is the option answer.</inlineHelpText>
+    <label>Big List Option Answer</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

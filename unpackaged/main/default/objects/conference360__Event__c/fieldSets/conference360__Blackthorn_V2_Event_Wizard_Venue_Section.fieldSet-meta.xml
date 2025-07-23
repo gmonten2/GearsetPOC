@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>conference360__Blackthorn_V2_Event_Wizard_Venue_Section</fullName>
+    <availableFields>
+        <field>conference360__Venue_Address_Geocodes__Latitude__s</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </availableFields>
+    <availableFields>
+        <field>conference360__Venue_Address_Geocodes__Longitude__s</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </availableFields>
+    <description>V2 Event Wizard Basic Info component</description>
+    <label>Blackthorn | V2 Event Wizard Venue Section</label>
+</FieldSet>

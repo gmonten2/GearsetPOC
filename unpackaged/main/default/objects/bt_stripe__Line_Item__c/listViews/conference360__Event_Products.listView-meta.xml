@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>conference360__Event_Products</fullName>
+    <columns>NAME</columns>
+    <columns>conference360__Attendee__c</columns>
+    <columns>conference360__Attendee_Full_Name__c</columns>
+    <columns>conference360__Event__c</columns>
+    <columns>bt_stripe__Unit_Price__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>conference360__Event_Line_Items__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>conference360__Event_Item_Type__c</field>
+        <operation>equals</operation>
+        <value>Other</value>
+    </filters>
+    <label>Event Products</label>
+</ListView>

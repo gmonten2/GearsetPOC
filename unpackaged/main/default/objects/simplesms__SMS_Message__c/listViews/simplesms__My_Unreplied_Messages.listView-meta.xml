@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>simplesms__My_Unreplied_Messages</fullName>
+    <columns>simplesms__Message_Date__c</columns>
+    <columns>simplesms__Message_Full__c</columns>
+    <columns>simplesms__Account__c</columns>
+    <columns>simplesms__Contact__c</columns>
+    <columns>simplesms__Status__c</columns>
+    <columns>simplesms__From_Phone__c</columns>
+    <columns>simplesms__To_Phone__c</columns>
+    <columns>NAME</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>simplesms__Type__c</field>
+        <operation>equals</operation>
+        <value>Incoming</value>
+    </filters>
+    <filters>
+        <field>simplesms__Status__c</field>
+        <operation>notEqual</operation>
+        <value>Replied</value>
+    </filters>
+    <label>My Unreplied Messages</label>
+</ListView>

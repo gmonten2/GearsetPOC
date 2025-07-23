@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>bt_base__Target_Language__c</fullName>
+    <deprecated>false</deprecated>
+    <inlineHelpText>Set the language the Store will translate to by default on load.</inlineHelpText>
+    <label>Target Language</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>bt_base__Supported_Languages</valueSetName>
+    </valueSet>
+</CustomField>

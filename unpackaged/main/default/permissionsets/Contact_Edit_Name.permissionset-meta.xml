@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Overrides validation rule that prevents users from editing name if student/employee ID is populated</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Contact: Edit Name</label>
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>Contact_Name_Update</name>
+    </customPermissions>
+</PermissionSet>

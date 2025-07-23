@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>Checks if &#39;Create Opportunity&#39; checkbox is marked as true on the Event associated with Attendee.</description>
+        <name>Check_Create_Opportunity_Flag</name>
+        <label>Check Create Opportunity Flag</label>
+        <locationX>380</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>FALSE</defaultConnectorLabel>
+        <rules>
+            <name>TRUE</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Event_Associated_with_Attendee.Create_Opportunity__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Opportunity_Record_Types</targetReference>
+            </connector>
+            <label>TRUE</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks whether Opportunity has been found</description>
+        <name>Does_Opportunity_Exist</name>
+        <label>Does Opportunity Exist?</label>
+        <locationX>182</locationX>
+        <locationY>863</locationY>
+        <defaultConnectorLabel>Opportunity Found</defaultConnectorLabel>
+        <rules>
+            <name>No_Opportunity_found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Find_Related_Opportunity</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_new_Opportunity</targetReference>
+            </connector>
+            <label>No Opportunity found</label>
+        </rules>
+    </decisions>
+    <description>Creates a new Opp in Lead Stage for Contact who registers for Open House and does not have Opportunity in same term
+v6: Update create Opp to use Last Enrollment Date of Term as Close Date
+v7: Added logic to include Other On-Campus Event, Other Community Event for new opps to be created
+v8: Reverted logic to include other event types. Added check of Opp to check for term instead of Close Date.
+v9: Edit Trigger conditions.
+v10: Changed Flow label, and edited conditions for the flow, so that it only creates a new Opp for Attendees when the &#39;Create Opportunity&#39; Checkbox is TRUE</description>
+    <environments>Default</environments>
+    <interviewLabel>Attendee_RTF Create Opp for new Event Contact {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Attendee_RTF Create Opp for new Contact</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>Creates Opp Contact Role so it can be tracked in Pardot</description>
+        <name>Create_new_OCR</name>
+        <label>Create new OCR</label>
+        <locationX>50</locationX>
+        <locationY>1079</locationY>
+        <inputAssignments>
+            <field>ContactId</field>
+            <value>
+                <elementReference>$Record.conference360__Contact__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OpportunityId</field>
+            <value>
+                <elementReference>Create_new_Opportunity</elementReference>
+            </value>
+        </inputAssignments>
+        <object>OpportunityContactRole</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <description>Creates new Opp and sets HomeCampus, LeadSource, Stage and Term</description>
+        <name>Create_new_Opportunity</name>
+        <label>Create new Opportunity</label>
+        <locationX>50</locationX>
+        <locationY>971</locationY>
+        <connector>
+            <targetReference>Create_new_OCR</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>CloseDate</field>
+            <value>
+                <elementReference>$Record.conference360__Event__r.Term__r.Last_Enrollment_Date__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Home_Campus__c</field>
+            <value>
+                <elementReference>$Record.conference360__Event__r.conference360__Venue__r.hed__School_Code__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LeadSource</field>
+            <value>
+                <stringValue>On Campus Recruitment Event</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>Get_Opportunity_Record_Types.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>StageName</field>
+            <value>
+                <stringValue>Lead</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Term__c</field>
+            <value>
+                <elementReference>$Record.conference360__Event__r.Term__r.Name</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>traa_Applicant__c</field>
+            <value>
+                <elementReference>$Record.conference360__Contact__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <description>Looks for Academic Program Opp RT for the Contact with CloseDate&gt;TODAY</description>
+        <name>Find_Related_Opportunity</name>
+        <label>Find Related Opportunity</label>
+        <locationX>182</locationX>
+        <locationY>755</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Does_Opportunity_Exist</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>traa_Applicant__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.conference360__Contact__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Opportunity_Record_Types.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Term__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Associated_Term.Name</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Gets the Term = Term for the Event.</description>
+        <name>Get_Associated_Term</name>
+        <label>Get Associated Term</label>
+        <locationX>182</locationX>
+        <locationY>647</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Find_Related_Opportunity</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Event_Term__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>hed__Term__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Gathers the event record that is associated with the newly created attendee record.</description>
+        <name>Get_Event_Associated_with_Attendee</name>
+        <label>Get Event Associated with Attendee</label>
+        <locationX>380</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_Create_Opportunity_Flag</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.conference360__Event__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>conference360__Event__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Retrieves Academic Program Opp RT Id</description>
+        <name>Get_Opportunity_Record_Types</name>
+        <label>Get Opportunity Record Types</label>
+        <locationX>182</locationX>
+        <locationY>539</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Associated_Term</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>SobjectType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Opportunity</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>traa_Academic_Program_Applications</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>254</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Event_Associated_with_Attendee</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>conference360__Contact__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Attendee_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Prospect/Applicant</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>conference360__Registration_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Registered</stringValue>
+            </value>
+        </filters>
+        <object>conference360__Attendee__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Draft</status>
+</Flow>

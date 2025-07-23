@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>traa_Is_Enrollment_Type__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>This checkbox would identify if Opportunity is an Enrollment type</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Is Enrollment Type</label>
+    <type>Checkbox</type>
+</CustomField>

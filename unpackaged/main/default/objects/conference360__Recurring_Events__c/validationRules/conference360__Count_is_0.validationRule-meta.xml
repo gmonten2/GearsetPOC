@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>conference360__Count_is_0</fullName>
+    <active>true</active>
+    <errorConditionFormula>conference360__Count__c &lt;= 0</errorConditionFormula>
+    <errorMessage>These settings will not cause the event to reoccur. Please check all settings and try again.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Latest_Open_House_Record__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Updated by Flow to pull most recent created Attendee record for Open House</description>
+    <inlineHelpText>Automatically updated with newest Open House Attendee record</inlineHelpText>
+    <label>Latest Open House Record</label>
+    <referenceTo>conference360__Attendee__c</referenceTo>
+    <relationshipLabel>Contacts</relationshipLabel>
+    <relationshipName>Contacts_OPH</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Lookup</type>
+</CustomField>

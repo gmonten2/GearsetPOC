@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Stores mappings between User Persona and PCA Assigned Home Campus to corresponding public groups for dynamic user assignment during User record creation.</description>
+    <label>Criteria to Public Group Mapping</label>
+    <pluralLabel>Criteria to Public Group Mappings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

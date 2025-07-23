@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>simplesms__Textey_Default_From_Number__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Storing Blackthorn Messaging phone number to use that as Default From Number.</description>
+    <label>Blackthorn Messaging Default From Number</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Phone</type>
+</CustomField>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>conference360__Donation_Payment_Gateway__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <description>If you have a paid event and want to split donations during checkout, set the Donation Payment Gateway where money should be processed through.</description>
+    <inlineHelpText>Select a Payment Gateway through which Donations should be processed. Note - Should be the same payment processor as your default payment gateway for this Event.</inlineHelpText>
+    <label>Donation Payment Gateway</label>
+    <referenceTo>bt_stripe__Payment_Gateway__c</referenceTo>
+    <relationshipLabel>Events (Donations)</relationshipLabel>
+    <relationshipName>Event_Donations</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

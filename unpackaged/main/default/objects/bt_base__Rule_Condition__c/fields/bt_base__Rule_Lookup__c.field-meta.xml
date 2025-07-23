@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>bt_base__Rule_Lookup__c</fullName>
+    <deleteConstraint>Restrict</deleteConstraint>
+    <deprecated>false</deprecated>
+    <description>Rule conditions belong to a single parent rule, which dictates the website visitor’s visibility of and access to events, event items, sessions, products, and more.</description>
+    <label>Rule</label>
+    <referenceTo>bt_base__Rule__c</referenceTo>
+    <relationshipLabel>Rule Conditions</relationshipLabel>
+    <relationshipName>Rule_Conditions2</relationshipName>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

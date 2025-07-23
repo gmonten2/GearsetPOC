@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>simplesms__Track_Links__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>All links that start with http:// or https:// will be re-written by Simple SMS and made trackable.</description>
+    <inlineHelpText>All links that start with http:// or https:// will be re-written by Simple SMS and made trackable.</inlineHelpText>
+    <label>Track Links</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

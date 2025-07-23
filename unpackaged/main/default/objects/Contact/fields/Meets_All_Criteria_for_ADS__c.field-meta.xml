@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Meets_All_Criteria_for_ADS__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Used by Marketing Cloud</description>
+    <label>Meets All Criteria for ADS</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

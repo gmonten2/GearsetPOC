@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PCA_SSA_List_View</fullName>
+    <columns>Student_Employee_ID__c</columns>
+    <columns>FULL_NAME</columns>
+    <columns>Registered_for_Orientation_BT__c</columns>
+    <columns>Attended_Orientation_BT__c</columns>
+    <columns>Total_Credits_Earned__c</columns>
+    <columns>PCA_Email__c</columns>
+    <columns>Onboarding_Task_Completion__c</columns>
+    <columns>Last_Term_Enrolled__c</columns>
+    <columns>PCA_Name__c</columns>
+    <columns>CONTACT.PHONE1</columns>
+    <columns>CONTACT.EMAIL</columns>
+    <columns>CONTACT.PHONE3</columns>
+    <columns>hed__PreferredPhone__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Is_Student__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>Onboarding_Cohort__c</field>
+        <operation>equals</operation>
+        <value>2247</value>
+    </filters>
+    <filters>
+        <field>Registered_Cohort_Term__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>Completed_Shark_Intake__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>conference360__Events_Attended__c</field>
+        <operation>greaterThan</operation>
+        <value>4</value>
+    </filters>
+    <label>PCA / SSA List View</label>
+</ListView>

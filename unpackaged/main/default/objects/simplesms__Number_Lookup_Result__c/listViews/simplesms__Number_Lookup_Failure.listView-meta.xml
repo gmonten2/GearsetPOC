@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>simplesms__Number_Lookup_Failure</fullName>
+    <columns>NAME</columns>
+    <columns>simplesms__Phone_Number__c</columns>
+    <columns>simplesms__Carrier_Error_Code__c</columns>
+    <columns>simplesms__Last_Lookup_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>simplesms__Status__c</field>
+        <operation>equals</operation>
+        <value>Failure</value>
+    </filters>
+    <label>Failed Lookups</label>
+</ListView>

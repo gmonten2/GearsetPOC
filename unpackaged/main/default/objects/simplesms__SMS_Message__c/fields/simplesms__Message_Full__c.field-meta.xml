@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>simplesms__Message_Full__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The full text of the message.  This is helpful when a message exceeds 255 characters.</description>
+    <inlineHelpText>The full text of the message which allows for greater than 255 characters.</inlineHelpText>
+    <label>Message (Full)</label>
+    <length>131072</length>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>4</visibleLines>
+</CustomField>

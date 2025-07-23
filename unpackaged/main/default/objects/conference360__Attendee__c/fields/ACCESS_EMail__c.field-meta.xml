@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ACCESS_EMail__c</fullName>
+    <description>Pulls ACCESS Email from Organizer (Account) on Event. Used for Blackthorn notification templates</description>
+    <externalId>false</externalId>
+    <formula>HYPERLINK(&quot;mailto:&quot;&amp; conference360__Event__r.conference360__Organizer_Account__r.ACCESS_EMail__c, conference360__Event__r.conference360__Organizer_Account__r.ACCESS_EMail__c)</formula>
+    <label>ACCESS EMail</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

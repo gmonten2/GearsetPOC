@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>bt_base__Form_Big_List_Group__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <description>If this BT Form Element references a Big List Group.</description>
+    <inlineHelpText>Select a BT Form Big List Group if you have a picklist or a type ahead custom question that has more than 1,000 possible options.</inlineHelpText>
+    <label>BT Form Big List Group</label>
+    <referenceTo>bt_base__Form_Big_List_Group__c</referenceTo>
+    <relationshipLabel>Form Elements</relationshipLabel>
+    <relationshipName>Form_Elements</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

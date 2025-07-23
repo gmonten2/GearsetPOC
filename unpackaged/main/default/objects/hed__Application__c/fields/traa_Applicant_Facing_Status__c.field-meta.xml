@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>traa_Applicant_Facing_Status__c</fullName>
+    <deprecated>false</deprecated>
+    <description>This field is to show the status of the application to the applicant (In case they are accepted or rejected but you do not want them to know the decision yet)</description>
+    <inlineHelpText>This field is to show the status of the application to the applicant (In case they are accepted or rejected but you do not want them to know the decision yet)</inlineHelpText>
+    <label>Applicant Facing Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Personal Info</fullName>
+                <default>true</default>
+                <label>Personal Info</label>
+            </value>
+            <value>
+                <fullName>Start Term</fullName>
+                <default>false</default>
+                <label>Start Term</label>
+            </value>
+            <value>
+                <fullName>Campus / Location</fullName>
+                <default>false</default>
+                <label>Campus / Location</label>
+            </value>
+            <value>
+                <fullName>Program/Major</fullName>
+                <default>false</default>
+                <label>Program/Major</label>
+            </value>
+            <value>
+                <fullName>Academic History</fullName>
+                <default>false</default>
+                <label>Academic History</label>
+            </value>
+            <value>
+                <fullName>Ready to Submit</fullName>
+                <default>false</default>
+                <label>Ready to Submit</label>
+            </value>
+            <value>
+                <fullName>Completed</fullName>
+                <default>false</default>
+                <label>Completed</label>
+            </value>
+            <value>
+                <fullName>Accepted</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Accepted</label>
+            </value>
+            <value>
+                <fullName>Accepted Offer</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Accepted Offer</label>
+            </value>
+            <value>
+                <fullName>Declined Offer</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Declined Offer</label>
+            </value>
+            <value>
+                <fullName>Deferred Offer</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Deferred Offer</label>
+            </value>
+            <value>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>In Progress</label>
+            </value>
+            <value>
+                <fullName>In Review</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>In Review</label>
+            </value>
+            <value>
+                <fullName>Incomplete</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Incomplete</label>
+            </value>
+            <value>
+                <fullName>Offered</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Offered</label>
+            </value>
+            <value>
+                <fullName>Received</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Received</label>
+            </value>
+            <value>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Rejected</label>
+            </value>
+            <value>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Submitted</label>
+            </value>
+            <value>
+                <fullName>Waitlist</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Waitlist</label>
+            </value>
+            <value>
+                <fullName>What</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>What</label>
+            </value>
+            <value>
+                <fullName>When</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>When</label>
+            </value>
+            <value>
+                <fullName>Where</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Where</label>
+            </value>
+            <value>
+                <fullName>Who</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Who</label>
+            </value>
+            <value>
+                <fullName>Why</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Why</label>
+            </value>
+            <value>
+                <fullName>Withdrawn</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Withdrawn</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

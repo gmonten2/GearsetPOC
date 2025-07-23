@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>traa_Application_Record_Types__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Application Record Types</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>EDA Application</fullName>
+                <default>false</default>
+                <label>EDA Application</label>
+            </value>
+            <value>
+                <fullName>Academic Application</fullName>
+                <default>true</default>
+                <label>Academic Application</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

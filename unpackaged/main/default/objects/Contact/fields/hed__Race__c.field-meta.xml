@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>hed__Race__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Select the race(s) this person uses to describe themself.</description>
+    <inlineHelpText>Select the race(s) this person uses to describe themself.</inlineHelpText>
+    <label>Race</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>AMIND</fullName>
+                <default>false</default>
+                <label>AMIND</label>
+            </value>
+            <value>
+                <fullName>ASIAN</fullName>
+                <default>false</default>
+                <label>ASIAN</label>
+            </value>
+            <value>
+                <fullName>BLACK</fullName>
+                <default>false</default>
+                <label>BLACK</label>
+            </value>
+            <value>
+                <fullName>PACIF</fullName>
+                <default>false</default>
+                <label>PACIF</label>
+            </value>
+            <value>
+                <fullName>NPSEC</fullName>
+                <default>false</default>
+                <label>NPSEC</label>
+            </value>
+            <value>
+                <fullName>WHITE</fullName>
+                <default>false</default>
+                <label>WHITE</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>6</visibleLines>
+</CustomField>

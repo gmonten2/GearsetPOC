@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>Checks if the event item is Student or Guest</description>
+        <name>Check_the_type_of_event_item</name>
+        <label>Check the type of event item</label>
+        <locationX>182</locationX>
+        <locationY>395</locationY>
+        <defaultConnector>
+            <targetReference>Update_Attendee_Type_to_Guest</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Guest event Item</defaultConnectorLabel>
+        <rules>
+            <name>Student_Event_Item</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Attendee_s_Event_Item.conference360__Item_Name__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Student</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Attendee_Type_to_Prospect_Applicant</targetReference>
+            </connector>
+            <label>Student Event Item</label>
+        </rules>
+    </decisions>
+    <description>This flow updates the Attendee Type of an attendee if it&#39;s blank. It looks at the Event Item associated with the attendee. If the event type = Student, it updates the Attendee Type to Prospect/Applicant. If event type = Guest, it updates the Attendee Type to Guest.</description>
+    <environments>Default</environments>
+    <interviewLabel>Attendee_RTF {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Attendee_RTF Update Attendee Type when Blank</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Gets the Event item associated with the Attendee Record that triggered this flow.</description>
+        <name>Get_Attendee_s_Event_Item</name>
+        <label>Get Attendee&#39;s Event Item</label>
+        <locationX>182</locationX>
+        <locationY>287</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_the_type_of_event_item</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.conference360__Event_Item__r.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>conference360__Event_Item__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Updates Attendee Type to Guest</description>
+        <name>Update_Attendee_Type_to_Guest</name>
+        <label>Update Attendee Type to Guest</label>
+        <locationX>314</locationX>
+        <locationY>503</locationY>
+        <inputAssignments>
+            <field>Attendee_Type__c</field>
+            <value>
+                <stringValue>Guest</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Updates Attendee Type to Prospect/Applicant</description>
+        <name>Update_Attendee_Type_to_Prospect_Applicant</name>
+        <label>Update Attendee Type to Prospect/Applicant</label>
+        <locationX>50</locationX>
+        <locationY>503</locationY>
+        <inputAssignments>
+            <field>Attendee_Type__c</field>
+            <value>
+                <stringValue>Prospect/Applicant</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Attendee_s_Event_Item</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Attendee_Type__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>conference360__Attendee__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

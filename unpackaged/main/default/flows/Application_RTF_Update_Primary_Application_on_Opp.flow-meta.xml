@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Sends email notification if new Opp is already associated to an Application</description>
+        <name>Email_Warning</name>
+        <label>Email Warning</label>
+        <locationX>50</locationX>
+        <locationY>455</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>txttemp_ErrorEmail</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <stringValue>gmonten2@mdc.edu</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Update to Application {!$Record.Name} requires manual review</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+    </actionCalls>
+    <apiVersion>57.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>Checks if the new Opportunity already has a value in Primary Application different from triggering Application</description>
+        <name>Does_new_Opp_have_existing_Primary_Application</name>
+        <label>Does new Opp have existing Primary Application?</label>
+        <locationX>248</locationX>
+        <locationY>335</locationY>
+        <defaultConnector>
+            <targetReference>Is_Opportunity_field_Changed</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Same Application</defaultConnectorLabel>
+        <rules>
+            <name>Different_Application_on_New_Opp</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.traa_Opportunity__r.traa_Primary_Application__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.traa_Opportunity__r.traa_Primary_Application__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.Id</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Email_Warning</targetReference>
+            </connector>
+            <label>Different Application on New Opp</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if the Opportunity lookup was changed on the Application record</description>
+        <name>Is_Opportunity_field_Changed</name>
+        <label>Is Opportunity field Changed?</label>
+        <locationX>446</locationX>
+        <locationY>455</locationY>
+        <defaultConnector>
+            <targetReference>Update_Opp_s_Primary_Application</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No change made</defaultConnectorLabel>
+        <rules>
+            <name>Opportunity_was_changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.traa_Opportunity__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Remove_Application_from_original_Opportunity</targetReference>
+            </connector>
+            <label>Opportunity was changed</label>
+        </rules>
+    </decisions>
+    <description>Record Triggered flow to update Primary Application field on related Opp when Application.Opportunity is updated 
+
+v5: update decision elements</description>
+    <environments>Default</environments>
+    <interviewLabel>Application_RTF Update Primary Application on Opp {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Application_RTF Update Primary Application on Opp</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Blanks Primary Application field on the original linked Opportunity</description>
+        <name>Remove_Application_from_original_Opportunity</name>
+        <label>Remove Application from original Opportunity</label>
+        <locationX>314</locationX>
+        <locationY>575</locationY>
+        <connector>
+            <targetReference>Update_Opp_s_Primary_Application</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record__Prior.traa_Opportunity__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>traa_Primary_Application__c</field>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Opp_s_Primary_Application</name>
+        <label>Update Opp&#39;s Primary Application</label>
+        <locationX>446</locationX>
+        <locationY>791</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.traa_Opportunity__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>traa_Primary_Application__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <start>
+        <locationX>122</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Does_new_Opp_have_existing_Primary_Application</targetReference>
+        </connector>
+        <filterFormula>NOT(ISBLANK({!$Record.traa_Opportunity__c})) &amp;&amp; (ISNEW() || ISCHANGED({!$Record.traa_Opportunity__c}))</filterFormula>
+        <object>hed__Application__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>txttemp_ErrorEmail</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Uh-oh. Looks like someone tried to change the Opportunity on this Application but it&#39;s already associated to a different Application. Please review these records and update manually as needed:&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Triggering Application Name: {!$Record.Name} ({!$Record.Id})&lt;/p&gt;&lt;p&gt;Previous Opportunity on Application: {!$Record__Prior.traa_Opportunity__r.Name} ({!$Record__Prior.traa_Opportunity__c})&lt;/p&gt;&lt;p&gt;New Opportunity on Application: {!$Record.traa_Opportunity__r.Name} ({!$Record.traa_Opportunity__c})&lt;/p&gt;&lt;p&gt;Current Application on new Opportunity: {!$Record.traa_Opportunity__r.traa_Primary_Application__r.Name} ({!$Record.traa_Opportunity__r.traa_Primary_Application__c})&lt;/p&gt;</text>
+    </textTemplates>
+</Flow>

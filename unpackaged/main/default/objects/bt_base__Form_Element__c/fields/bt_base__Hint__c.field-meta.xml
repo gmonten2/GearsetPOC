@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>bt_base__Hint__c</fullName>
+    <deprecated>false</deprecated>
+    <description>A hint for this question. Will be displayed as placeholder text within the input field on the BT Form.</description>
+    <inlineHelpText>A hint for this question. Will be displayed as placeholder text within the input field on the BT Form.</inlineHelpText>
+    <label>Hint</label>
+    <length>32768</length>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>4</visibleLines>
+</CustomField>

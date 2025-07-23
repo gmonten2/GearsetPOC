@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>hed__Application_Status__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The status of the application process.</description>
+    <inlineHelpText>The status of the application process.</inlineHelpText>
+    <label>Application Status</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Personal Info</fullName>
+                <default>true</default>
+                <label>Personal Info</label>
+            </value>
+            <value>
+                <fullName>Start Term</fullName>
+                <default>false</default>
+                <label>Start Term</label>
+            </value>
+            <value>
+                <fullName>Campus / Location</fullName>
+                <default>false</default>
+                <label>Campus / Location</label>
+            </value>
+            <value>
+                <fullName>Program/Major</fullName>
+                <default>false</default>
+                <label>Program/Major</label>
+            </value>
+            <value>
+                <fullName>Academic History</fullName>
+                <default>false</default>
+                <label>Academic History</label>
+            </value>
+            <value>
+                <fullName>Ready to Submit</fullName>
+                <default>false</default>
+                <label>Ready to Submit</label>
+            </value>
+            <value>
+                <fullName>Completed</fullName>
+                <default>false</default>
+                <label>Completed</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

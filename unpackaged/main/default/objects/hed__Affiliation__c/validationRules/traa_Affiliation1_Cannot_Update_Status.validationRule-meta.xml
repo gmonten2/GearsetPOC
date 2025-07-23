@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>traa_Affiliation1_Cannot_Update_Status</fullName>
+    <active>true</active>
+    <description>Validation rule used to prevent the update of the status and role fields on affiliation if you are not a system admin.</description>
+    <errorConditionFormula>NOT($Profile.Name = &quot;System Administrator&quot; ||  $Permission.traa_Affiliation_Update_Permission )
+
+&amp;&amp;
+
+(ISCHANGED( hed__Role__c )
+||
+ISCHANGED( hed__Status__c ))</errorConditionFormula>
+    <errorMessage>Affiliation 1: Only a system administrator can update the status and role of an affiliation.</errorMessage>
+</ValidationRule>

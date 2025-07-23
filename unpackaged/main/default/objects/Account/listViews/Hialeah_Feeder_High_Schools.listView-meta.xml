@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Hialeah_Feeder_High_Schools</fullName>
+    <columns>Campus_Assigned_to_High_School__c</columns>
+    <columns>PCA_Assigned_to_High_School__c</columns>
+    <columns>hed__School_Code__c</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>ACCOUNT.ADDRESS2_STREET</columns>
+    <columns>ACCOUNT.ADDRESS2_CITY</columns>
+    <columns>ACCOUNT.ADDRESS2_STATE</columns>
+    <columns>ACCOUNT.ADDRESS2_ZIP</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>ACCOUNT.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Account.Educational_Institution</value>
+    </filters>
+    <filters>
+        <field>PCA_Assigned_to_High_School__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <filters>
+        <field>Campus_Assigned_to_High_School__c</field>
+        <operation>equals</operation>
+        <value>Hialeah</value>
+    </filters>
+    <label>Hialeah Feeder High Schools</label>
+    <sharedTo>
+        <group>CRM_Core_Team</group>
+    </sharedTo>
+</ListView>

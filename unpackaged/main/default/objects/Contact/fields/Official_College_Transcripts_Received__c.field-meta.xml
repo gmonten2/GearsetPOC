@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Official_College_Transcripts_Received__c</fullName>
+    <description>Used by Pardot for Onboarding Task email templates and dynamic lists</description>
+    <formula>Current_Opportunity__r.Official_College_Transcripts_Received__c</formula>
+    <label>Official College Transcripts Received</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

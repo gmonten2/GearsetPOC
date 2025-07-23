@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>simplesms__DoNotSMS__c</fullName>
+    <deprecated>false</deprecated>
+    <formula>IF(
+  ISBLANK(ContactId),
+  Lead.simplesms__DoNotSMS__c,
+  Contact.simplesms__DoNotSMS__c
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>DoNotSMS</label>
+    <type>Checkbox</type>
+</CustomField>

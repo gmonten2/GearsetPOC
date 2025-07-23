@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Core_Onboarding_Tasks__c</fullName>
+    <description>Calculates score for core Onboarding Tasks applicable to all students</description>
+    <externalId>false</externalId>
+    <formula>(IF( My_MDC_Account_Created__c = TRUE, 1,0) +
+     IF( Completed_Shark_Intake__c = TRUE, 1,0)+
+     IF( OR (Has_Usable_Placement_Scores_in_All_Areas__c = TRUE, ISPICKVAL(DevEd_Exemption_Status__c, &quot;Yes&quot;)), 1,0) +
+     IF( Completed_FOA__c = TRUE, 1,0) +
+     IF(OR (ISPICKVAL(StageName, &quot;Enrolled-Not Paid&quot;),(ISPICKVAL(StageName, &quot;Enrolled-Paid&quot;))),1,0) +
+     IF(  Registered_for_Orientation__c = TRUE, 1,0)
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Core Onboarding Tasks</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

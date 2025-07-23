@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>simplesms__Do_Not_Use_Reserved_Keywords</fullName>
+    <active>true</active>
+    <description>A Campaign cannot use certain reserved keywords.</description>
+    <errorConditionFormula>IF( 
+   &quot;t&quot; = CASE( LOWER( simplesms__SMS_Keyword__c )
+                 ,&quot;help&quot;
+                 ,&quot;t&quot;
+                 ,&quot;info&quot;
+                 ,&quot;t&quot;
+                 ,&quot;stop&quot;
+                 ,&quot;t&quot;
+                 ,&quot;end&quot;
+                 ,&quot;t&quot;
+                 ,&quot;quit&quot;
+                 ,&quot;t&quot;
+                 ,&quot;cancel&quot;
+                 ,&quot;t&quot;
+                 ,&quot;unsubscribe&quot;
+                 ,&quot;t&quot;
+                 ,&quot;f&quot; )
+   ,true
+   ,false
+)</errorConditionFormula>
+    <errorDisplayField>simplesms__SMS_Keyword__c</errorDisplayField>
+    <errorMessage>This cannot be used as a keyword.</errorMessage>
+</ValidationRule>

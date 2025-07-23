@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Overrides Validation Rules that lock down key integration fields on Opportunity such as name, stage, academic program, etc</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Opportunity: Edit key fields</label>
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>Opportunity_Field_Updates</name>
+    </customPermissions>
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>Opportunity_Stage_Update</name>
+    </customPermissions>
+</PermissionSet>

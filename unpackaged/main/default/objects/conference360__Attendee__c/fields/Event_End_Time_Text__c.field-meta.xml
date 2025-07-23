@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Event_End_Time_Text__c</fullName>
+    <description>Text friendly display of start time for email/text templates</description>
+    <externalId>false</externalId>
+    <formula>IF(ISBLANK(conference360__Event__r.conference360__Event_End_Time__c),&quot;&quot;,
+IF(
+OR(
+VALUE(LEFT(TEXT( conference360__Event__r.conference360__Event_End_Time__c ), 2)) = 0,
+VALUE(LEFT(TEXT(conference360__Event__r.conference360__Event_End_Time__c ), 2)) = 12
+),
+&quot;12&quot;,
+TEXT(VALUE(LEFT(TEXT(conference360__Event__r.conference360__Event_End_Time__c ), 2))
+-
+IF(VALUE(LEFT(TEXT(conference360__Event__r.conference360__Event_End_Time__c ), 2)) &lt; 12, 0, 12))
+)
+&amp; &quot;:&quot; &amp;
+MID(TEXT(conference360__Event__r.conference360__Event_End_Time__c ), 4, 2)
+&amp; &quot; &quot; &amp;
+IF(
+VALUE(LEFT(TEXT(conference360__Event__r.conference360__Event_End_Time__c ), 2)) &lt; 12, &quot;AM&quot;, &quot;PM&quot;
+)
+)</formula>
+    <label>Event End Time (Text)</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

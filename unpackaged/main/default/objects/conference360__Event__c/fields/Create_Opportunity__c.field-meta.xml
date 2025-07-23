@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Create_Opportunity__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This is a Flag that is checked by a Flow (Attendee_RTF Create Opp for new OpenHouse Contact), if this checkbox = TRUE for an event, it will create Opportunities to the students that signed up to that event.</description>
+    <inlineHelpText>If true for an event, it will create Opportunities to the students that sign up to the event.</inlineHelpText>
+    <label>Create Opportunity</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

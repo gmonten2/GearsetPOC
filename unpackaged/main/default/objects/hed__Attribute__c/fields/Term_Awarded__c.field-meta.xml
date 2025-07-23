@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Term_Awarded__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Term Awarded</label>
+    <referenceTo>hed__Term__c</referenceTo>
+    <relationshipLabel>Attributes (Term Awarded)</relationshipLabel>
+    <relationshipName>Attributes_Term_Awarded</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>conference360__Keyword_Filter_AND_Logic__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <inlineHelpText>Overrides default OR logic when multiple keywords are used to filter an event group. When using AND logic, selecting additional keywords generally decreases the number of visible events. When using OR logic, selecting additional keywords generally increases the number of visible events.</inlineHelpText>
+    <label>Combine Keyword Filters with AND Logic</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

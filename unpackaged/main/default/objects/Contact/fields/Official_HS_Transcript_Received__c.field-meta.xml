@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Official_HS_Transcript_Received__c</fullName>
+    <description>Used by Pardot for Onboarding email templates</description>
+    <formula>Current_Opportunity__r.Official_HS_Transcript_Received__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Official HS Transcript Received</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Closed_Reason_Description__c</fullName>
+    <description>Whenever the value &#39;Other&#39; is selected on the field Closed Reason, this field needs to be entered.</description>
+    <inlineHelpText>Please describe further the reason of why this case is being closed.</inlineHelpText>
+    <label>Closed Reason Description</label>
+    <length>32768</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

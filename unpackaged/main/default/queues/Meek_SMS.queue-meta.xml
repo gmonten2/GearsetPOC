@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>Meek SMS</name>
+    <queueMembers>
+        
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>simplesms__Conversation__c</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>simplesms__SMS_Message__c</sobjectType>
+    </queueSobject>
+</Queue>

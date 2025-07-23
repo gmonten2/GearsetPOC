@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OPH_Registration_Status__c</fullName>
+    <description>Used in PArdot for Open HOuse Programs and Lists</description>
+    <externalId>false</externalId>
+    <formula>TEXT(Latest_Open_House_Record__r.conference360__Registration_Status__c)</formula>
+    <label>OPH Registration Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

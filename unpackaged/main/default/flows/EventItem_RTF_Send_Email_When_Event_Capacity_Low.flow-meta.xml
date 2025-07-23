@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Sends email to person who created the Event that is close to reach capacity with instructions on how to increase capacity if they need to do so. Sergio/Gio CCd</description>
+        <name>Event_Capacity_at_Zero</name>
+        <label>Event Capacity at Zero</label>
+        <locationX>314</locationX>
+        <locationY>431</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.CreatedBy.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>ccRecipientAddressList</name>
+            <value>
+                <stringValue>gmonten2@mdc.edu, sferre@mdc.edu</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>mdcinfo@mdc.edu</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Your event {!$Record.conference360__Event__r.Name} is at max capacity</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>emailBody0Spots</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>Sends email to person who created the Event that is close to reach capacity with instructions on how to increase capacity if they need to do so. Sergio/Gio CCd</description>
+        <name>Event_Capacity_Low</name>
+        <label>Event Capacity Low</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.CreatedBy.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>ccRecipientAddressList</name>
+            <value>
+                <stringValue>gmonten2@mdc.edu, sferre@mdc.edu</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>mdcinfo@mdc.edu</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Your event {!$Record.conference360__Event__r.Name} will reach max capacity soon</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>emailBody10Spots</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+    </actionCalls>
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>We check how many spots are left in the event, and we send an email depending if there&#39;s 10 spots left or 0 spots left</description>
+        <name>Check_how_many_spots_are_left_in_event</name>
+        <label>Check how many spots are left in event</label>
+        <locationX>314</locationX>
+        <locationY>323</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>X10_Spots</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.conference360__Remaining_Quantity__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>10.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.conference360__Status_Formula__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Registration active (Public)</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Event_Capacity_Low</targetReference>
+            </connector>
+            <label>10 Spots</label>
+        </rules>
+        <rules>
+            <name>X0_Spots</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.conference360__Remaining_Quantity__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.conference360__Status_Formula__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Sold Out</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Event_Capacity_at_Zero</targetReference>
+            </connector>
+            <label>0 Spots</label>
+        </rules>
+    </decisions>
+    <description>v1: Sends email to Event Owner, CC: Gio/Sergio when Event Item is lower than 11
+v2: Added Cheat sheet link
+v3-7: Adjusted emailBody
+v8: Adjusted Triggering field: Status formila: Event Active &amp; adjusted email recipient address.
+v13: Changed &#39;Event Active&#39; to &#39;Registration active (Public)&#39;
+v14: Changed wording on email.
+v15: Adjusted trigger conditions. Added decision tree to send at 10 remaining and 0 remaining.
+v16: Edited Email sent at zero cap.
+v17: Fixed Email sent at zero cap.
+v18: Fixed RecordLinkFormula.
+v19-23: Adjust Entry Conditions.
+v24: Add info center email as sender.</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>recordLink_Formula</name>
+        <dataType>String</dataType>
+        <expression>LEFT({!$Api.Partner_Server_URL_550}, FIND( &#39;/services&#39;, {!$Api.Partner_Server_URL_550})) &amp; {!$Record.conference360__Event__r.Id}</expression>
+    </formulas>
+    <interviewLabel>Event Item_RTF {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>EventItem_RTF Send Email When Event Capacity Low</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_how_many_spots_are_left_in_event</targetReference>
+        </connector>
+        <filterLogic>(1 AND 2 AND 3) OR (4 AND 5 AND 6)</filterLogic>
+        <filters>
+            <field>conference360__Remaining_Quantity__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>conference360__Remaining_Quantity__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <numberValue>10.0</numberValue>
+            </value>
+        </filters>
+        <filters>
+            <field>conference360__Status_Formula__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Registration active (Public)</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>conference360__Remaining_Quantity__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </filters>
+        <filters>
+            <field>conference360__Status_Formula__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>conference360__Status_Formula__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Sold Out</stringValue>
+            </value>
+        </filters>
+        <object>conference360__Event_Item__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>emailBody0Spots</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Hi {!$Record.conference360__Event__r.CreatedBy.FirstName},&lt;/p&gt;&lt;p&gt;This is an automated message. An event you created:&lt;strong&gt;&amp;nbsp;{!$Record.conference360__Event__r.Name}&lt;/strong&gt;&amp;nbsp;is at its max capacity. Students will not be able to register to the event. Please follow the instructions outlined below if you need to increase the capacity of the event.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;strong&gt;{!$Record.conference360__Sold_Quantity__c}&lt;/strong&gt;&amp;nbsp;out of&amp;nbsp;&lt;strong&gt;{!$Record.conference360__Quantity_Made_Available__c}&amp;nbsp;&lt;/strong&gt;spots have been filled, leaving&amp;nbsp;&lt;strong&gt;{!$Record.conference360__Remaining_Quantity__c}&amp;nbsp;&lt;/strong&gt;remaining registrations available.&lt;/li&gt;&lt;li&gt;Link to event:&amp;nbsp;&lt;a href=&quot;{!recordLink_Formula}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Click here&lt;/a&gt;&lt;/li&gt;&lt;li&gt;How to increase capacity:&amp;nbsp;&lt;a href=&quot;https://miamidadecollegeprod.sharepoint.com/sites/CRM/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FCRM%2FShared%20Documents%2FTraining%20Guides%20%26%20Videos%2FCheat%20Sheets%2FBlackthorn%20Events%2FHow%20to%20adjust%20Event%20Max%20Capacity%2Epdf&amp;amp;viewid=67e40788%2Df57a%2D46d8%2D9a31%2D36f03ee382dc&amp;amp;parent=%2Fsites%2FCRM%2FShared%20Documents%2FTraining%20Guides%20%26%20Videos%2FCheat%20Sheets%2FBlackthorn%20Events&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Click here&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;If you are having issues, please contact your Salesforce Administrator.&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>emailBody10Spots</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Hi {!$Record.conference360__Event__r.CreatedBy.FirstName},&lt;/p&gt;&lt;p&gt;This is an automated message. An event you created:&lt;strong&gt; {!$Record.conference360__Event__r.Name}&lt;/strong&gt; may soon reach its max capacity. Students will not be able to register to the event after capacity is met. Please follow the instructions outlined below if you need to increase the capacity of the event.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;strong&gt;{!$Record.conference360__Sold_Quantity__c}&lt;/strong&gt; out of &lt;strong&gt;{!$Record.conference360__Quantity_Made_Available__c} &lt;/strong&gt;spots have been filled, leaving only &lt;strong&gt;{!$Record.conference360__Remaining_Quantity__c} &lt;/strong&gt;remaining.&lt;/li&gt;&lt;li&gt;Link to event: &lt;a href=&quot;{!recordLink_Formula}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Click here&lt;/a&gt;&lt;/li&gt;&lt;li&gt;How to increase capacity: &lt;a href=&quot;https://miamidadecollegeprod.sharepoint.com/sites/CRM/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FCRM%2FShared%20Documents%2FTraining%20Guides%20%26%20Videos%2FCheat%20Sheets%2FBlackthorn%20Events%2FHow%20to%20adjust%20Event%20Max%20Capacity%2Epdf&amp;amp;viewid=67e40788%2Df57a%2D46d8%2D9a31%2D36f03ee382dc&amp;amp;parent=%2Fsites%2FCRM%2FShared%20Documents%2FTraining%20Guides%20%26%20Videos%2FCheat%20Sheets%2FBlackthorn%20Events&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Click here&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;If you are having issues, please contact your Salesforce Administrator.&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <description>Subject of the email</description>
+        <name>emailSubject</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Your event {!$Record.conference360__Event__r.Name}&amp;nbsp;will reach max capacity soon&lt;/p&gt;</text>
+    </textTemplates>
+</Flow>

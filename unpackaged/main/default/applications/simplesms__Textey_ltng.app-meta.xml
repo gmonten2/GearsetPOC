@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#0070D2</headerColor>
+        <logo>simplesms__logo_icon</logo>
+        <logoVersion>3</logoVersion>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
+    </brand>
+    <description>Blackthorn Messaging is an app that easily lets you send and receive text messages from Salesforce.</description>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
+    <label>Blackthorn Messaging</label>
+    <navType>Standard</navType>
+    <setupExperience>all</setupExperience>
+    <tabs>simplesms__Admin</tabs>
+    <tabs>simplesms__PhoneNumber__c</tabs>
+    <tabs>simplesms__SMS_Template__c</tabs>
+    <tabs>simplesms__SMS_Message__c</tabs>
+    <tabs>standard-Campaign</tabs>
+    <tabs>standard-Lead</tabs>
+    <tabs>standard-Contact</tabs>
+    <tabs>simplesms__Conversation__c</tabs>
+    <tabs>simplesms__Conversations</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>simplesms__Textey_ltng_UtilityBar</utilityBar>
+</CustomApplication>

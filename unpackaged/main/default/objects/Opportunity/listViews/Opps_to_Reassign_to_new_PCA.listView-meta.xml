@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Opps_to_Reassign_to_new_PCA</fullName>
+    <columns>traa_Applicant__c</columns>
+    <columns>Primary_PCA__c</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <columns>CORE.USERS.FULL_NAME</columns>
+    <columns>Current_Institution_Code__c</columns>
+    <columns>Applicant_Current_Institution_Text__c</columns>
+    <columns>Campus_Assigned_to_High_School__c</columns>
+    <columns>OPPORTUNITY.CREATED_DATE</columns>
+    <columns>Term__c</columns>
+    <columns>Home_Campus__c</columns>
+    <columns>Student_Onboarding_Type__c</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>traa_Academic_Program__c</columns>
+    <columns>Secondary_PCA__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.traa_Academic_Program_Applications</value>
+    </filters>
+    <filters>
+        <field>Primary_PCA__c</field>
+        <operation>contains</operation>
+        <value>lucia,Eldandreina</value>
+    </filters>
+    <filters>
+        <field>Current_Institution_Code__c</field>
+        <operation>equals</operation>
+        <value>1010013760,1010012496,1010013837,1010012657,1010013771,1010013866</value>
+    </filters>
+    <filters>
+        <field>Term__c</field>
+        <operation>equals</operation>
+        <value>2257</value>
+    </filters>
+    <label>Opps to Reassign to new PCA</label>
+    <sharedTo>
+        <group>CRM_Core_Team</group>
+    </sharedTo>
+</ListView>

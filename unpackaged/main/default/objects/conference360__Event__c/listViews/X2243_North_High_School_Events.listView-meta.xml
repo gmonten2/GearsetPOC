@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2243_North_High_School_Events</fullName>
+    <columns>NAME</columns>
+    <columns>conference360__Venue__c</columns>
+    <columns>conference360__Event_Start_Date_Time__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>conference360__Organizer_Account__c</field>
+        <operation>contains</operation>
+        <value>North</value>
+    </filters>
+    <filters>
+        <field>Term__c</field>
+        <operation>equals</operation>
+        <value>2245</value>
+    </filters>
+    <filters>
+        <field>NAME</field>
+        <operation>contains</operation>
+        <value>High School</value>
+    </filters>
+    <label>2245 North High School Events</label>
+    <sharedTo>
+        <group>CRM_Core_Team</group>
+        <group>North_Campus_Public_Group</group>
+    </sharedTo>
+</ListView>

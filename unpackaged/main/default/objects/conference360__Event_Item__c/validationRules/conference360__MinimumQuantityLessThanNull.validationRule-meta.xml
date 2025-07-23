@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>conference360__MinimumQuantityLessThanNull</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(OR(ISPICKVAL(conference360__Type__c, &#39;Main event ticket&#39;), ISPICKVAL(conference360__Type__c, &#39;Guest&#39;)), 0 &gt;  conference360__Minimum_Quantity__c)</errorConditionFormula>
+    <errorDisplayField>conference360__Minimum_Quantity__c</errorDisplayField>
+    <errorMessage>Quantity must be greater or equal to 0.</errorMessage>
+</ValidationRule>

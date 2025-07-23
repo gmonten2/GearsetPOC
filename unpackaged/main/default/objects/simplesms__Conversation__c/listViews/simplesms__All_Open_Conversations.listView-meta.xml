@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>simplesms__All_Open_Conversations</fullName>
+    <columns>NAME</columns>
+    <columns>simplesms__Conversation_Start__c</columns>
+    <columns>simplesms__Closed_Date_Time__c</columns>
+    <columns>simplesms__Status__c</columns>
+    <columns>simplesms__Sub_Status__c</columns>
+    <columns>simplesms__Contact__c</columns>
+    <columns>simplesms__Lead__c</columns>
+    <columns>simplesms__Internal_Phone__c</columns>
+    <columns>simplesms__Recipient_Phone__c</columns>
+    <columns>simplesms__Last_Message__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>simplesms__Status__c</field>
+        <operation>equals</operation>
+        <value>Open</value>
+    </filters>
+    <label>All Open Conversations</label>
+</ListView>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>conference360__Blackthorn_Events_Wizard_Sponsor_Fields</fullName>
+    <description>Used in event wizard to display additional fields</description>
+    <label>Blackthorn | Events Wizard Sponsor Fields</label>
+</FieldSet>

@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Check_if_Is_Student_Is_Employee_TRUE_FALSE</name>
+        <label>Check if Is Student/ Is Employee / Is Retiree =TRUE/FALSE</label>
+        <locationX>314</locationX>
+        <locationY>623</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>TRUE</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Is_Student__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Is_Employee__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.IsRetiree__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_SyncToMC_to_TRUE</targetReference>
+            </connector>
+            <label>TRUE</label>
+        </rules>
+        <rules>
+            <name>FALSE1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Is_Student__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Is_Employee__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.IsRetiree__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_SyncToMC_to_FALSE</targetReference>
+            </connector>
+            <label>FALSE</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if Is Student = TRUE or FALSE</description>
+        <name>Check_Status_of_Is_Student</name>
+        <label>Check Status of Is Student</label>
+        <locationX>314</locationX>
+        <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>Check_if_Is_Student_Is_Employee_TRUE_FALSE</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>TRUE</defaultConnectorLabel>
+        <rules>
+            <name>FALSE</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Is_Student__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Is_Student__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Onboarding_Tasks_on_Current_Opportunity</targetReference>
+            </connector>
+            <label>FALSE</label>
+        </rules>
+    </decisions>
+    <description>v1: Updates SyncToMC to TRUE if SMS Opt Out = FALSE AND (Is Student = TRUE OR Is Employee = TRUE)
+v2: Removed SMS Opt Out check
+v3: Added decision to uncheck SyncTOMC if both Is Employee AND Is Student are FALSE
+v4-6: Added decision tree to blank out onboarding tasks on Current Opp when Is Student changes to FALSE
+v7: Added Is_Retiree on the decision branch.
+v8-9: Changed entry conditions.</description>
+    <environments>Default</environments>
+    <interviewLabel>Contact_RTF Update SyncToMC {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Contact_RTF Update SyncToMC</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Updates the following fields to blank:
+
+Eligible for In State Fees
+Completed FOA
+Has Usable Placement Scores in Math
+Has Usable Placement Scores in Reading
+Has Usable Placement Scores in Writing
+Completed FAFSA
+
+Updates these fields:
+
+StageName = Closed
+Disposition = Inactive Student
+Disposition Reason = Closed by automation</description>
+        <name>Update_Onboarding_Tasks_on_Current_Opportunity</name>
+        <label>Update Onboarding Tasks on Current Opportunity</label>
+        <locationX>182</locationX>
+        <locationY>431</locationY>
+        <connector>
+            <targetReference>Check_if_Is_Student_Is_Employee_TRUE_FALSE</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Completed_FOA__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>DevEd_Exemption_Status__c</field>
+            <value>
+                <stringValue>No</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Disposition_Reason__c</field>
+            <value>
+                <stringValue>Closed by automation</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Disposition__c</field>
+            <value>
+                <stringValue>Inactive Student</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Eligible_for_In_State_Fees__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Has_Usable_Placement_Scores_in_Math__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Has_Usable_Placement_Scores_in_Reading__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Has_Usable_Placement_Scores_in_Writing__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>StageName</field>
+            <value>
+                <stringValue>Closed</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>hed__Completed_FAFSA__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Current_Opportunity__r</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Updates SyncToMC checkbox to FALSE if triggered condition is met.</description>
+        <name>Update_SyncToMC_to_FALSE</name>
+        <label>Update SyncToMC to FALSE</label>
+        <locationX>314</locationX>
+        <locationY>731</locationY>
+        <inputAssignments>
+            <field>SyncToMC__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Updates SyncToMC checkbox to TRUE if triggered condition is met.</description>
+        <name>Update_SyncToMC_to_TRUE</name>
+        <label>Update SyncToMC to TRUE</label>
+        <locationX>50</locationX>
+        <locationY>731</locationY>
+        <inputAssignments>
+            <field>SyncToMC__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_Status_of_Is_Student</targetReference>
+        </connector>
+        <filterLogic>1 OR 2 OR 3 OR 4 OR 5 OR 6</filterLogic>
+        <filters>
+            <field>Is_Student__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Is_Employee__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>IsRetiree__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Is_Student__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Is_Employee__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>IsRetiree__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Contact</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

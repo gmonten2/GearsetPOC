@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>bt_base__Schedule__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The Schedule record for which Delta Request needs to be created</description>
+    <inlineHelpText>The Schedule record for which Delta Request needs to be created</inlineHelpText>
+    <label>Schedule</label>
+    <referenceTo>bt_base__SCH_Schedule__c</referenceTo>
+    <relationshipLabel>Schedule Delta Requests</relationshipLabel>
+    <relationshipName>Schedule_Delta_Requests</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

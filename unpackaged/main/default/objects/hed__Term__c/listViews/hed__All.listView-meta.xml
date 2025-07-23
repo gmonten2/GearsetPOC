@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>hed__All</fullName>
+    <columns>Short_Name__c</columns>
+    <columns>NAME</columns>
+    <columns>MDC_Term_ID__c</columns>
+    <columns>hed__Start_Date__c</columns>
+    <columns>hed__End_Date__c</columns>
+    <columns>Last_Enrollment_Date__c</columns>
+    <columns>hed__Type__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

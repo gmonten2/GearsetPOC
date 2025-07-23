@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Enter Charge info to create a Charge -Transaction and capture it. Check the Transaction Status on the created record to make sure the charge was successful.</description>
+    <fieldOverrides>
+        <field>bt_stripe__Capture__c</field>
+        <formula>True</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>bt_stripe__Payment_Method__c</field>
+        <formula>Account.bt_stripe__Default_Payment_Method__c</formula>
+    </fieldOverrides>
+    <label>Charge Card</label>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <quickActionLayout>
+        <layoutSectionStyle>TwoColumnsLeftToRight</layoutSectionStyle>
+        <quickActionLayoutColumns>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>bt_stripe__Payment_Method__c</field>
+                <uiBehavior>Required</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>bt_stripe__Amount__c</field>
+                <uiBehavior>Required</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>bt_stripe__Description__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+        </quickActionLayoutColumns>
+        <quickActionLayoutColumns/>
+    </quickActionLayout>
+    <successMessage>The Transaction record was created. Check the Transaction Status to make sure it was charged successfully.</successMessage>
+    <targetObject>bt_stripe__Transaction__c</targetObject>
+    <targetParentField>bt_stripe__Related_Account__c</targetParentField>
+    <targetRecordType>bt_stripe__Transaction__c.bt_stripe__Charge</targetRecordType>
+    <type>Create</type>
+</QuickAction>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>User_Persona__c</fullName>
+    <label>User Persona</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Pre-College Advisor</fullName>
+                <default>false</default>
+                <label>Pre-College Advisor</label>
+            </value>
+            <value>
+                <fullName>Student Success Advisor</fullName>
+                <default>false</default>
+                <label>Student Success Advisor</label>
+            </value>
+            <value>
+                <fullName>Info Center User</fullName>
+                <default>false</default>
+                <label>Info Center User</label>
+            </value>
+            <value>
+                <fullName>Director</fullName>
+                <default>false</default>
+                <label>Director</label>
+            </value>
+            <value>
+                <fullName>Dean</fullName>
+                <default>false</default>
+                <label>Dean</label>
+            </value>
+            <value>
+                <fullName>CNS</fullName>
+                <default>false</default>
+                <label>CNS</label>
+            </value>
+            <value>
+                <fullName>Admin</fullName>
+                <default>false</default>
+                <label>Admin</label>
+            </value>
+            <value>
+                <fullName>Event User</fullName>
+                <default>false</default>
+                <label>Event User</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

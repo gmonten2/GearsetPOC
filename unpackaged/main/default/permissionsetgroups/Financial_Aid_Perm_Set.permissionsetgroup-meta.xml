@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSetGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>BT Events Organizer
+BT Base User
+BT Payments User</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Financial Aid Perm Set</label>
+    <mutingPermissionSets>Financial_Aid_Perm_Set_Muted</mutingPermissionSets>
+    <permissionSets>bt_base__Blackthorn_Base_User</permissionSets>
+    <permissionSets>bt_stripe__payment360_Userv2</permissionSets>
+    <permissionSets>conference360__Blackthorn_Event_Organizer</permissionSets>
+    <status>Updated</status>
+</PermissionSetGroup>

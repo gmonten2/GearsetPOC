@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Presidential_Scholar_Events</fullName>
+    <columns>conference360__Organizer_Account__c</columns>
+    <columns>NAME</columns>
+    <columns>conference360__Event_Start_Date__c</columns>
+    <columns>conference360__Event_Start_Time__c</columns>
+    <columns>conference360__Status__c</columns>
+    <columns>conference360__Category__c</columns>
+    <columns>conference360__Visible__c</columns>
+    <columns>conference360__Registered__c</columns>
+    <columns>conference360__Attended__c</columns>
+    <columns>conference360__Campaign__c</columns>
+    <columns>conference360__Status_Formula__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>NAME</field>
+        <operation>contains</operation>
+        <value>Presidential,Rising</value>
+    </filters>
+    <label>Scholar Events</label>
+</ListView>

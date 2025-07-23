@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>InactiveMyMdcEmail__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>FALSE means that the student that comes from an application has a MyMDC Email. TRUE means they don&#39;t have one.</description>
+    <inlineHelpText>FALSE means that the student that comes from an application has a MyMDC Email. TRUE means they don&#39;t have one.</inlineHelpText>
+    <label>InactiveMyMdcEmail</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

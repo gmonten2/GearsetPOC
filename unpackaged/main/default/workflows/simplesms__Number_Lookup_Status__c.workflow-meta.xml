@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>simplesms__Textey_Lookup_Number_Complete_Notification</fullName>
+        <description>Textey Lookup Number Complete Notification</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>simplesms__Simple_SMS/simplesms__Textey_Lookup_Number_Completed</template>
+    </alerts>
+    <rules>
+        <fullName>simplesms__Number Status Success%2FFailure</fullName>
+        <actions>
+            <name>simplesms__Textey_Lookup_Number_Complete_Notification</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>simplesms__Number_Lookup_Status__c.simplesms__Status__c</field>
+            <operation>equals</operation>
+            <value>Complete,Error</value>
+        </criteriaItems>
+        <description>Email to owner of the Number Lookup Status when a Status changes to either Complete or Error.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Related_Attendee__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Related Attendee record to this Case</description>
+    <inlineHelpText>The Attendee related to this Case.</inlineHelpText>
+    <label>Related Attendee</label>
+    <referenceTo>conference360__Attendee__c</referenceTo>
+    <relationshipLabel>Cases</relationshipLabel>
+    <relationshipName>Cases</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

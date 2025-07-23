@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Padron_Events_SMS_Message</fullName>
+    <filterScope>Queue</filterScope>
+    <label>Padron SMS</label>
+    <queue>Padron_SMS</queue>
+    <sharedTo>
+        <allInternalUsers />
+    </sharedTo>
+</ListView>

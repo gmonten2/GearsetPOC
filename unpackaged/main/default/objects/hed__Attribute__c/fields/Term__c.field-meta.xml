@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Term__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Lookup to the term associated with the Student Characteristic</description>
+    <inlineHelpText>Lookup to the term associated with the Student Characteristic</inlineHelpText>
+    <label>Term</label>
+    <referenceTo>hed__Term__c</referenceTo>
+    <relationshipLabel>Attributes</relationshipLabel>
+    <relationshipName>Attributes</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>conference360__Source__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Tracks the originating source of Attendees</description>
+    <inlineHelpText>Tracks the originating source of Attendees</inlineHelpText>
+    <label>Source</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Salesforce UI</fullName>
+                <default>false</default>
+                <label>Salesforce UI</label>
+            </value>
+            <value>
+                <fullName>Bulk Import</fullName>
+                <default>false</default>
+                <label>Bulk Import</label>
+            </value>
+            <value>
+                <fullName>Attendee Registration Component</fullName>
+                <default>false</default>
+                <label>Attendee Registration Component</label>
+            </value>
+            <value>
+                <fullName>Campaign Sync</fullName>
+                <default>false</default>
+                <label>Campaign Sync</label>
+            </value>
+            <value>
+                <fullName>Web App</fullName>
+                <default>false</default>
+                <label>Web App</label>
+            </value>
+            <value>
+                <fullName>Check-In App</fullName>
+                <default>false</default>
+                <label>Check-In App</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

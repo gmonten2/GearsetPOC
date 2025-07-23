@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>simplesms__Phone_Number__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <description>A lookup to the related phone number.  When used with a workflow rule this will be the originating phone number.</description>
+    <inlineHelpText>A lookup to the related phone number.  When used with a workflow rule this will be the originating phone number.</inlineHelpText>
+    <label>Phone Number</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>simplesms__PhoneNumber__c.simplesms__IsActive__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <isOptional>true</isOptional>
+    </lookupFilter>
+    <referenceTo>simplesms__PhoneNumber__c</referenceTo>
+    <relationshipLabel>SMS Templates</relationshipLabel>
+    <relationshipName>SMS_Templates</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

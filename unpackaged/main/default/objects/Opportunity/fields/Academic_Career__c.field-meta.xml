@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Academic_Career__c</fullName>
+    <label>Academic Career</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>UGRD</fullName>
+                <default>false</default>
+                <label>UGRD</label>
+            </value>
+            <value>
+                <fullName>CPP</fullName>
+                <default>false</default>
+                <label>CPP</label>
+            </value>
+            <value>
+                <fullName>PSAV</fullName>
+                <default>false</default>
+                <label>PSAV</label>
+            </value>
+            <value>
+                <fullName>CEPD</fullName>
+                <default>false</default>
+                <label>CEPD</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Decision_Type__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Determines how the Applicant Facing Status will be updated on the application</description>
+    <inlineHelpText>Determines how the Applicant Facing Status will be updated on the application</inlineHelpText>
+    <label>Decision Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Rolling</fullName>
+                <default>false</default>
+                <label>Rolling</label>
+            </value>
+            <value>
+                <fullName>Update on Publish Decision Date</fullName>
+                <default>false</default>
+                <label>Update on Publish Decision Date</label>
+            </value>
+            <value>
+                <fullName>Manual Update</fullName>
+                <default>false</default>
+                <label>Manual Update</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

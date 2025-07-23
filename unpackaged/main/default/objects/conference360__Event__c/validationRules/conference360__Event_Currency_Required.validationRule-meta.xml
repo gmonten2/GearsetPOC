@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>conference360__Event_Currency_Required</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    ISBLANK (TEXT(conference360__Currency__c)),
+    $Setup.conference360__Blackthorn_Events_Settings__c.conference360__Enable_Currency_Required_Validation__c
+)</errorConditionFormula>
+    <errorDisplayField>conference360__Currency__c</errorDisplayField>
+    <errorMessage>Currency is a required field.</errorMessage>
+</ValidationRule>

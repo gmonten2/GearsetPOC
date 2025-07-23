@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Disposition_for_Closed_Opp</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+  $Permission.Opportunity_Stage_Update &lt;&gt; TRUE,
+  NOT(ISCHANGED(Toggle__c)),
+  OR(
+     AND( ISPICKVAL(StageName,&#39;Closed&#39;),
+        OR( ISPICKVAL( Disposition__c,&quot;&quot; ),
+            AND( ISPICKVAL( Disposition__c , &#39;Other&#39;),
+                ISBLANK( Disposition_Reason__c )  
+                )
+           )
+         ),
+     AND( ISPICKVAL( Disposition__c , &#39;Other&#39;),
+         ISBLANK( Disposition_Reason__c )
+         )
+     )
+)</errorConditionFormula>
+    <errorMessage>You cannot set Stage to Closed without entering a Disposition and/or you must enter a Disposition Reason if you select Disposition = Other</errorMessage>
+</ValidationRule>

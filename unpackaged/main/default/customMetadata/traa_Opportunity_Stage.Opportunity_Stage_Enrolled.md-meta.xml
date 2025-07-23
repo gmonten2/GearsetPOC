@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Opportunity Stage Enrolled</label>
+    <protected>false</protected>
+    <values>
+        <field>Opp_Stage_Name__c</field>
+        <value xsi:type="xsd:string">Enrolled-Not Paid</value>
+    </values>
+    <values>
+        <field>traa_Count_as_Applicant__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>traa_Count_as_Enrolled__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>traa_Stage_Name__c</field>
+        <value xsi:type="xsd:string">Inquiry</value>
+    </values>
+</CustomMetadata>

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>61.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Check_if_Current_Opp_Id_Id_of_the_Opp_that_just_closed</name>
+        <label>Check if Current Opp Id = Id of the Opp that just closed</label>
+        <locationX>248</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>No match</defaultConnectorLabel>
+        <rules>
+            <name>Match</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Contact_Id.Current_Opportunity__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.Id</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_next_Term</targetReference>
+            </connector>
+            <label>Match</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if an Opportunity was found</description>
+        <name>Decision_1</name>
+        <label>Decision 1</label>
+        <locationX>50</locationX>
+        <locationY>755</locationY>
+        <defaultConnector>
+            <targetReference>Update_Contact_with_Opportunity</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Opp found</defaultConnectorLabel>
+        <rules>
+            <name>No_Opp_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Opportunity.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>No Opp Found</label>
+        </rules>
+    </decisions>
+    <description>v2: Added Update Records
+v3: Added Contact Id into the Get Opp
+v4: Added check right after flow is triggered to check if Current opp = Opp Id that just closed</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>today</name>
+        <dataType>Date</dataType>
+        <expression>today()</expression>
+    </formulas>
+    <interviewLabel>Opportunity_RTF_Update Current Opp when Opp Closed {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Opportunity_RTF_Update Current Opp when Opp Closed</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Gets Applicant</description>
+        <name>Get_Contact_Id</name>
+        <label>Get Contact Id</label>
+        <locationX>248</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_if_Current_Opp_Id_Id_of_the_Opp_that_just_closed</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.traa_Applicant__r.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Finds Term record where Start Date &gt; Today sorted by earliest Start Date</description>
+        <name>Get_next_Term</name>
+        <label>Get next Term</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Opportunity</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>hed__Start_Date__c</field>
+            <operator>GreaterThan</operator>
+            <value>
+                <elementReference>today</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>hed__Term__c</object>
+        <sortField>hed__Start_Date__c</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Gathers the Opportunity that = the Next Term gathered from before</description>
+        <name>Get_Opportunity</name>
+        <label>Get Opportunity</label>
+        <locationX>50</locationX>
+        <locationY>647</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Decision_1</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>hed__Desired_Start_Term__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_next_Term.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>traa_Applicant__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.traa_Applicant__r.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <sortField>Term__c</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Updates Current Opportunity on related Contact</description>
+        <name>Update_Contact_with_Opportunity</name>
+        <label>Update Contact with Opportunity</label>
+        <locationX>182</locationX>
+        <locationY>863</locationY>
+        <inputAssignments>
+            <field>Current_Opportunity__c</field>
+            <value>
+                <elementReference>Get_Opportunity.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.traa_Applicant__r</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>122</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Contact_Id</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>StageName</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>StageName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Closed</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>hed__Desired_Start_Term__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

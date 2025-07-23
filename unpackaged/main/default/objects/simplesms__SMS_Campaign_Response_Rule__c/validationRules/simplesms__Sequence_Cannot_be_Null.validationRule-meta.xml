@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>simplesms__Sequence_Cannot_be_Null</fullName>
+    <active>true</active>
+    <description>The Sequence must be populated.</description>
+    <errorConditionFormula>ISBLANK( simplesms__Sequence__c )</errorConditionFormula>
+    <errorDisplayField>simplesms__Sequence__c</errorDisplayField>
+    <errorMessage>Sequence cannot be blank.</errorMessage>
+</ValidationRule>

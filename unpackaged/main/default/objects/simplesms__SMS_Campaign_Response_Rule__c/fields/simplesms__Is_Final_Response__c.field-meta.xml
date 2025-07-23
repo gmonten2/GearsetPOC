@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>simplesms__Is_Final_Response__c</fullName>
+    <deprecated>false</deprecated>
+    <description>True if this is the final response in the sequence.</description>
+    <formula>simplesms__Campaign__r.simplesms__Total_Response_Rules__c = simplesms__Sequence__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>True if this is the final response in the sequence.</inlineHelpText>
+    <label>Is Final Response</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

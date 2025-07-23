@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>General_BT_Global_Message_Scheduler</fullName>
+    <columns>CREATED_DATE</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>NAME</columns>
+    <columns>bt_base__Related_Object_Evaluate_Criteria__c</columns>
+    <columns>bt_base__Base_Object_Evaluate_Criteria__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>bt_base__Status__c</field>
+        <operation>equals</operation>
+        <value>scheduled</value>
+    </filters>
+    <filters>
+        <field>NAME</field>
+        <operation>contains</operation>
+        <value>General</value>
+    </filters>
+    <label>General - BT Global Message Scheduler</label>
+</ListView>

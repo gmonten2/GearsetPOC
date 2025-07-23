@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>traa_Secondary_Program_Enrollment__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>Secondary Program Enrollment</label>
+    <referenceTo>hed__Program_Enrollment__c</referenceTo>
+    <relationshipLabel>Opportunities (Secondary Program Enrollment)</relationshipLabel>
+    <relationshipName>traa_Opportunities1</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

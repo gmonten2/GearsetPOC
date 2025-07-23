@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>61.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Check_Custom_Metadata_Record</name>
+        <label>Check Custom Metadata Record</label>
+        <locationX>1122</locationX>
+        <locationY>539</locationY>
+        <defaultConnectorLabel>No Record Found</defaultConnectorLabel>
+        <rules>
+            <name>Record_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Custom_Metadata.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Division_Group</targetReference>
+            </connector>
+            <label>Record Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_Divison_Group_Record</name>
+        <label>Check Divison Group Record</label>
+        <locationX>875</locationX>
+        <locationY>755</locationY>
+        <defaultConnectorLabel>Divison Group Id Not Found</defaultConnectorLabel>
+        <rules>
+            <name>Divison_Group_Id_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Division_Group.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Add_User_to_Division_Group</targetReference>
+            </connector>
+            <label>Divison Group Id Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_If_User_is_Deactivated</name>
+        <label>Check If User is Deactivated</label>
+        <locationX>586</locationX>
+        <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>Get_Custom_Metadata</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>User is Active</defaultConnectorLabel>
+        <rules>
+            <name>User_is_Deactivated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.IsActive</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_User_s_Public_Groups</targetReference>
+            </connector>
+            <label>User is Deactivated</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_PCA_Group</name>
+        <label>Check PCA Group</label>
+        <locationX>446</locationX>
+        <locationY>1187</locationY>
+        <defaultConnectorLabel>PCA Group Not Found</defaultConnectorLabel>
+        <rules>
+            <name>PCA_Group_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_PCA_Group.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Add_User_to_PCA_Group</targetReference>
+            </connector>
+            <label>PCA Group Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_User_Persona</name>
+        <label>Check User Persona</label>
+        <locationX>644</locationX>
+        <locationY>971</locationY>
+        <defaultConnectorLabel>User Persona is not PCA</defaultConnectorLabel>
+        <rules>
+            <name>User_Persona_is_PCA</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.User_Persona__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pre-College Advisor</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_PCA_Group</targetReference>
+            </connector>
+            <label>User Persona is PCA</label>
+        </rules>
+    </decisions>
+    <description>Add or remove user from the Public Groups based on criteria
+v5: added changes</description>
+    <environments>Default</environments>
+    <interviewLabel>PublicGroupAssignment {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>User_RTF_AS PublicGroupAssignment</label>
+    <loops>
+        <name>Loop_Through_User_s_Groups</name>
+        <label>Loop Through User&#39;s Groups</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <collectionReference>Get_User_s_Public_Groups</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Remove_User_from_Group</targetReference>
+        </nextValueConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Add_User_to_Division_Group</name>
+        <label>Add User to Division Group</label>
+        <locationX>644</locationX>
+        <locationY>863</locationY>
+        <connector>
+            <targetReference>Check_User_Persona</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>GroupId</field>
+            <value>
+                <elementReference>Get_Division_Group.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>UserOrGroupId</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>GroupMember</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Add_User_to_PCA_Group</name>
+        <label>Add User to PCA Group</label>
+        <locationX>314</locationX>
+        <locationY>1295</locationY>
+        <inputAssignments>
+            <field>GroupId</field>
+            <value>
+                <elementReference>Get_PCA_Group.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>UserOrGroupId</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>GroupMember</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordDeletes>
+        <name>Remove_User_from_Group</name>
+        <label>Remove User from Group</label>
+        <locationX>138</locationX>
+        <locationY>647</locationY>
+        <connector>
+            <targetReference>Loop_Through_User_s_Groups</targetReference>
+        </connector>
+        <inputReference>Loop_Through_User_s_Groups</inputReference>
+    </recordDeletes>
+    <recordLookups>
+        <description>Custom Metadata Record Matching Divison on the user record</description>
+        <name>Get_Custom_Metadata</name>
+        <label>Get Custom Metadata</label>
+        <locationX>1122</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_Custom_Metadata_Record</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Divison__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Division</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Criteria_to_Public_Group_Mapping__mdt</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Division_Group</name>
+        <label>Get Division Group</label>
+        <locationX>875</locationX>
+        <locationY>647</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_Divison_Group_Record</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Custom_Metadata.Divison_Group__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_PCA_Group</name>
+        <label>Get PCA Group</label>
+        <locationX>446</locationX>
+        <locationY>1079</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_PCA_Group</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Custom_Metadata.PCA_Group__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_User_s_Public_Groups</name>
+        <label>Get User&#39;s Public Groups</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_Through_User_s_Groups</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>UserOrGroupId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>GroupMember</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>460</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_If_User_is_Deactivated</targetReference>
+        </connector>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>Division</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>IsActive</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>User</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>List of Public Group Member records that needs to be inserted for each user based on Divison and User Persona</description>
+        <name>GroupMemebersToBeCreated</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>GroupMember</objectType>
+    </variables>
+</Flow>

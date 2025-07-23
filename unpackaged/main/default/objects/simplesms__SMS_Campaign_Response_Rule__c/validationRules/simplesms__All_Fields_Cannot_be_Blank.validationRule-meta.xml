@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>simplesms__All_Fields_Cannot_be_Blank</fullName>
+    <active>true</active>
+    <description>All fields cannot be blank.</description>
+    <errorConditionFormula>AND( 
+    ISBLANK( simplesms__Save_Response_Lead__c )
+   ,ISBLANK( simplesms__Save_Response_Contact__c )
+   ,ISBLANK( simplesms__Auto_Response_Template_Lead__c )
+   ,ISBLANK( simplesms__Auto_Response_Template_Contact__c )
+)</errorConditionFormula>
+    <errorMessage>This rule doesn&#39;t do anything.</errorMessage>
+</ValidationRule>

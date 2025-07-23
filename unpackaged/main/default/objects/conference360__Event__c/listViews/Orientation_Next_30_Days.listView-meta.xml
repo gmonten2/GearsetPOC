@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Orientation_Next_30_Days</fullName>
+    <columns>conference360__Organizer_Account__c</columns>
+    <columns>Term__c</columns>
+    <columns>conference360__Event_Start_Date__c</columns>
+    <columns>NAME</columns>
+    <columns>conference360__Venue_Name__c</columns>
+    <columns>conference360__Visible__c</columns>
+    <columns>conference360__Campaign__c</columns>
+    <columns>conference360__Confirmation_Email__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>conference360__Invited__c</columns>
+    <columns>conference360__Registered__c</columns>
+    <columns>conference360__Attended__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>NAME</field>
+        <operation>notContain</operation>
+        <value>clone</value>
+    </filters>
+    <filters>
+        <field>conference360__Event_Start_Date__c</field>
+        <operation>equals</operation>
+        <value>NEXT_N_DAYS:30</value>
+    </filters>
+    <filters>
+        <field>conference360__Category__c</field>
+        <operation>equals</operation>
+        <value>Orientation</value>
+    </filters>
+    <label>Orientation - Next 30 Days</label>
+</ListView>

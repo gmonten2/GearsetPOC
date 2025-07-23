@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Resources_Links__c</fullName>
+    <description>Field utilized to direct users for the right training materials if the case requires it</description>
+    <inlineHelpText>Useful links for the resolution of this case</inlineHelpText>
+    <label>Resources/Links</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Url</type>
+</CustomField>

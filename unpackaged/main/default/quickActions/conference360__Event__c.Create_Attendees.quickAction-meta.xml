@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Runs Screen Flow to create Attendees for the Event</description>
+    <flowDefinition>ScrnFlow_Create_Attendees_from_Event</flowDefinition>
+    <label>Create Attendees</label>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <type>Flow</type>
+</QuickAction>

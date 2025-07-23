@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contact_Nov_16_2023_9_10_AM</fullName>
+    <columns>Name</columns>
+    <columns>RecordCount</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Parent</field>
+        <operation>equals</operation>
+        <value>&quot;Contact Nov 16, 2023 9:10 AM&quot;</value>
+    </filters>
+    <label>Contact Nov 16, 2023 9:10 AM</label>
+</ListView>

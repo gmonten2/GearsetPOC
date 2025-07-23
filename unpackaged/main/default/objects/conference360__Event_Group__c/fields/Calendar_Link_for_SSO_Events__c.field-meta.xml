@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Calendar_Link_for_SSO_Events__c</fullName>
+    <description>Static URL provided by IT team for events displayed on Event Group calendar hidden behind MyMDC SSO Login</description>
+    <inlineHelpText>Static URL for Event Group calendar hidden behind MyMDC SSO Login</inlineHelpText>
+    <label>Calendar Link for SSO Events</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Url</type>
+</CustomField>

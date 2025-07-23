@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSetGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>BT Permissions to users =! PCA such as DoR. This PSG is not intended for other users such as leadership.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Blackthorn_Permissions_DoR_NotLeadership</label>
+    <mutingPermissionSets>Blackthorn_Permissions_DoR_NotLeadership_Muted</mutingPermissionSets>
+    <permissionSets>PushTopic_Object_Read_Access</permissionSets>
+    <permissionSets>bt_base__Blackthorn_Base_User</permissionSets>
+    <permissionSets>bt_stripe__payment360_Userv2</permissionSets>
+    <permissionSets>conference360__Blackthorn_Event_Organizer</permissionSets>
+    <permissionSets>force__StandardEinsteinActivityCapturePsl</permissionSets>
+    <permissionSets>pi__Pardot</permissionSets>
+    <status>Updated</status>
+</PermissionSetGroup>

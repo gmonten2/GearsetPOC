@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>conference360__Ticket_cancelation_message__c</fullName>
+    <deprecated>false</deprecated>
+    <inlineHelpText>Override the default message shown to registrants upon ticket cancelation.</inlineHelpText>
+    <label>Ticket cancelation message</label>
+    <length>32768</length>
+    <trackTrending>false</trackTrending>
+    <type>Html</type>
+    <visibleLines>25</visibleLines>
+</CustomField>

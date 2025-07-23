@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>traa_Applicant_is_an_Alumnus__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Field to determine if the related Applicant is an alumni or not. Used for reporting purposes.</description>
+    <formula>traa_Applicant__r.traa_Alumnus_Alumna__c = TRUE</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>If true, the applicant is an alumnus/alumna</inlineHelpText>
+    <label>Applicant is an Alumnus</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

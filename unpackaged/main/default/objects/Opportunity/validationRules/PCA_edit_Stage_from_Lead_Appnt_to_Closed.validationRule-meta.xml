@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PCA_edit_Stage_from_Lead_Appnt_to_Closed</fullName>
+    <active>true</active>
+    <description>Edit: [GM 9/12]: Added ability to Close Stage from Applicant Stage as well.</description>
+    <errorConditionFormula>OR( 
+  AND(
+    $Permission.Opportunity_Stage_Update &lt;&gt; TRUE,
+    ISPICKVAL( PRIORVALUE( StageName ) , &quot;Lead&quot;),
+    OR(ISPICKVAL( StageName , &quot;Applicant&quot;),
+      ISPICKVAL( StageName , &quot;Enrolled-Not Paid&quot;),
+      ISPICKVAL( StageName , &quot;Enrolled-Paid&quot;)
+      )
+    ),  AND(
+    $Permission.Opportunity_Stage_Update &lt;&gt; TRUE,
+    ISPICKVAL( PRIORVALUE( StageName ) , &quot;Applicant&quot;),
+    OR(ISPICKVAL( StageName , &quot;Lead&quot;),
+      ISPICKVAL( StageName , &quot;Enrolled-Not Paid&quot;),
+      ISPICKVAL( StageName , &quot;Enrolled-Paid&quot;)
+      )
+    ),
+  AND(
+    $Permission.Opportunity_Stage_Update &lt;&gt; TRUE,
+    ISPICKVAL( PRIORVALUE( StageName ) , &quot;Enrolled-Not Paid&quot;),
+    OR(ISPICKVAL( StageName , &quot;Lead&quot;),
+      ISPICKVAL( StageName , &quot;Applicant&quot;),
+      ISPICKVAL( StageName , &quot;Enrolled-Paid&quot;),
+      ISPICKVAL( StageName , &quot;Closed&quot;)
+      )
+    ),
+  AND(
+    $Permission.Opportunity_Stage_Update &lt;&gt; TRUE,
+    ISPICKVAL( PRIORVALUE( StageName ) , &quot;Enrolled-Paid&quot;),
+    OR(ISPICKVAL( StageName , &quot;Lead&quot;),
+      ISPICKVAL( StageName , &quot;Applicant&quot;),
+      ISPICKVAL( StageName , &quot;Enrolled-Not Paid&quot;),
+      ISPICKVAL( StageName , &quot;Closed&quot;)
+      )
+    ),
+  AND(
+    $Permission.Opportunity_Stage_Update &lt;&gt; TRUE,
+    ISPICKVAL( PRIORVALUE( StageName ) , &quot;Closed&quot;),
+    OR(ISPICKVAL( StageName , &quot;Lead&quot;),
+      ISPICKVAL( StageName , &quot;Applicant&quot;),
+      ISPICKVAL( StageName , &quot;Enrolled-Not Paid&quot;),
+      ISPICKVAL( StageName , &quot;Enrolled-Paid&quot;)
+      )
+    )
+)</errorConditionFormula>
+    <errorMessage>You can only move an Opportunity from Lead/Applicant to Closed.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>simplesms__Content_Type__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The MIME Content-Type for this media object.  Valid types are &quot;image/jpeg&quot;, &quot;image/gif&quot;, &quot;image/png&quot;.</description>
+    <inlineHelpText>The MIME Content-Type for this media object.  Valid types are &quot;image/jpeg&quot;, &quot;image/gif&quot;, &quot;image/png&quot;.</inlineHelpText>
+    <label>Content Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>image/jpeg</fullName>
+                <default>false</default>
+                <label>image/jpeg</label>
+            </value>
+            <value>
+                <fullName>image/gif</fullName>
+                <default>false</default>
+                <label>image/gif</label>
+            </value>
+            <value>
+                <fullName>image/png</fullName>
+                <default>false</default>
+                <label>image/png</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

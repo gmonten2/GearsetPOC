@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>conference360__Blackthorn_Events_Wizard_Session_Virtual</fullName>
+    <description>Used to display additional fields on session in V2EventWizardPbMainNewSession LWC</description>
+    <displayedFields>
+        <field>conference360__Webinar_Account__c</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </displayedFields>
+    <displayedFields>
+        <field>conference360__Webinar_URL__c</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </displayedFields>
+    <displayedFields>
+        <field>conference360__Webinar_Password__c</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </displayedFields>
+    <displayedFields>
+        <field>conference360__Zoom_Type__c</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </displayedFields>
+    <label>Blackthorn | Events Wizard Virtual Session Fields</label>
+</FieldSet>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Student_Campus__c</fullName>
+    <description>Used by Marketing Cloud</description>
+    <label>Student Campus</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Hialeah</fullName>
+                <default>false</default>
+                <label>Hialeah</label>
+            </value>
+            <value>
+                <fullName>Homestead</fullName>
+                <default>false</default>
+                <label>Homestead</label>
+            </value>
+            <value>
+                <fullName>Kendall</fullName>
+                <default>false</default>
+                <label>Kendall</label>
+            </value>
+            <value>
+                <fullName>MDC Online</fullName>
+                <default>false</default>
+                <label>MDC Online</label>
+            </value>
+            <value>
+                <fullName>Medical</fullName>
+                <default>false</default>
+                <label>Medical</label>
+            </value>
+            <value>
+                <fullName>North</fullName>
+                <default>false</default>
+                <label>North</label>
+            </value>
+            <value>
+                <fullName>Padron</fullName>
+                <default>false</default>
+                <label>Padron</label>
+            </value>
+            <value>
+                <fullName>West</fullName>
+                <default>false</default>
+                <label>West</label>
+            </value>
+            <value>
+                <fullName>Wolfson</fullName>
+                <default>false</default>
+                <label>Wolfson</label>
+            </value>
+            <value>
+                <fullName>Meek</fullName>
+                <default>false</default>
+                <label>Meek</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

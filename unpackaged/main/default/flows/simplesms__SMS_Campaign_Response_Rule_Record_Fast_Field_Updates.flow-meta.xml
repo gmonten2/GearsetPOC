@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <description>SMS Campaign Response Rule Record Create/Update Fast Field Updates</description>
+    <environments>Default</environments>
+    <label>SMS Campaign Response Rule Record Fast Field Updates</label>
+    <processType>AutoLaunchedFlow</processType>
+</Flow>

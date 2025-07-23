@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>conference360__Category__c</fullName>
+    <deprecated>false</deprecated>
+    <inlineHelpText>Categorize the type of Event to provide a better event search and reporting.</inlineHelpText>
+    <label>Category</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Open House</fullName>
+                <default>false</default>
+                <label>Open House</label>
+            </value>
+            <value>
+                <fullName>Orientation</fullName>
+                <default>false</default>
+                <label>Orientation</label>
+            </value>
+            <value>
+                <fullName>Onboarding Event</fullName>
+                <default>false</default>
+                <label>Onboarding Event</label>
+            </value>
+            <value>
+                <fullName>High School Event</fullName>
+                <default>false</default>
+                <label>High School Event</label>
+            </value>
+            <value>
+                <fullName>Campus Tours</fullName>
+                <default>false</default>
+                <label>Campus Tours</label>
+            </value>
+            <value>
+                <fullName>FAFSA</fullName>
+                <default>false</default>
+                <label>FAFSA</label>
+            </value>
+            <value>
+                <fullName>Other On-Campus Event</fullName>
+                <default>false</default>
+                <label>Other On-Campus Event</label>
+            </value>
+            <value>
+                <fullName>Other Community Event</fullName>
+                <default>false</default>
+                <label>Other Community Event</label>
+            </value>
+            <value>
+                <fullName>Class/Workshop</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Class/Workshop</label>
+            </value>
+            <value>
+                <fullName>Conference</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Conference</label>
+            </value>
+            <value>
+                <fullName>Expo</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Expo</label>
+            </value>
+            <value>
+                <fullName>Festival</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Festival</label>
+            </value>
+            <value>
+                <fullName>Fundraiser</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Fundraiser</label>
+            </value>
+            <value>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Meeting</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Reunion</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Reunion</label>
+            </value>
+            <value>
+                <fullName>Social/Networking</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Social/Networking</label>
+            </value>
+            <value>
+                <fullName>Trade Show</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Trade Show</label>
+            </value>
+            <value>
+                <fullName>Virtual Event</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Virtual Event</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

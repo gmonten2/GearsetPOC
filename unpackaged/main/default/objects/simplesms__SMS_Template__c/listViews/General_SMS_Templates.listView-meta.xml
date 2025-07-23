@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>General_SMS_Templates</fullName>
+    <columns>NAME</columns>
+    <columns>simplesms__IsActive__c</columns>
+    <columns>simplesms__Object__c</columns>
+    <columns>simplesms__Code__c</columns>
+    <columns>simplesms__Body__c</columns>
+    <columns>simplesms__Phone_Field__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>NAME</field>
+        <operation>contains</operation>
+        <value>General</value>
+    </filters>
+    <label>General SMS Templates</label>
+    <sharedTo>
+        <group>CRM_Core_Team</group>
+    </sharedTo>
+</ListView>

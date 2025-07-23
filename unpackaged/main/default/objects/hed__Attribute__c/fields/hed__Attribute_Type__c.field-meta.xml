@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>hed__Attribute_Type__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The kind of credential or student Attribute.</description>
+    <inlineHelpText>The kind of credential or student Attribute.</inlineHelpText>
+    <label>Attribute Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>MDC Credential</fullName>
+                <default>false</default>
+                <label>MDC Credential</label>
+            </value>
+            <value>
+                <fullName>Applied for Scholarship</fullName>
+                <default>false</default>
+                <label>Applied for Scholarship</label>
+            </value>
+            <value>
+                <fullName>Family Consideration</fullName>
+                <default>false</default>
+                <label>Family Consideration</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

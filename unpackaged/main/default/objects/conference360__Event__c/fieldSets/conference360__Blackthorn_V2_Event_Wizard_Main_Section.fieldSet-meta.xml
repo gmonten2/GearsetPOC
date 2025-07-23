@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>conference360__Blackthorn_V2_Event_Wizard_Main_Section</fullName>
+    <description>V2 Event Wizard Basic Info component</description>
+    <label>Blackthorn | V2 Event Wizard Main Section</label>
+</FieldSet>

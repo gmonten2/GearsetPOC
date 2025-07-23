@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Case_Reason_for_Closed_Cases</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    ISPICKVAL(Status,&#39;Closed&#39;),
+    OR(
+        ISPICKVAL(Closed_Reason__c,&quot;&quot;),
+        ISBLANK(Closed_Reason_Description__c)
+        )
+)</errorConditionFormula>
+    <errorMessage>You cannot set Status to Closed without entering a Closed Reason with a Closed Reason Description.</errorMessage>
+</ValidationRule>

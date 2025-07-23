@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>traa_Lead__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <description>If a contact and opportunity originated from a lead, this field is used to indicate the lead record that the test record originated from.</description>
+    <inlineHelpText>If a contact and opportunity originated from a lead, this field is used to indicate the lead record that the test record originated from.</inlineHelpText>
+    <label>Lead</label>
+    <referenceTo>Lead</referenceTo>
+    <relationshipLabel>Tests</relationshipLabel>
+    <relationshipName>traa_Tests</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

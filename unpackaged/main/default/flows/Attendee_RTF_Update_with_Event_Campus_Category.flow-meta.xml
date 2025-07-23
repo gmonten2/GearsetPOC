@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>Checks if Webinar URL is populated to determine next action</description>
+        <name>Check_for_Webinar_URL</name>
+        <label>Check for Webinar URL</label>
+        <locationX>336</locationX>
+        <locationY>1103</locationY>
+        <defaultConnector>
+            <targetReference>Update_with_Event_Campus_Category</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Webinar URL</defaultConnectorLabel>
+        <rules>
+            <name>Has_Webinar_URL</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Event_Record.conference360__Webinar_URL__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Event_Record.conference360__Webinar_Account__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Attendee_with_Event_s_Webinar_URL</targetReference>
+            </connector>
+            <label>Has Webinar URL</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if Contact record was found</description>
+        <name>Check_if_Contact_record_is_found</name>
+        <label>Check if Contact record is found?</label>
+        <locationX>336</locationX>
+        <locationY>395</locationY>
+        <defaultConnector>
+            <targetReference>Get_Event_Record</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Contact Record not Found</defaultConnectorLabel>
+        <rules>
+            <name>Contact_Record_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Related_Contact_Record.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_most_recent_Opp_for_Attendee</targetReference>
+            </connector>
+            <label>Contact Record Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if open Opp found</description>
+        <name>Open_Opp_Found</name>
+        <label>Open Opp Found?</label>
+        <locationX>182</locationX>
+        <locationY>611</locationY>
+        <defaultConnector>
+            <targetReference>Get_Event_Record</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Opportunity Found</defaultConnectorLabel>
+        <rules>
+            <name>Has_Opportunity</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_most_recent_Opp_for_Attendee</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Opp_on_Attendee</targetReference>
+            </connector>
+            <label>Has Opportunity</label>
+        </rules>
+    </decisions>
+    <description>Updates Campus, Category and key Opportunity fields, Visibility Control and Webinar Join URL on Attendee when Event and Contact are populated.
+
+v8: add update Webinar/Meeting Join URL</description>
+    <environments>Default</environments>
+    <interviewLabel>Attendee_RTF_Update with Event Campus/Category {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Attendee_RTF_Update Campus/Category + Opp + VisControl +Webinar</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Gets the related Event record</description>
+        <name>Get_Event_Record</name>
+        <label>Get Event Record</label>
+        <locationX>336</locationX>
+        <locationY>995</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_for_Webinar_URL</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.conference360__Event__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>conference360__Event__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Retrieve newest open Opp for Contact</description>
+        <name>Get_most_recent_Opp_for_Attendee</name>
+        <label>Get most recent Opp for Attendee</label>
+        <locationX>182</locationX>
+        <locationY>503</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Open_Opp_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>traa_Applicant__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.conference360__Contact__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>StageName</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Closed</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Retrieve related applicant from the attendee record.</description>
+        <name>Get_Related_Contact_Record</name>
+        <label>Get Related Contact Record</label>
+        <locationX>336</locationX>
+        <locationY>287</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_if_Contact_record_is_found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.conference360__Contact__r.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Updates Webinar/Meeting Join URL with Event&#39;s Webinar URL</description>
+        <name>Update_Attendee_with_Event_s_Webinar_URL</name>
+        <label>Update Attendee with Event&#39;s Webinar URL</label>
+        <locationX>204</locationX>
+        <locationY>1211</locationY>
+        <connector>
+            <targetReference>Update_with_Event_Campus_Category</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>conference360__Webinar_Join_URL__c</field>
+            <value>
+                <elementReference>Get_Event_Record.conference360__Webinar_URL__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Updates Recruitment Opp on Attendee with found Opp Id</description>
+        <name>Update_Opp_on_Attendee</name>
+        <label>Update Opp on Attendee</label>
+        <locationX>50</locationX>
+        <locationY>719</locationY>
+        <connector>
+            <targetReference>Get_Event_Record</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Recruitment_Opportunity__c</field>
+            <value>
+                <elementReference>Get_most_recent_Opp_for_Attendee.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Stamps values from Venue and Category on related Event onto Attendee record</description>
+        <name>Update_with_Event_Campus_Category</name>
+        <label>Update with Event Campus/Category</label>
+        <locationX>336</locationX>
+        <locationY>1403</locationY>
+        <inputAssignments>
+            <field>Event_Campus__c</field>
+            <value>
+                <elementReference>$Record.conference360__Event__r.conference360__Venue__r.Name</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Event_Category__c</field>
+            <value>
+                <elementReference>$Record.conference360__Event__r.conference360__Category__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>conference360__Visibility_Control__c</field>
+            <value>
+                <elementReference>$Record.conference360__Event__r.conference360__Visibility_Control__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>210</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Related_Contact_Record</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>conference360__Event__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>conference360__Contact__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>conference360__Attendee__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

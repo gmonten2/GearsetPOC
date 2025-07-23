@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_Email_to_Info_Center</name>
+        <label>Send Email to Info Center</label>
+        <locationX>578</locationX>
+        <locationY>539</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <stringValue>hzelaya@mdc.edu</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>ccRecipientAddressList</name>
+            <value>
+                <stringValue>sferre@mdc.edu, gmonten2@mdc.edu</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>mdcinfo@mdc.edu</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>New Case has been created in Salesforce (Info Center)</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>emailBodyInfoCenter</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Email_to_Queue_Members</name>
+        <label>Send Email to Queue Members</label>
+        <locationX>50</locationX>
+        <locationY>1271</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddressesArray</name>
+            <value>
+                <elementReference>AllEmailIds</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>mdcinfo@mdc.edu</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>New Case has been Created in Salesforce</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>emailBody</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+    </actionCalls>
+    <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assign_Emails</name>
+        <label>Assign Emails</label>
+        <locationX>138</locationX>
+        <locationY>1079</locationY>
+        <assignmentItems>
+            <assignToReference>AllEmailIds</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Get_Email_Id.Email</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_over_User_Ids</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Check_if_Campus_is_Null</name>
+        <label>Check if Campus is Null</label>
+        <locationX>380</locationX>
+        <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>Get_Case_Id2</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Campus Null</defaultConnectorLabel>
+        <rules>
+            <name>Campus_NOT_NULL</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Campus__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Queue_Id</targetReference>
+            </connector>
+            <label>Campus NOT NULL</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>We are validating if the Owner</description>
+        <name>Validate_the_Case_Owner</name>
+        <label>Validate the Case Owner</label>
+        <locationX>182</locationX>
+        <locationY>647</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Case_assigned_to_Queue</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Queue_Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_User_Ids</targetReference>
+            </connector>
+            <label>Case assigned to Queue</label>
+        </rules>
+    </decisions>
+    <description>This flow will email the Queue members of a particular Queue when a Case is assigned to the Queue
+v2-5: Configured email body.
+v6: Added Case Submitted by FullName on email send
+v7-8: Edited Link to show Case record
+v9: Changed Group to DeveloperName
+v10: added decision tree for Campus
+v11: added email body and recipient to info center tickets
+v12: email body changed
+v13: cc Sergio
+v14-15: Fixed RecordFormula for case link
+v16-17: added Get case Id for Info Center Email
+v18: added Humberto as email recipient
+v19-20: Added mdcinfo@mdc.edu as default email sender</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Formula to gather the Link of the Case record</description>
+        <name>RecordLink_Formula</name>
+        <dataType>String</dataType>
+        <expression>LEFT({!$Api.Partner_Server_URL_550}, FIND( &#39;/services&#39;, {!$Api.Partner_Server_URL_550})) &amp; {!Get_Case_Id.Id}</expression>
+    </formulas>
+    <formulas>
+        <description>Formula to gather the link of the Case created</description>
+        <name>RecordLink_Formula2</name>
+        <dataType>String</dataType>
+        <expression>LEFT({!$Api.Partner_Server_URL_550}, FIND( &#39;/services&#39;, {!$Api.Partner_Server_URL_550})) &amp; {!Get_Case_Id2.Id}</expression>
+    </formulas>
+    <interviewLabel>RTF_Case Email Queue Members when Case is Created {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>RTF_Case Email Queue Members when Case is Created</label>
+    <loops>
+        <description>We are going over all members of a particular Queue</description>
+        <name>Loop_over_User_Ids</name>
+        <label>Loop over User Ids</label>
+        <locationX>50</locationX>
+        <locationY>863</locationY>
+        <collectionReference>UserIds</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Get_Email_Id</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Send_Email_to_Queue_Members</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Case_Id</name>
+        <label>Get Case Id</label>
+        <locationX>182</locationX>
+        <locationY>539</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Validate_the_Case_Owner</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Case</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Case_Id2</name>
+        <label>Get Case Id2</label>
+        <locationX>578</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Send_Email_to_Info_Center</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Case</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>We are retrieving the Email of a User in a Queue</description>
+        <name>Get_Email_Id</name>
+        <label>Get Email Id</label>
+        <locationX>138</locationX>
+        <locationY>971</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_Emails</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Loop_over_User_Ids.UserOrGroupId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>User</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Email</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>We are collecting the Id of the Queue that owns the case recently created.</description>
+        <name>Get_Queue_Id</name>
+        <label>Get Queue Id</label>
+        <locationX>182</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Case_Id</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Owner:Group.DeveloperName</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>We are retrieving Id&#39;s from Group Member Object</description>
+        <name>Get_User_Ids</name>
+        <label>Get User Ids</label>
+        <locationX>50</locationX>
+        <locationY>755</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_over_User_Ids</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>GroupId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Queue_Id.Id</elementReference>
+            </value>
+        </filters>
+        <object>GroupMember</object>
+        <outputReference>UserIds</outputReference>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>UserOrGroupId</queriedFields>
+    </recordLookups>
+    <start>
+        <locationX>254</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_if_Campus_is_Null</targetReference>
+        </connector>
+        <object>Case</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>Bodytest2</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); font-size: 18px; font-family: proxima-n-w01-reg, proxima-n-w05-reg, sans-serif; color: rgb(0, 6, 15);&quot;&gt;{!$Record.CaseNumber} has been assigned to {!$Record.Owner: Group.Name} queue&lt;/span&gt;&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>emailBody</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Hi!&lt;/p&gt;&lt;p&gt;A new&lt;strong&gt; {!$Record.Type} &lt;/strong&gt;Case has been created and added to your Queue. Please go ahead and reassign the case to yourself.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Case Submitted by:&lt;/strong&gt; {!$Record.CreatedBy.FirstName} &lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;{!$Record.CreatedBy.LastName}&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Case Number:&lt;/strong&gt; {!$Record.CaseNumber}&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Case Subject:&lt;/strong&gt; {!$Record.Subject}&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Case Description: &lt;/strong&gt;{!$Record.Description}&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Case Campus: &lt;/strong&gt;{!$Record.Campus__c}&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Case Product Type: &lt;/strong&gt;{!$Record.Product_Type__c}&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Case Priority: &lt;/strong&gt;{!$Record.Priority}&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;To view the case, please &lt;a href=&quot;{!RecordLink_Formula}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;click here&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;If you need more information please contact your Salesforce Administrator.&lt;/p&gt;&lt;p&gt;Thank you.&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>emailBodyInfoCenter</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Hi!&lt;/p&gt;&lt;p&gt;A new&lt;strong&gt; &lt;/strong&gt;Case has been created and added to your Queue. Please go ahead and reassign the case to someone on your team.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Case Number:&lt;/strong&gt; {!$Record.CaseNumber}&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Case Subject:&lt;/strong&gt; {!$Record.Subject}&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Case Description: &lt;/strong&gt;{!$Record.Description}&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Related Event: &lt;/strong&gt;{!$Record.Related_Event__r.Name}&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;To view the case, please &lt;a href=&quot;{!RecordLink_Formula2}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;click here&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;If you need more information please contact your Salesforce Administrator.&lt;/p&gt;&lt;p&gt;Thank you.&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>TextTest</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Hi, a new email has been assigned to you test.&lt;/p&gt;</text>
+    </textTemplates>
+    <variables>
+        <name>AllEmailIds</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>UserIds</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>GroupMember</objectType>
+    </variables>
+</Flow>

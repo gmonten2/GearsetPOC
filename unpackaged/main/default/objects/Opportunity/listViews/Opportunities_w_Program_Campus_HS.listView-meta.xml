@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Opportunities_w_Program_Campus_HS</fullName>
+    <columns>traa_Applicant__c</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Term__c</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>traa_Academic_Program__c</columns>
+    <columns>Home_Campus__c</columns>
+    <columns>Applicant_Current_Institution_Text__c</columns>
+    <columns>Primary_PCA__c</columns>
+    <columns>Secondary_PCA__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.CLOSED</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.traa_Academic_Program_Applications</value>
+    </filters>
+    <label>Opportunities w/ Program, Campus, &amp; HS</label>
+</ListView>

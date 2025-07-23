@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PCA_restrict_Opps_Field_Updates</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+NOT(ISPICKVAL(StageName,&#39;LEAD&#39;)),
+OR(
+ISCHANGED( traa_Academic_Program__c ),
+ISCHANGED( Home_Campus__c ),
+ISCHANGED( Term__c ),
+ISCHANGED( Meta_Major__c ),
+ISCHANGED(CloseDate),
+ISCHANGED(Name)
+),
+ $Permission.Opportunity_Field_Updates &lt;&gt; TRUE
+)</errorConditionFormula>
+    <errorMessage>Name, Close Date, Academic Program, Home Campus, Term, and Meta Major can be updated in Lead Stage only.</errorMessage>
+</ValidationRule>

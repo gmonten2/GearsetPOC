@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Convert_from_Pardot__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Triggers flow to autoconvert lead to Contact, Account and Opp. Should be set automatically by Pardot</description>
+    <label>Convert from Pardot</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

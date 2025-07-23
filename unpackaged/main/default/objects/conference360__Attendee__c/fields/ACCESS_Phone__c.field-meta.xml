@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ACCESS_Phone__c</fullName>
+    <description>Pulls ACCESS Phone from Organizer (Account) on Event. Used for Blackthorn notification templates</description>
+    <externalId>false</externalId>
+    <formula>IF( LEN(conference360__Event__r.conference360__Organizer_Account__r.ACCESS_Phone__c) = 10,
+&quot;(&quot; &amp; LEFT(conference360__Event__r.conference360__Organizer_Account__r.ACCESS_Phone__c,3) &amp; &quot;) &quot; &amp; MID(conference360__Event__r.conference360__Organizer_Account__r.ACCESS_Phone__c, 4, 3) &amp;&quot;-&quot; &amp; RIGHT(conference360__Event__r.conference360__Organizer_Account__r.ACCESS_Phone__c, 4),
+conference360__Event__r.conference360__Organizer_Account__r.ACCESS_Phone__c)</formula>
+    <label>ACCESS Phone</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

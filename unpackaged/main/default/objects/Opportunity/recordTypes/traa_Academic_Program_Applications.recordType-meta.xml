@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>traa_Academic_Program_Applications</fullName>
+    <active>true</active>
+    <businessProcess>Academic Recruitment</businessProcess>
+    <description>Record type for academic program applications</description>
+    <label>Academic Program Applications</label>
+    <picklistValues>
+        <picklist>Academic_Career__c</picklist>
+        <values>
+            <fullName>CEPD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CPP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PSAV</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UGRD</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Campus_Assigned_to_High_School__c</picklist>
+        <values>
+            <fullName>Hialeah</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Homestead</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kendall</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Meek</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>North</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not available</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Padron</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>West</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wolfson</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>DB_Competitor__c</picklist>
+        <values>
+            <fullName>Competitor A</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Competitor B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Competitor C</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>DevEd_Exemption_Status__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Disposition__c</picklist>
+        <values>
+            <fullName>Attending another school</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Coming future term</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Does not want to be contacted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inactive Student</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No response</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wrong number</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>ForecastCategoryName</picklist>
+        <values>
+            <fullName>Best Case</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Closed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Commit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Omitted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pipeline</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Home_Campus__c</picklist>
+        <values>
+            <fullName>Hialeah</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Homestead</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kendall</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>North</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Padron</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>West</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wolfson</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LeadSource</picklist>
+        <values>
+            <fullName>Acquired List</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email Campaign</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email Inquiry</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Google Ad</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Google Natural Search</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inquiry Form</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Off Campus Recruitment Event</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>On Campus Recruitment Event</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Phone Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Social Media</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yahoo%21 Natural Search</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Loss_Reason__c</picklist>
+        <values>
+            <fullName>Lost to Competitor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Budget %2F Lost Funding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Decision %2F Non-Responsive</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Price</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Meta_Major__c</picklist>
+        <values>
+            <fullName>Arts%2C Humanities%2C Communications%2C Design</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Business</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Education</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Health Sciences</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Industry%2FManufacturing and Construction</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Public Safety</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Science%2C Technology%2C Engineering%2C Mathematics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Social and Behavioral Sciences%2C Human Services</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Student_Onboarding_Type__c</picklist>
+        <values>
+            <fullName>DUAL EN%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FTIC - Direct Entry</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FTIC - Traditional %28under 25 not Direct Entry%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FTIC Non-Degree</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FTIC Non-Traditional %2825 and older%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>INT%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Non-FTIC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transfer</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type</picklist>
+        <values>
+            <fullName>Existing Business</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Business</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>bt_stripe__Billing_Method__c</picklist>
+        <values>
+            <fullName>charge_automatically</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>send_invoice</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>bt_stripe__Prorate__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>bt_stripe__Proration_Behavior__c</picklist>
+        <values>
+            <fullName>Create Prorations</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>hed__Desired_Campus__c</picklist>
+        <values>
+            <fullName>Main</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Online</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>hed__Desired_Degree_Level__c</picklist>
+        <values>
+            <fullName>Certification</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Graduate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Non-degree</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Undergraduate</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>hed__Living_Situation__c</picklist>
+        <values>
+            <fullName>Off Campus</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>On Campus</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>With Family</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>traa_Declined_Reason__c</picklist>
+        <values>
+            <fullName>Competitor University</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Finances</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Indecisive</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Timing</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>traa_Other_Academic_Program__c</picklist>
+        <values>
+            <fullName>No Other Academic Program</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

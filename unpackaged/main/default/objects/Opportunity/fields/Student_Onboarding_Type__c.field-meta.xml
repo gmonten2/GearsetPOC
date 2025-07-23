@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Student_Onboarding_Type__c</fullName>
+    <label>Student Onboarding Type</label>
+    <required>false</required>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>FTIC - Direct Entry</fullName>
+                <default>false</default>
+                <label>Direct-Entry</label>
+            </value>
+            <value>
+                <fullName>FTIC - Traditional (under 25 not Direct Entry)</fullName>
+                <default>false</default>
+                <label>Traditional</label>
+            </value>
+            <value>
+                <fullName>FTIC Non-Traditional (25 and older)</fullName>
+                <default>false</default>
+                <label>Non-Traditional</label>
+            </value>
+            <value>
+                <fullName>Non-FTIC</fullName>
+                <default>false</default>
+                <label>Non-FTIC</label>
+            </value>
+            <value>
+                <fullName>Transfer</fullName>
+                <default>false</default>
+                <label>Transfer</label>
+            </value>
+            <value>
+                <fullName>FTIC Non-Degree</fullName>
+                <default>false</default>
+                <label>Non-Degree</label>
+            </value>
+            <value>
+                <fullName>DUAL EN.</fullName>
+                <default>false</default>
+                <label>Dual Enrollment</label>
+            </value>
+            <value>
+                <fullName>INT.</fullName>
+                <default>false</default>
+                <label>International</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

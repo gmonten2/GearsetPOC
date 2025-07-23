@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Business_Changes_Improvements__c</fullName>
+    <description>To be exported and added to release notes that go our to all users, if this is an Enhancement Ticket</description>
+    <inlineHelpText>Text needs to be entered if this is an enhancement ticket.</inlineHelpText>
+    <label>Business Changes/Improvements</label>
+    <length>32768</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Html</type>
+    <visibleLines>25</visibleLines>
+</CustomField>

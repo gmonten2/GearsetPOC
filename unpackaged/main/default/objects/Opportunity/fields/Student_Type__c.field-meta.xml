@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Student_Type__c</fullName>
+    <description>Used for entry criteria in automation on PCA assignment</description>
+    <externalId>false</externalId>
+    <formula>TExT(traa_Applicant__r.Student_Type__c)</formula>
+    <label>Student Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

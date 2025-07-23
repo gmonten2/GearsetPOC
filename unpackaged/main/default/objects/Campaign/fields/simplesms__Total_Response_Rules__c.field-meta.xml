@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>simplesms__Total_Response_Rules__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The total number of response rules for this Campaign.</description>
+    <inlineHelpText>The total number of response rules for this Campaign.</inlineHelpText>
+    <label>Total Response Rules</label>
+    <summaryForeignKey>simplesms__SMS_Campaign_Response_Rule__c.simplesms__Campaign__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <type>Summary</type>
+</CustomField>

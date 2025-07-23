@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Error_Email_No_Student_Attendee</name>
+        <label>Error Email: No Student Attendee</label>
+        <locationX>578</locationX>
+        <locationY>647</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <stringValue>gmonten2@mdc.edu</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Error creating Relationship</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>txt_ErrorEmail</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+    </actionCalls>
+    <apiVersion>57.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>Check to see if Student Attendee found to prevent Flow from failing</description>
+        <name>Is_Student_Attendee_Found</name>
+        <label>Is Student Attendee Found?</label>
+        <locationX>380</locationX>
+        <locationY>539</locationY>
+        <defaultConnector>
+            <targetReference>Error_Email_No_Student_Attendee</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Student Attendee</defaultConnectorLabel>
+        <rules>
+            <name>Student_Attendee_Exists</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Student_Attendee</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Relationship</targetReference>
+            </connector>
+            <label>Student Attendee Exists</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks to see if REeationship exists to determine whether to update or create Relationship</description>
+        <name>Is_there_existing_Relationship</name>
+        <label>Is there existing Relationship</label>
+        <locationX>182</locationX>
+        <locationY>755</locationY>
+        <defaultConnector>
+            <targetReference>Update_Relationship_Type</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Relationship Exists</defaultConnectorLabel>
+        <rules>
+            <name>No_Relationship_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Relationship</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_new_Relationship</targetReference>
+            </connector>
+            <label>No Relationship Found</label>
+        </rules>
+    </decisions>
+    <description>When Guest Attendee record is created it creates or updates Relationship with Student Attendee
+v3: Add null check after get Student Attendee to prevent flow failure &amp;&amp; update Entry criteria with null checks for Attendee Group + Invoice
+v4: edited email recipient</description>
+    <environments>Default</environments>
+    <interviewLabel>Attendee_RTF_Create Relationship for Guest {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Attendee_RTF_Create Relationship for Guest</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>Creates Relationship between Guest and Student where Type = Relationship to Student</description>
+        <name>Create_new_Relationship</name>
+        <label>Create new Relationship</label>
+        <locationX>50</locationX>
+        <locationY>863</locationY>
+        <inputAssignments>
+            <field>hed__Contact__c</field>
+            <value>
+                <elementReference>Get_Student_Attendee.conference360__Contact__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>hed__RelatedContact__c</field>
+            <value>
+                <elementReference>$Record.conference360__Contact__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>hed__Status__c</field>
+            <value>
+                <stringValue>Current</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>hed__Type__c</field>
+            <value>
+                <elementReference>$Record.Relationship_to_Student__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>hed__Relationship__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <description>Gets the related Attendee Group from triggering Attendee record</description>
+        <name>Get_related_Attendee_Group</name>
+        <label>Get related Attendee Group</label>
+        <locationX>380</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Student_Attendee</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.conference360__Attendee_Group__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>conference360__Attendee_Group__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Finds the first current Relationship between the two Contacts</description>
+        <name>Get_Relationship</name>
+        <label>Get Relationship</label>
+        <locationX>182</locationX>
+        <locationY>647</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Is_there_existing_Relationship</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>hed__Contact__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Student_Attendee.conference360__Contact__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>hed__RelatedContact__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.conference360__Contact__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>hed__Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Current</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>hed__Relationship__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Finds the Attendee from Event Group where Attendee Type = Prospect/Applicant</description>
+        <name>Get_Student_Attendee</name>
+        <label>Get Student Attendee</label>
+        <locationX>380</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Is_Student_Attendee_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>conference360__Attendee_Group__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_related_Attendee_Group.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Attendee_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Prospect/Applicant</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>conference360__Attendee__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Updates Type on Relationship to value specified on triggering Attendee record</description>
+        <name>Update_Relationship_Type</name>
+        <label>Update Relationship Type</label>
+        <locationX>314</locationX>
+        <locationY>863</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Relationship.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>hed__Type__c</field>
+            <value>
+                <elementReference>$Record.Relationship_to_Student__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>hed__Relationship__c</object>
+    </recordUpdates>
+    <start>
+        <locationX>254</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_related_Attendee_Group</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Attendee_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Guest</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>conference360__Contact__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Relationship_to_Student__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>conference360__Attendee_Group__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>conference360__Sales_Document__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>conference360__Attendee__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <description>Sends error notification if no Student Attendee is found</description>
+        <name>txt_ErrorEmail</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Uh-oh, looks like the automation failed to create a Relationship with an Event guest. Please review the Attendee records below and manually update accordingly.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Guess Attendee: {!$Record.Name}&lt;/p&gt;</text>
+    </textTemplates>
+    <variables>
+        <description>Holds the value of the relationship type on Attendee record</description>
+        <name>var_RelationshipType</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>traa_Contact_Birthday_Validation</fullName>
+    <active>true</active>
+    <description>Birthday can never be greater than today.</description>
+    <errorConditionFormula>Birthdate &gt;= TODAY()</errorConditionFormula>
+    <errorDisplayField>Birthdate</errorDisplayField>
+    <errorMessage>Birthday should be less than today. Future dates are not allowed.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Acquired List</fullName>
+        <default>false</default>
+        <label>Acquired List</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Email Campaign</fullName>
+        <default>false</default>
+        <label>Email Campaign</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Email Inquiry</fullName>
+        <default>false</default>
+        <label>Email Inquiry</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Inquiry Form</fullName>
+        <default>false</default>
+        <label>Inquiry Form</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Off Campus Recruitment Event</fullName>
+        <default>false</default>
+        <label>Off Campus Recruitment Event</label>
+    </standardValue>
+    <standardValue>
+        <fullName>On Campus Recruitment Event</fullName>
+        <default>false</default>
+        <label>On Campus Recruitment Event</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Phone Call</fullName>
+        <default>false</default>
+        <label>Phone Call</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Social Media</fullName>
+        <default>false</default>
+        <label>Social Media</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Google Ad</fullName>
+        <default>false</default>
+        <label>Google Ad</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Google Natural Search</fullName>
+        <default>false</default>
+        <label>Google Natural Search</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Yahoo! Natural Search</fullName>
+        <default>false</default>
+        <label>Yahoo! Natural Search</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Bing Natural Search</fullName>
+        <default>false</default>
+        <label>Bing Natural Search</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Viamedia</fullName>
+        <default>false</default>
+        <label>Viamedia</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Wikipedia</fullName>
+        <default>false</default>
+        <label>Wikipedia</label>
+    </standardValue>
+    <standardValue>
+        <fullName>facebook</fullName>
+        <default>false</default>
+        <label>facebook</label>
+    </standardValue>
+    <standardValue>
+        <fullName>MDC Info Center</fullName>
+        <default>false</default>
+        <label>MDC Info Center</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Program Inquiry Form-FH</fullName>
+        <default>false</default>
+        <label>Program Inquiry Form-FH</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Future Ready</fullName>
+        <default>false</default>
+        <label>Future Ready</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Future-Ready</fullName>
+        <default>false</default>
+        <label>Future-Ready</label>
+    </standardValue>
+    <standardValue>
+        <fullName>BookFair24</fullName>
+        <default>false</default>
+        <label>BookFair24</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Enroll Form</fullName>
+        <default>false</default>
+        <label>Enroll Form</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Kendall-FH</fullName>
+        <default>false</default>
+        <label>Kendall-FH</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Meek-FH</fullName>
+        <default>false</default>
+        <label>Meek-FH</label>
+    </standardValue>
+    <standardValue>
+        <fullName>School Specific Inquiry Form</fullName>
+        <default>false</default>
+        <label>School Specific Inquiry Form</label>
+    </standardValue>
+    <standardValue>
+        <fullName>School of Continuing Ed-FH</fullName>
+        <default>false</default>
+        <label>School of Continuing Ed-FH</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Medical-FH</fullName>
+        <default>false</default>
+        <label>Medical-FH</label>
+    </standardValue>
+    <standardValue>
+        <fullName>West-FH</fullName>
+        <default>false</default>
+        <label>West-FH</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Wolfson-FH</fullName>
+        <default>false</default>
+        <label>Wolfson-FH</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Hialeah-FH</fullName>
+        <default>false</default>
+        <label>Hialeah-FH</label>
+    </standardValue>
+    <standardValue>
+        <fullName>North-FH</fullName>
+        <default>false</default>
+        <label>North-FH</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Gibson-FH</fullName>
+        <default>false</default>
+        <label>Gibson-FH</label>
+    </standardValue>
+    <standardValue>
+        <fullName>tiktok</fullName>
+        <default>false</default>
+        <label>tiktok</label>
+    </standardValue>
+    <standardValue>
+        <fullName>META_Facebook_Lead_RT</fullName>
+        <default>false</default>
+        <label>META_Facebook_Lead_RT</label>
+    </standardValue>
+    <standardValue>
+        <fullName>chatgptcom</fullName>
+        <default>false</default>
+        <label>chatgptcom</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Google AdWords</fullName>
+        <default>false</default>
+        <label>Google AdWords</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Snapchat</fullName>
+        <default>false</default>
+        <label>Snapchat</label>
+    </standardValue>
+    <standardValue>
+        <fullName>PresidentsMailer2023</fullName>
+        <default>false</default>
+        <label>PresidentsMailer2023</label>
+    </standardValue>
+    <standardValue>
+        <fullName>META_Facebook_Lead</fullName>
+        <default>false</default>
+        <label>META_Facebook_Lead</label>
+    </standardValue>
+    <standardValue>
+        <fullName>chatgpt.com</fullName>
+        <default>false</default>
+        <label>chatgpt.com</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Refuel_GoogleAds</fullName>
+        <default>false</default>
+        <label>Refuel_GoogleAds</label>
+    </standardValue>
+    <standardValue>
+        <fullName>RefuelGoogleAds</fullName>
+        <default>false</default>
+        <label>RefuelGoogleAds</label>
+    </standardValue>
+    <standardValue>
+        <fullName>META_Instagram_Traffic</fullName>
+        <default>false</default>
+        <label>META_Instagram_Traffic</label>
+    </standardValue>
+    <standardValue>
+        <fullName>ra_google</fullName>
+        <default>false</default>
+        <label>ra_google</label>
+    </standardValue>
+    <standardValue>
+        <fullName>META_Instagram_Lead_RT</fullName>
+        <default>false</default>
+        <label>META_Instagram_Lead_RT</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Amazon</fullName>
+        <default>false</default>
+        <label>Amazon</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Niche</fullName>
+        <default>false</default>
+        <label>Niche</label>
+    </standardValue>
+    <standardValue>
+        <fullName>School of Education-FH</fullName>
+        <default>false</default>
+        <label>School of Education-FH</label>
+    </standardValue>
+    <standardValue>
+        <fullName>NACAC2025</fullName>
+        <default>false</default>
+        <label>NACAC2025</label>
+    </standardValue>
+</StandardValueSet>

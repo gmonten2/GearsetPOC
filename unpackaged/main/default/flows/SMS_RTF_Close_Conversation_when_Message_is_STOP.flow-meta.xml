@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>61.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>We check if student messaged STOP or UNSTOP</description>
+        <name>Check_if_STOP_or_UNSTOP</name>
+        <label>Check if STOP or UNSTOP</label>
+        <locationX>446</locationX>
+        <locationY>323</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>STOP</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.simplesms__Message_Full__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>STOP</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Related_Conversation</targetReference>
+            </connector>
+            <label>STOP</label>
+        </rules>
+        <rules>
+            <name>UNSTOP_Attendee</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.simplesms__Message_Full__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>UNSTOP</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Attendee__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Contact_Associated_with_Attendee</targetReference>
+            </connector>
+            <label>UNSTOP Attendee</label>
+        </rules>
+        <rules>
+            <name>UNSTOP_Contact</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.simplesms__Message_Full__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>UNSTOP</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.simplesms__Contact__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Contact_Associated_with_Message</targetReference>
+            </connector>
+            <label>UNSTOP Contact</label>
+        </rules>
+    </decisions>
+    <description>v1: Closes the conversation associated with SMS message when reply is STOP.
+v2: Added - If student replies &quot;UNSTOP&quot; it will uncheck Do Not SMS (Contact) on the contact record.
+v3: Changed Flow label.</description>
+    <environments>Default</environments>
+    <interviewLabel>SMS_RTF Close Conversation when Message is STOP {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>SMS_RTF Close/Resub Conversation when Message is STOP/UNSTOP</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get contact Associated with attendee to subscribe the student back</description>
+        <name>Get_Contact_Associated_with_Attendee</name>
+        <label>Get Contact Associated with Attendee</label>
+        <locationX>314</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Subscribe_Student_back</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Attendee__r.conference360__Contact__r.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get contact associated with the message that was sent</description>
+        <name>Get_Contact_Associated_with_Message</name>
+        <label>Get Contact Associated with Message</label>
+        <locationX>578</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Subscribe_Student_Back2</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.simplesms__Contact__r.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Gets the conversation associated with this SMS message</description>
+        <name>Get_Related_Conversation</name>
+        <label>Get Related Conversation</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Close_Related_Conversation</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.simplesms__Conversation__r.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>simplesms__Conversation__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>This will automatically close the conversation associated with the STOP message.</description>
+        <name>Close_Related_Conversation</name>
+        <label>Close Related Conversation</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Related_Conversation.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>simplesms__Status__c</field>
+            <value>
+                <stringValue>Closed</stringValue>
+            </value>
+        </inputAssignments>
+        <object>simplesms__Conversation__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Uncheck Do Not SMS On Contact</description>
+        <name>Subscribe_Student_back</name>
+        <label>Subscribe Student back</label>
+        <locationX>314</locationX>
+        <locationY>539</locationY>
+        <inputAssignments>
+            <field>simplesms__DoNotSMS__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Attendee__r.conference360__Contact__r</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Uncheck Do Not SMS On Contact</description>
+        <name>Subscribe_Student_Back2</name>
+        <label>Subscribe Student Back</label>
+        <locationX>578</locationX>
+        <locationY>539</locationY>
+        <inputAssignments>
+            <field>simplesms__DoNotSMS__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.simplesms__Contact__r</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>320</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_if_STOP_or_UNSTOP</targetReference>
+        </connector>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>simplesms__Message_Full__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>STOP</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>simplesms__Message_Full__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>UNSTOP</stringValue>
+            </value>
+        </filters>
+        <object>simplesms__SMS_Message__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Draft</status>
+</Flow>

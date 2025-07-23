@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X1_3_Minor_Backlog</fullName>
+    <columns>CORE.USERS.ALIAS</columns>
+    <columns>CASES.TYPE</columns>
+    <columns>CASES.PRIORITY</columns>
+    <columns>CASES.STATUS</columns>
+    <columns>CASES.SUBJECT</columns>
+    <columns>Due_Date__c</columns>
+    <columns>Business_Changes_Improvements__c</columns>
+    <columns>Technical_Changes_Improvements__c</columns>
+    <columns>Targeted_Release__c</columns>
+    <columns>Scheduled_for_Release__c</columns>
+    <columns>CASES.CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CASES.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Case.General_Ticket</value>
+    </filters>
+    <filters>
+        <field>CASES.STATUS</field>
+        <operation>equals</operation>
+        <value>New,In Progress,Escalated,Closed</value>
+    </filters>
+    <filters>
+        <field>CASES.ESCALATION_STATE</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>CASES.SUBJECT</field>
+        <operation>contains</operation>
+        <value>1.3</value>
+    </filters>
+    <label>1.3 Backlog (CLOSED)</label>
+</ListView>

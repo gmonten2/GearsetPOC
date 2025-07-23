@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Allows users to edit the Primary PCA and Secondary PCA fields on the Opportunity Object</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Opportunity - Assign Primary &amp; Secondary PCA</label>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Opportunity.Primary_PCA__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Opportunity.Secondary_PCA__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+</PermissionSet>

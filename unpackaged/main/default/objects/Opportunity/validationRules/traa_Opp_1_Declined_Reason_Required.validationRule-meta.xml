@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>traa_Opp_1_Declined_Reason_Required</fullName>
+    <active>true</active>
+    <description>When Opportunity Stage is Declined then declined reason should not be blank.</description>
+    <errorConditionFormula>TEXT(StageName) = &quot;Declined&quot; 
+&amp;&amp; ISBLANK(TEXT(traa_Declined_Reason__c ))</errorConditionFormula>
+    <errorDisplayField>traa_Declined_Reason__c</errorDisplayField>
+    <errorMessage>Opportunity 1: Please Select Declined Reason.</errorMessage>
+</ValidationRule>

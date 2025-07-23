@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>simplesms__Lookup_Pending__c</fullName>
+    <deprecated>false</deprecated>
+    <formula>IF ( OR ( ISPICKVAL(simplesms__Status__c, &#39;Bad Number&#39;), ISPICKVAL(simplesms__Status__c, &#39;Failure&#39;) ), FALSE,
+OR(ISNULL( simplesms__Expiration_Date__c ), simplesms__Expiration_Date__c &lt; TODAY() ) )</formula>
+    <label>Lookup Pending</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

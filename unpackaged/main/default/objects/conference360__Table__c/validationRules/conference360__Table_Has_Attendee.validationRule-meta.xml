@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>conference360__Table_Has_Attendee</fullName>
+    <active>true</active>
+    <description>Validation rule fired only if Total Seats are less then Seat Assigned.</description>
+    <errorConditionFormula>IF( AND( NOT( ISNEW() ) , ISCHANGED( conference360__Total_Seats__c )) ,conference360__Total_Seats__c &lt;  conference360__Seats_Assigned__c , false)</errorConditionFormula>
+    <errorDisplayField>conference360__Total_Seats__c</errorDisplayField>
+    <errorMessage>Cannot change the number of seats while attendees are assigned to seats. Please remove all attendees from this table before updating seat quantity.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>bt_base__Extend_Visibility_To_Account__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Each contact is individually evaluated against the rule criteria. If any one contact meets the criteria, all contacts within the account are given access. For use with Experience Clouds only.</description>
+    <inlineHelpText>Set “True” to extend visibility from one contact who meets the rule criteria to all contacts within the account. When a contact meets criteria, all contacts in the account gain access.</inlineHelpText>
+    <label>Extend Visibility to Account</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

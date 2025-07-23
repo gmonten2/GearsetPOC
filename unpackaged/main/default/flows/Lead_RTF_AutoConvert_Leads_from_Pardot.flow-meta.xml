@@ -1,0 +1,1022 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Convert_Lead</name>
+        <label>Convert Lead</label>
+        <locationX>1903</locationX>
+        <locationY>323</locationY>
+        <actionName>AutoConvertLeads</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Get_Converted_Lead</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>LeadIds</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>AutoConvertLeads</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>Sends email to Admin with details from Lead to locate Pardot record and re-sync</description>
+        <name>Email_Admin_Flow_Fault</name>
+        <label>Email Admin - Flow Fault</label>
+        <locationX>2338</locationX>
+        <locationY>2279</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <stringValue>gmonten2@mdc.edu</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Inquiry Form conversion failed - Flow failure</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>txt_FaultNotification</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>Sends email notification to Admin to advise no matching feeder school found</description>
+        <name>Email_Admin_No_Feeder_School</name>
+        <label>Email Admin - No Feeder School</label>
+        <locationX>314</locationX>
+        <locationY>1703</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <connector>
+            <targetReference>Update_Opp_with_assigned_variables</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <stringValue>gmonten2@mdc.edu</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Inquiry Form conversion failed - No Feeder School Found</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>txt_NoFeederSchoolNotification</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>Sends email to System Admin advising no Opp found</description>
+        <name>Email_Admin_No_Opp_Found</name>
+        <label>Email Admin - No Opp Found</label>
+        <locationX>2866</locationX>
+        <locationY>755</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <stringValue>gmonten2@mdc.edu</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Inquiry Form conversion failed - No converted Opportunity found</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>txt_NoOppFoundNotification</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+    </actionCalls>
+    <apiVersion>57.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Updates Opp with Name and Code of FL High School</description>
+        <name>Assign_FL_High_School_details_to_Opp</name>
+        <label>Assign FL High School details to Opp</label>
+        <locationX>842</locationX>
+        <locationY>1595</locationY>
+        <assignmentItems>
+            <assignToReference>Get_New_Opp.Applicant_Current_Institution_Text__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_FL_High_School_Account.Name</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_New_Opp.Current_Institution_Code__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_FL_High_School_Account.hed__School_Code__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Opp_with_assigned_variables</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Updates Opp with Name and Code of GED Account</description>
+        <name>Assign_GED_details_to_Opp</name>
+        <label>Assign GED details to Opp</label>
+        <locationX>1634</locationX>
+        <locationY>1595</locationY>
+        <assignmentItems>
+            <assignToReference>Get_New_Opp.Applicant_Current_Institution_Text__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_GED_High_School_Account.Name</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_New_Opp.Current_Institution_Code__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_GED_High_School_Account.hed__School_Code__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Opp_with_assigned_variables</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Updates Opp with Name and Code of Home School Account</description>
+        <name>Assign_Home_School_details_to_Opp</name>
+        <label>Assign Home School details to Opp</label>
+        <locationX>1898</locationX>
+        <locationY>1595</locationY>
+        <assignmentItems>
+            <assignToReference>Get_New_Opp.Applicant_Current_Institution_Text__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Home_School_Account.Name</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_New_Opp.Current_Institution_Code__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Home_School_Account.hed__School_Code__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Opp_with_assigned_variables</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Assign High School values (Name/Code/Campus) and Primary PCA to the Opportunity</description>
+        <name>Assign_HS_Details_and_PCA_to_Opp</name>
+        <label>Assign HS Details and PCA to Opp</label>
+        <locationX>50</locationX>
+        <locationY>1703</locationY>
+        <assignmentItems>
+            <assignToReference>Get_New_Opp.Applicant_Current_Institution_Text__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Feeder_School_Account.Name</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_New_Opp.Campus_Assigned_to_High_School__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Feeder_School_Account.Campus_Assigned_to_High_School__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_New_Opp.Current_Institution_Code__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Feeder_School_Account.hed__School_Code__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_New_Opp.Primary_PCA__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Feeder_School_Account.PCA_Assigned_to_High_School__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Opp_with_assigned_variables</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Updates Opp with Name and Code</description>
+        <name>Assign_MDC_non_Feeder_details_to_Opp</name>
+        <label>Assign MDC non-Feeder details to Opp</label>
+        <locationX>578</locationX>
+        <locationY>1595</locationY>
+        <assignmentItems>
+            <assignToReference>Get_New_Opp.Applicant_Current_Institution_Text__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_MDC_non_Feeder_Account.Name</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_New_Opp.Current_Institution_Code__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_MDC_non_Feeder_Account.hed__School_Code__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Opp_with_assigned_variables</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Assigns Term and CloseDate to Opp based on Next Term&#39;s Name and Last Enrollment Date</description>
+        <name>Assign_Next_Term_s_Name_and_CloseDate_to_Opp</name>
+        <label>Assign Next Term&#39;s Name and CloseDate to Opp</label>
+        <locationX>1073</locationX>
+        <locationY>1079</locationY>
+        <assignmentItems>
+            <assignToReference>Get_New_Opp.Term__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_next_Term.Name</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_New_Opp.CloseDate</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_next_Term.Last_Enrollment_Date__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Has_a_High_School_in_Miami_Dade_County</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Updates Opp with Name and Code of Non-US HS</description>
+        <name>Assign_Non_US_HS_details_to_Opp</name>
+        <label>Assign Non-US HS details to Opp</label>
+        <locationX>1370</locationX>
+        <locationY>1595</locationY>
+        <assignmentItems>
+            <assignToReference>Get_New_Opp.Applicant_Current_Institution_Text__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Non_US_High_School_Account.Name</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_New_Opp.Current_Institution_Code__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Non_US_High_School_Account.hed__School_Code__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Opp_with_assigned_variables</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Updates Opp with Name and Code of other US HS</description>
+        <name>Assign_other_US_HS_details_to_Opp</name>
+        <label>Assign other US HS details to Opp</label>
+        <locationX>1106</locationX>
+        <locationY>1595</locationY>
+        <assignmentItems>
+            <assignToReference>Get_New_Opp.Applicant_Current_Institution_Text__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Other_US_High_School_Account.Name</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_New_Opp.Current_Institution_Code__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Other_US_High_School_Account.hed__School_Code__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Opp_with_assigned_variables</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Assigns Term and CloseDate to Opp based on Term&#39;s Name and End Date</description>
+        <name>Assign_Term_and_CloseDate_to_Opp</name>
+        <label>Assign Term and CloseDate to Opp</label>
+        <locationX>809</locationX>
+        <locationY>971</locationY>
+        <assignmentItems>
+            <assignToReference>Get_New_Opp.Term__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Term.Name</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_New_Opp.CloseDate</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Term.Last_Enrollment_Date__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Has_a_High_School_in_Miami_Dade_County</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>Null check if found High School or not</description>
+        <name>Found_School_Account</name>
+        <label>Found School Account?</label>
+        <locationX>182</locationX>
+        <locationY>1595</locationY>
+        <defaultConnector>
+            <targetReference>Email_Admin_No_Feeder_School</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No School Account Found</defaultConnectorLabel>
+        <rules>
+            <name>School_Account_exists</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Feeder_School_Account</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_HS_Details_and_PCA_to_Opp</targetReference>
+            </connector>
+            <label>School Account exists</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks School Type to determine how to find related Account</description>
+        <name>Has_a_High_School_in_Miami_Dade_County</name>
+        <label>Has a High School in Miami Dade County?</label>
+        <locationX>941</locationX>
+        <locationY>1271</locationY>
+        <defaultConnector>
+            <targetReference>Where_did_they_attend_High_School</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not MDC School</defaultConnectorLabel>
+        <rules>
+            <name>Miami_Dade_School</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.School_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>High School in Miami Dade County</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Is_an_MDC_Feeder_School</targetReference>
+            </connector>
+            <label>Miami Dade School</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if High School Name is populated on Lead and value is not &quot;Other&quot;</description>
+        <name>Is_an_MDC_Feeder_School</name>
+        <label>Is an MDC Feeder School?</label>
+        <locationX>380</locationX>
+        <locationY>1379</locationY>
+        <defaultConnector>
+            <targetReference>Get_MDC_non_Feeder_Account</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not a Feeder school</defaultConnectorLabel>
+        <rules>
+            <name>Is_MDC_Feeder</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.High_School_Name__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.High_School_Name__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Other</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Feeder_School_Account</targetReference>
+            </connector>
+            <label>Is MDC Feeder</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if Converted Opp was found on Lead</description>
+        <name>Is_Opp_Found</name>
+        <label>Is Opp Found?</label>
+        <locationX>1903</locationX>
+        <locationY>647</locationY>
+        <defaultConnector>
+            <targetReference>Email_Admin_No_Opp_Found</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Opp Found</defaultConnectorLabel>
+        <rules>
+            <name>Has_Opportunity</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_New_Opp</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Term</targetReference>
+            </connector>
+            <label>Has Opportunity</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if Lead has Phone number so it can be set on as MobilePhone on Contact</description>
+        <name>Lead_has_Phone_number</name>
+        <label>Lead has Phone number?</label>
+        <locationX>941</locationX>
+        <locationY>2279</locationY>
+        <defaultConnectorLabel>No Phone</defaultConnectorLabel>
+        <rules>
+            <name>Has_Phone</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Phone</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Contact_s_Mobile_Preferred_Phone</targetReference>
+            </connector>
+            <label>Has Phone</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Term_record_found</name>
+        <label>Term record found?</label>
+        <locationX>941</locationX>
+        <locationY>863</locationY>
+        <defaultConnector>
+            <targetReference>Get_next_Term</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Term Found</defaultConnectorLabel>
+        <rules>
+            <name>Term_Record_Exists</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Term</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Term_and_CloseDate_to_Opp</targetReference>
+            </connector>
+            <label>Term Record Exists</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Sets path based on value in School Type</description>
+        <name>Where_did_they_attend_High_School</name>
+        <label>Where did they attend High School?</label>
+        <locationX>1502</locationX>
+        <locationY>1379</locationY>
+        <defaultConnector>
+            <targetReference>Update_Opp_with_assigned_variables</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Other_FL_High_School</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.School_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Other High School in Florida</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_FL_High_School_Account</targetReference>
+            </connector>
+            <label>Other FL High School</label>
+        </rules>
+        <rules>
+            <name>Other_US_High_School</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.School_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Other High School in the USA</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Other_US_High_School_Account</targetReference>
+            </connector>
+            <label>Other US High School</label>
+        </rules>
+        <rules>
+            <name>Other_Non_US_High_school</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.School_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>High School Outside the USA</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Non_US_High_School_Account</targetReference>
+            </connector>
+            <label>Other Non-US High school</label>
+        </rules>
+        <rules>
+            <name>GED</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.School_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>GED</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_GED_High_School_Account</targetReference>
+            </connector>
+            <label>GED</label>
+        </rules>
+        <rules>
+            <name>Home_School</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.School_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Home School</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Home_School_Account</targetReference>
+            </connector>
+            <label>Home School</label>
+        </rules>
+    </decisions>
+    <description>Autoconverts Leads created by Pardot if &quot;Convert from Pardot&quot; is checked
+V6: update email receiver address to Gio
+v7: same as v6</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Adds 30 days to current date</description>
+        <name>fx_CurrentDate30d</name>
+        <dataType>Date</dataType>
+        <expression>{!$Flow.CurrentDate} + 30</expression>
+    </formulas>
+    <formulas>
+        <description>Calculates 30 days after end of current term</description>
+        <name>fx_CurrentTermEnd30d</name>
+        <dataType>Date</dataType>
+        <expression>{!Get_next_Term.hed__End_Date__c} + 30</expression>
+    </formulas>
+    <interviewLabel>Lead_RTF AutoConvert Leads from Pardot {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Lead_RTF AutoConvert Leads from Pardot</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Gets Lead record to identify converted Opp Id</description>
+        <name>Get_Converted_Lead</name>
+        <label>Get Converted Lead</label>
+        <locationX>1903</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_New_Opp</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Lead</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Searches Educational Institution Accounts by Name where PCA Assigned to HS != blank</description>
+        <name>Get_Feeder_School_Account</name>
+        <label>Get Feeder School Account</label>
+        <locationX>182</locationX>
+        <locationY>1487</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Found_School_Account</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.High_School_Name__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>PCA_Assigned_to_High_School__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Gets Educational Institution Account for Other HS in Florida (1010045278)</description>
+        <name>Get_FL_High_School_Account</name>
+        <label>Get FL High School Account</label>
+        <locationX>842</locationX>
+        <locationY>1487</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_FL_High_School_details_to_Opp</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>hed__School_Code__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>1010045278</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Gets Educational Institution Account for GED HS (1010045276)</description>
+        <name>Get_GED_High_School_Account</name>
+        <label>Get GED High School Account</label>
+        <locationX>1634</locationX>
+        <locationY>1487</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_GED_details_to_Opp</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>hed__School_Code__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>1010045276</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Gets Educational Institution Account for Home School (1010045165)</description>
+        <name>Get_Home_School_Account</name>
+        <label>Get Home School Account</label>
+        <locationX>1898</locationX>
+        <locationY>1487</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_Home_School_details_to_Opp</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>hed__School_Code__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>1010045165</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Gets Educational Institution Account for other HS in Florida (1010045278)</description>
+        <name>Get_MDC_non_Feeder_Account</name>
+        <label>Get MDC non-Feeder Account</label>
+        <locationX>578</locationX>
+        <locationY>1487</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_MDC_non_Feeder_details_to_Opp</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>hed__School_Code__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>1010045278</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Finds Opp from ConvertedOpp on Lead</description>
+        <name>Get_New_Opp</name>
+        <label>Get New Opp</label>
+        <locationX>1903</locationX>
+        <locationY>539</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Is_Opp_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Converted_Lead.ConvertedOpportunityId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Finds Term record where Start Date &gt; Today sorted by earliest Start Date</description>
+        <name>Get_next_Term</name>
+        <label>Get next Term</label>
+        <locationX>1073</locationX>
+        <locationY>971</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_Next_Term_s_Name_and_CloseDate_to_Opp</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>hed__Start_Date__c</field>
+            <operator>GreaterThan</operator>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>hed__Term__c</object>
+        <sortField>hed__Start_Date__c</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Gets Educational Institution Account for Non-US HS (1010045274)</description>
+        <name>Get_Non_US_High_School_Account</name>
+        <label>Get Non-US High School Account</label>
+        <locationX>1370</locationX>
+        <locationY>1487</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_Non_US_HS_details_to_Opp</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>hed__School_Code__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>1010045274</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Gets Educational Institution Account for Other US HS (1010045279)</description>
+        <name>Get_Other_US_High_School_Account</name>
+        <label>Get Other US High School Account</label>
+        <locationX>1106</locationX>
+        <locationY>1487</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_other_US_HS_details_to_Opp</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>hed__School_Code__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>1010045279</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Retrieves Term record based on Start Term on Lead</description>
+        <name>Get_Term</name>
+        <label>Get Term</label>
+        <locationX>941</locationX>
+        <locationY>755</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Term_record_found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Short_Name__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Term_Short_Name__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>hed__Term__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Updates Contact&#39;s Mobile with Lead&#39;s Phone and sets Preferred Phone to Mobile</description>
+        <name>Update_Contact_s_Mobile_Preferred_Phone</name>
+        <label>Update Contact&#39;s Mobile + Preferred Phone</label>
+        <locationX>677</locationX>
+        <locationY>2387</locationY>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Email_Admin_Flow_Fault</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Converted_Lead.ConvertedContactId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>MobilePhone</field>
+            <value>
+                <elementReference>$Record.Phone</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>hed__PreferredPhone__c</field>
+            <value>
+                <stringValue>Mobile Phone</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Updates Current Opportunity on Contact with Opp ID</description>
+        <name>Update_Contact_s_Opp</name>
+        <label>Update Contact&#39;s Opp</label>
+        <locationX>941</locationX>
+        <locationY>2171</locationY>
+        <connector>
+            <targetReference>Lead_has_Phone_number</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Email_Admin_Flow_Fault</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Converted_Lead.ConvertedContactId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Current_Opportunity__c</field>
+            <value>
+                <elementReference>Get_New_Opp.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Updates Opp with variables assigned in flow (PrimaryPCA/CloseDate/Term)</description>
+        <name>Update_Opp_with_assigned_variables</name>
+        <label>Update Opp with assigned variables</label>
+        <locationX>941</locationX>
+        <locationY>2063</locationY>
+        <connector>
+            <targetReference>Update_Contact_s_Opp</targetReference>
+        </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Email_Admin_Flow_Fault</targetReference>
+        </faultConnector>
+        <inputReference>Get_New_Opp</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>1777</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Convert_Lead</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>IsConverted</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>OwnerId</field>
+            <operator>StartsWith</operator>
+            <value>
+                <stringValue>005</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Convert_from_Pardot__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <description>Sends details of Lead to Admin when Flow fails to enable trace back to Pardot and resync</description>
+        <name>txt_FaultNotification</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Uh-oh, something went wrong. The Lead_RTF AutoConvert Leads from Pardot flow failed. Please review the records:&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Name:&lt;/strong&gt; {!$Record.FirstName} {!$Record.LastName}&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Email: &lt;/strong&gt;{!$Record.Email}&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Lead Created Date/Time:&lt;/strong&gt; {!$Record.CreatedDate}&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;Lead Record Id:&lt;/strong&gt; {!$Record.Id}&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Contact Record Id:&lt;/strong&gt; {!Get_Converted_Lead.ConvertedOpportunityId}&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Opportunity Record Id: &lt;/strong&gt;{!Get_Converted_Lead.ConvertedOpportunityId}&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Flow Start Date/Time:&lt;/strong&gt; {!$Flow.InterviewStartTime}&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Flow Error Message: &lt;/strong&gt;{!$Flow.FaultMessage}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Note that records and updates processed during the Flow may have been rolled back and no longer exist in Core. You may need to manually create/update Contact/Opportunity in Core or locate the triggering Prospect record, fix it and trigger flow again.&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <description>Notification to Admin if Feeder school selected on Inquiry Form but no matching High School Account found</description>
+        <name>txt_NoFeederSchoolNotification</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Uh-oh, something went wrong. The &quot;Lead_RTF AutoConvert Leads from Pardot&quot; flow could not find a matching Feeder High School Account. Please review the records:&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Name:&lt;/strong&gt; {!$Record.FirstName} {!$Record.LastName}&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Email: &lt;/strong&gt;{!$Record.Email}&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;High School Name:&lt;/strong&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt; {!$Record.High_School_Name__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Opportunity Record Id:&lt;/strong&gt; {!Get_New_Opp.Id}&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Lead Record Id:&lt;/strong&gt; {!$Record.Id}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Note the Opportunity may need to be updated manually with High School related information.&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <description>Email body to notify Admin no converted Opportunity found</description>
+        <name>txt_NoOppFoundNotification</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Uh-oh, something went wrong. The &quot;Lead_RTF AutoConvert Leads from Pardot&quot; flow could not find a converted Opportunity on the Lead. Please review the records:&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Lead Record Id:&lt;/strong&gt; {!$Record.Id}&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Name:&lt;/strong&gt; {!$Record.FirstName} {!$Record.LastName}&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Email: &lt;/strong&gt;{!$Record.Email}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Note the Lead may need to be converted and updated manually.&lt;/p&gt;</text>
+    </textTemplates>
+</Flow>

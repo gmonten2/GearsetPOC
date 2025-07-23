@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_Type__c</fullName>
+    <description>Used to know in which type of product inside the Salesforce Organization the user is having trouble.</description>
+    <label>Product Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Blackthorn Events</fullName>
+                <default>false</default>
+                <label>Blackthorn Events</label>
+            </value>
+            <value>
+                <fullName>Blackthorn Messaging</fullName>
+                <default>false</default>
+                <label>Blackthorn Messaging</label>
+            </value>
+            <value>
+                <fullName>Reports/Dashboards</fullName>
+                <default>false</default>
+                <label>Reports/Dashboards</label>
+            </value>
+            <value>
+                <fullName>MDC Recruitment App</fullName>
+                <default>false</default>
+                <label>MDC Recruitment App</label>
+            </value>
+            <value>
+                <fullName>Backend</fullName>
+                <default>false</default>
+                <label>Backend</label>
+            </value>
+            <value>
+                <fullName>Account Engagement</fullName>
+                <default>false</default>
+                <label>Account Engagement (Pardot)</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other/Don&#39;t know</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

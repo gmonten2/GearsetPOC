@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>conference360__Recurring_Event_Active_Event_Validation__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>When the Recurring Method is set, new events will not be created until the active events count is less than the count field.</description>
+    <inlineHelpText>When the Recurring Method is set, new events will not be created until the active events count is less than the count field.</inlineHelpText>
+    <label>Recurring Event Active Event Validation</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

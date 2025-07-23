@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>simplesms__Enforce_Single_Conversation__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Check this box if a Lead/Contact can only receive the auto responses one time.  When this is unchecked, the Lead/Contact will receive the auto response each time they text the keyword.</description>
+    <inlineHelpText>Check this box if a Lead/Contact can only receive the auto responses one time.  When this is unchecked, the Lead/Contact will receive the auto response each time they text the keyword.</inlineHelpText>
+    <label>Enforce Single Conversation</label>
+    <type>Checkbox</type>
+</CustomField>

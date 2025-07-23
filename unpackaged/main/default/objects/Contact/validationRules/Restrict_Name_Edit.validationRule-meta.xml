@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Restrict_Name_Edit</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+NOT(ISBLANK(Student_Employee_ID__c)),
+OR(
+ISCHANGED( FirstName ),
+ISCHANGED( MiddleName ),
+ISCHANGED ( LastName )  
+),
+$Permission.Contact_Name_Update  &lt;&gt; TRUE 
+)</errorConditionFormula>
+    <errorMessage>Name cannot be changed once Student/Employee ID is populated.</errorMessage>
+</ValidationRule>

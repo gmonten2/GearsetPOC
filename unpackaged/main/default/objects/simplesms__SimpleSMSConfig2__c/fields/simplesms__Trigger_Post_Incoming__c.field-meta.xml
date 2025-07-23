@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>simplesms__Trigger_Post_Incoming__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Incoming messages will be posted to the message owner&#39;s Chatter feed.</description>
+    <inlineHelpText>Incoming messages will be posted to the message owner&#39;s Chatter feed.</inlineHelpText>
+    <label>Trigger: Post Incoming</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

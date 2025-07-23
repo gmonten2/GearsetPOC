@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2243_Opportunities_filter_by_PCA</fullName>
+    <columns>Onboarding_Cohort__c</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Primary_PCA__c</columns>
+    <columns>Secondary_PCA__c</columns>
+    <columns>Student_Type__c</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>Student_Onboarding_Type__c</columns>
+    <columns>Academic_Program_Name__c</columns>
+    <columns>Home_Campus__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Primary_PCA__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.traa_Academic_Program_Applications</value>
+    </filters>
+    <filters>
+        <field>Term__c</field>
+        <operation>equals</operation>
+        <value>2253</value>
+    </filters>
+    <filters>
+        <field>Primary_PCA__c</field>
+        <operation>contains</operation>
+        <value>sandra</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Lead,Applicant</value>
+    </filters>
+    <label>2253 Opportunities (filter by PCA)</label>
+</ListView>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Allows users to bypass specific validation rules and flows for administrative and integration tasks. Use with caution.</description>
+    <isLicensed>false</isLicensed>
+    <label>Bypass Validation</label>
+</CustomPermission>

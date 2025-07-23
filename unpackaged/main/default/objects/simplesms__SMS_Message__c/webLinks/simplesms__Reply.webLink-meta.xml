@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>simplesms__Reply</fullName>
+    <availability>online</availability>
+    <description>Reply to a message from the SMS Message detail page.</description>
+    <displayType>button</displayType>
+    <height>600</height>
+    <linkType>page</linkType>
+    <masterLabel>Reply</masterLabel>
+    <openType>sidebar</openType>
+    <page>simplesms__ReplyFromMessage</page>
+    <protected>false</protected>
+</WebLink>

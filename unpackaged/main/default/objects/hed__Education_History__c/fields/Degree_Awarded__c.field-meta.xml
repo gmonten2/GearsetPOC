@@ -1,0 +1,1646 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Degree_Awarded__c</fullName>
+    <description>The level of the degree the Student has earned.</description>
+    <inlineHelpText>The level of the degree the Student has earned.</inlineHelpText>
+    <label>Degree Awarded</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>AB</fullName>
+                <default>false</default>
+                <label>AB-Bachelor of Arts</label>
+            </value>
+            <value>
+                <fullName>W53</fullName>
+                <default>false</default>
+                <label>Adult Cert. of Comp-CPT Eligib</label>
+            </value>
+            <value>
+                <fullName>W44</fullName>
+                <default>false</default>
+                <label>Adult Cert. of Completion</label>
+            </value>
+            <value>
+                <fullName>W56</fullName>
+                <default>false</default>
+                <label>Adult Cert of Compl-ACCEL18cr</label>
+            </value>
+            <value>
+                <fullName>W57</fullName>
+                <default>false</default>
+                <label>Adult Common PL Test -ACCEL 18</label>
+            </value>
+            <value>
+                <fullName>W43</fullName>
+                <default>false</default>
+                <label>Adult Standard High School</label>
+            </value>
+            <value>
+                <fullName>W52</fullName>
+                <default>false</default>
+                <label>Adult Standard HS Alternative</label>
+            </value>
+            <value>
+                <fullName>W54</fullName>
+                <default>false</default>
+                <label>Adult Standard HS Diploma-18cr</label>
+            </value>
+            <value>
+                <fullName>W59</fullName>
+                <default>false</default>
+                <label>Adult Stand HS Dipl-24 Credit</label>
+            </value>
+            <value>
+                <fullName>W58</fullName>
+                <default>false</default>
+                <label>Adult Stand HS Dipl-ACCEL 18cr</label>
+            </value>
+            <value>
+                <fullName>W55</fullName>
+                <default>false</default>
+                <label>Adult Stand HS Dipl-ACCEL 18cred</label>
+            </value>
+            <value>
+                <fullName>W60</fullName>
+                <default>false</default>
+                <label>Adult Stand HS Dipl COVID-19</label>
+            </value>
+            <value>
+                <fullName>W45</fullName>
+                <default>false</default>
+                <label>Adult State of FL GED diploma</label>
+            </value>
+            <value>
+                <fullName>ATC</fullName>
+                <default>false</default>
+                <label>Advanced Technical Certificate</label>
+            </value>
+            <value>
+                <fullName>ATV</fullName>
+                <default>false</default>
+                <label>Adv Tech Diploma for Voc Cred</label>
+            </value>
+            <value>
+                <fullName>MAG</fullName>
+                <default>false</default>
+                <label>Agriculture</label>
+            </value>
+            <value>
+                <fullName>APS</fullName>
+                <default>false</default>
+                <label>Applied Science</label>
+            </value>
+            <value>
+                <fullName>ATD</fullName>
+                <default>false</default>
+                <label>Applied Technical Diploma</label>
+            </value>
+            <value>
+                <fullName>APT</fullName>
+                <default>false</default>
+                <label>Applied Technology</label>
+            </value>
+            <value>
+                <fullName>MAR</fullName>
+                <default>false</default>
+                <label>Architecture</label>
+            </value>
+            <value>
+                <fullName>ASMA</fullName>
+                <default>false</default>
+                <label>AS Medical Assisting</label>
+            </value>
+            <value>
+                <fullName>AA</fullName>
+                <default>false</default>
+                <label>Associate in Arts</label>
+            </value>
+            <value>
+                <fullName>ABA</fullName>
+                <default>false</default>
+                <label>Associate in Business Admin</label>
+            </value>
+            <value>
+                <fullName>AGS</fullName>
+                <default>false</default>
+                <label>Associate in General Studies</label>
+            </value>
+            <value>
+                <fullName>AHS</fullName>
+                <default>false</default>
+                <label>Associate in Health Science</label>
+            </value>
+            <value>
+                <fullName>ANA</fullName>
+                <default>false</default>
+                <label>Associate in Networking Admin</label>
+            </value>
+            <value>
+                <fullName>AS</fullName>
+                <default>false</default>
+                <label>Associate in Science</label>
+            </value>
+            <value>
+                <fullName>AAS</fullName>
+                <default>false</default>
+                <label>Associate of Applied Science</label>
+            </value>
+            <value>
+                <fullName>BSSE</fullName>
+                <default>false</default>
+                <label>Bac/Sci Spec. Education</label>
+            </value>
+            <value>
+                <fullName>BEE</fullName>
+                <default>false</default>
+                <label>Bach Electrical Engineering</label>
+            </value>
+            <value>
+                <fullName>BBC</fullName>
+                <default>false</default>
+                <label>Bachelor-Building Construction</label>
+            </value>
+            <value>
+                <fullName>BCHE</fullName>
+                <default>false</default>
+                <label>Bachelor-Chemical Engineering</label>
+            </value>
+            <value>
+                <fullName>BBA</fullName>
+                <default>false</default>
+                <label>Bachelor in Business Admin</label>
+            </value>
+            <value>
+                <fullName>BCS</fullName>
+                <default>false</default>
+                <label>Bachelor in Computer Science</label>
+            </value>
+            <value>
+                <fullName>BED</fullName>
+                <default>false</default>
+                <label>Bachelor in Education</label>
+            </value>
+            <value>
+                <fullName>BGS</fullName>
+                <default>false</default>
+                <label>Bachelor in General Studies</label>
+            </value>
+            <value>
+                <fullName>BHS</fullName>
+                <default>false</default>
+                <label>Bachelor in Health Science</label>
+            </value>
+            <value>
+                <fullName>BHL</fullName>
+                <default>false</default>
+                <label>Bachelor in Hebrew Languages</label>
+            </value>
+            <value>
+                <fullName>BJ</fullName>
+                <default>false</default>
+                <label>Bachelor in Journalism</label>
+            </value>
+            <value>
+                <fullName>BLST</fullName>
+                <default>false</default>
+                <label>Bachelor in Liberal Studies</label>
+            </value>
+            <value>
+                <fullName>BLS</fullName>
+                <default>false</default>
+                <label>Bachelor in Library Science</label>
+            </value>
+            <value>
+                <fullName>BMA</fullName>
+                <default>false</default>
+                <label>Bachelor in Media Arts</label>
+            </value>
+            <value>
+                <fullName>BM</fullName>
+                <default>false</default>
+                <label>Bachelor in Music</label>
+            </value>
+            <value>
+                <fullName>BN</fullName>
+                <default>false</default>
+                <label>Bachelor in Nursing</label>
+            </value>
+            <value>
+                <fullName>BPE</fullName>
+                <default>false</default>
+                <label>Bachelor in Physical Education</label>
+            </value>
+            <value>
+                <fullName>BACC</fullName>
+                <default>false</default>
+                <label>Bachelor of Accounting</label>
+            </value>
+            <value>
+                <fullName>BAA</fullName>
+                <default>false</default>
+                <label>Bachelor of Adv. Acctg.</label>
+            </value>
+            <value>
+                <fullName>BAS</fullName>
+                <default>false</default>
+                <label>Bachelor of Applied Science</label>
+            </value>
+            <value>
+                <fullName>BAR</fullName>
+                <default>false</default>
+                <label>Bachelor of Architecture</label>
+            </value>
+            <value>
+                <fullName>BA</fullName>
+                <default>false</default>
+                <label>Bachelor of Arts</label>
+            </value>
+            <value>
+                <fullName>BAE</fullName>
+                <default>false</default>
+                <label>Bachelor of Arts-Education</label>
+            </value>
+            <value>
+                <fullName>ABJ</fullName>
+                <default>false</default>
+                <label>Bachelor of Arts in Journalism</label>
+            </value>
+            <value>
+                <fullName>BAP</fullName>
+                <default>false</default>
+                <label>Bachelor of Arts in Psychology</label>
+            </value>
+            <value>
+                <fullName>BB</fullName>
+                <default>false</default>
+                <label>Bachelor of Business</label>
+            </value>
+            <value>
+                <fullName>BC</fullName>
+                <default>false</default>
+                <label>Bachelor of Commerce</label>
+            </value>
+            <value>
+                <fullName>BCJ</fullName>
+                <default>false</default>
+                <label>Bachelor of Criminal Justice</label>
+            </value>
+            <value>
+                <fullName>BOD</fullName>
+                <default>false</default>
+                <label>Bachelor of Design</label>
+            </value>
+            <value>
+                <fullName>BD</fullName>
+                <default>false</default>
+                <label>Bachelor of Divinity</label>
+            </value>
+            <value>
+                <fullName>BE</fullName>
+                <default>false</default>
+                <label>Bachelor of Engineering</label>
+            </value>
+            <value>
+                <fullName>BFA</fullName>
+                <default>false</default>
+                <label>Bachelor of Fine Arts</label>
+            </value>
+            <value>
+                <fullName>BHSC</fullName>
+                <default>false</default>
+                <label>Bachelor of Home Science</label>
+            </value>
+            <value>
+                <fullName>BL</fullName>
+                <default>false</default>
+                <label>Bachelor of Literature</label>
+            </value>
+            <value>
+                <fullName>BMED</fullName>
+                <default>false</default>
+                <label>Bachelor of Music Education</label>
+            </value>
+            <value>
+                <fullName>BOP</fullName>
+                <default>false</default>
+                <label>Bachelor of Philosophy</label>
+            </value>
+            <value>
+                <fullName>BPM</fullName>
+                <default>false</default>
+                <label>Bachelor of Public Management</label>
+            </value>
+            <value>
+                <fullName>BRE</fullName>
+                <default>false</default>
+                <label>Bachelor of Religion</label>
+            </value>
+            <value>
+                <fullName>BS</fullName>
+                <default>false</default>
+                <label>Bachelor of Science</label>
+            </value>
+            <value>
+                <fullName>BSN</fullName>
+                <default>false</default>
+                <label>Bachelor of Science in Nursing</label>
+            </value>
+            <value>
+                <fullName>BSP</fullName>
+                <default>false</default>
+                <label>Bachelor of Science Pharmacy</label>
+            </value>
+            <value>
+                <fullName>BSW</fullName>
+                <default>false</default>
+                <label>Bachelor of Social Wok</label>
+            </value>
+            <value>
+                <fullName>BSYE</fullName>
+                <default>false</default>
+                <label>Bachelor Of System Eng.</label>
+            </value>
+            <value>
+                <fullName>BSTM</fullName>
+                <default>false</default>
+                <label>Bachelor Science Tech. MGT</label>
+            </value>
+            <value>
+                <fullName>BDES</fullName>
+                <default>false</default>
+                <label>Bachelors of Design</label>
+            </value>
+            <value>
+                <fullName>BFAT</fullName>
+                <default>false</default>
+                <label>Bach Fine Arts-Theatre Arts</label>
+            </value>
+            <value>
+                <fullName>BEVD</fullName>
+                <default>false</default>
+                <label>Bach in Environmental Design</label>
+            </value>
+            <value>
+                <fullName>BIT</fullName>
+                <default>false</default>
+                <label>Bach in Information Technology</label>
+            </value>
+            <value>
+                <fullName>BLA</fullName>
+                <default>false</default>
+                <label>Bach in Landscape Architecture</label>
+            </value>
+            <value>
+                <fullName>BPA</fullName>
+                <default>false</default>
+                <label>Bach in Public Administration</label>
+            </value>
+            <value>
+                <fullName>BEDA</fullName>
+                <default>false</default>
+                <label>Bach of Environ Design in Arch</label>
+            </value>
+            <value>
+                <fullName>BHSA</fullName>
+                <default>false</default>
+                <label>Bach of Health Services Admin</label>
+            </value>
+            <value>
+                <fullName>BME</fullName>
+                <default>false</default>
+                <label>Bach of Mechanical Engineering</label>
+            </value>
+            <value>
+                <fullName>BPS</fullName>
+                <default>false</default>
+                <label>Bach of Professional Studies</label>
+            </value>
+            <value>
+                <fullName>BTEC</fullName>
+                <default>false</default>
+                <label>Bach Of Technology</label>
+            </value>
+            <value>
+                <fullName>BSS</fullName>
+                <default>false</default>
+                <label>Bach-Secretarial Science</label>
+            </value>
+            <value>
+                <fullName>BABS</fullName>
+                <default>false</default>
+                <label>BA in Biblical Studies</label>
+            </value>
+            <value>
+                <fullName>BAC</fullName>
+                <default>false</default>
+                <label>BA in Communication</label>
+            </value>
+            <value>
+                <fullName>BECO</fullName>
+                <default>false</default>
+                <label>BA in Economics</label>
+            </value>
+            <value>
+                <fullName>BHIS</fullName>
+                <default>false</default>
+                <label>BA in History</label>
+            </value>
+            <value>
+                <fullName>BALA</fullName>
+                <default>false</default>
+                <label>BA in Liberal Arts</label>
+            </value>
+            <value>
+                <fullName>BAMS</fullName>
+                <default>false</default>
+                <label>BA in Military Science</label>
+            </value>
+            <value>
+                <fullName>BAU</fullName>
+                <default>false</default>
+                <label>BA in University Studies</label>
+            </value>
+            <value>
+                <fullName>BCE</fullName>
+                <default>false</default>
+                <label>BCE-Bachelor Chemical Engineering</label>
+            </value>
+            <value>
+                <fullName>BTIS</fullName>
+                <default>false</default>
+                <label>Bch. Tech and Interdisc. Studies</label>
+            </value>
+            <value>
+                <fullName>BSPS</fullName>
+                <default>false</default>
+                <label>BSA Public Safety MGMT</label>
+            </value>
+            <value>
+                <fullName>BSA</fullName>
+                <default>false</default>
+                <label>BS in Agriculture</label>
+            </value>
+            <value>
+                <fullName>BSAV</fullName>
+                <default>false</default>
+                <label>BS in Aviation</label>
+            </value>
+            <value>
+                <fullName>BSBA</fullName>
+                <default>false</default>
+                <label>BS in Business Administration</label>
+            </value>
+            <value>
+                <fullName>BSCE</fullName>
+                <default>false</default>
+                <label>BS in Civil Engineering</label>
+            </value>
+            <value>
+                <fullName>BSC</fullName>
+                <default>false</default>
+                <label>BS in Communication</label>
+            </value>
+            <value>
+                <fullName>BSED</fullName>
+                <default>false</default>
+                <label>BS in Education</label>
+            </value>
+            <value>
+                <fullName>BSEG</fullName>
+                <default>false</default>
+                <label>BS in Electrical Engineering</label>
+            </value>
+            <value>
+                <fullName>BSEE</fullName>
+                <default>false</default>
+                <label>BS in Elementary Education</label>
+            </value>
+            <value>
+                <fullName>BSE</fullName>
+                <default>false</default>
+                <label>BS in Engineering</label>
+            </value>
+            <value>
+                <fullName>BSET</fullName>
+                <default>false</default>
+                <label>BS in Engineering Technology</label>
+            </value>
+            <value>
+                <fullName>BSFC</fullName>
+                <default>false</default>
+                <label>BS in Family/Consumer Sciences</label>
+            </value>
+            <value>
+                <fullName>BSFS</fullName>
+                <default>false</default>
+                <label>BS in Foreign Service</label>
+            </value>
+            <value>
+                <fullName>BSHA</fullName>
+                <default>false</default>
+                <label>BS in Health Administration</label>
+            </value>
+            <value>
+                <fullName>BSHC</fullName>
+                <default>false</default>
+                <label>BS in Health Care Services</label>
+            </value>
+            <value>
+                <fullName>BSHE</fullName>
+                <default>false</default>
+                <label>BS in Health Education</label>
+            </value>
+            <value>
+                <fullName>BSHEC</fullName>
+                <default>false</default>
+                <label>BS in Human Ecology</label>
+            </value>
+            <value>
+                <fullName>BSI</fullName>
+                <default>false</default>
+                <label>BS in Industrial Engineering</label>
+            </value>
+            <value>
+                <fullName>BSIT</fullName>
+                <default>false</default>
+                <label>BS in Information Technology</label>
+            </value>
+            <value>
+                <fullName>BSM</fullName>
+                <default>false</default>
+                <label>BS in Management</label>
+            </value>
+            <value>
+                <fullName>BSME</fullName>
+                <default>false</default>
+                <label>BS in Mechanical Engineering</label>
+            </value>
+            <value>
+                <fullName>BSNPE</fullName>
+                <default>false</default>
+                <label>BS-Nuclear Physics Engineering</label>
+            </value>
+            <value>
+                <fullName>BSPA</fullName>
+                <default>false</default>
+                <label>BS Public Affairs</label>
+            </value>
+            <value>
+                <fullName>BSSW</fullName>
+                <default>false</default>
+                <label>BS Social Work</label>
+            </value>
+            <value>
+                <fullName>MBE</fullName>
+                <default>false</default>
+                <label>Business Education</label>
+            </value>
+            <value>
+                <fullName>CTC</fullName>
+                <default>false</default>
+                <label>Career and Technical Cert</label>
+            </value>
+            <value>
+                <fullName>CERT</fullName>
+                <default>false</default>
+                <label>Certificate</label>
+            </value>
+            <value>
+                <fullName>W08</fullName>
+                <default>false</default>
+                <label>Certificate of Completion</label>
+            </value>
+            <value>
+                <fullName>W8A</fullName>
+                <default>false</default>
+                <label>Certificate of Completion-CPT</label>
+            </value>
+            <value>
+                <fullName>W8B</fullName>
+                <default>false</default>
+                <label>Cert of Completion 18cr ACCEL</label>
+            </value>
+            <value>
+                <fullName>CPP</fullName>
+                <default>false</default>
+                <label>Cert of Professional Prep</label>
+            </value>
+            <value>
+                <fullName>MCRP</fullName>
+                <default>false</default>
+                <label>City Region Plan</label>
+            </value>
+            <value>
+                <fullName>CCC</fullName>
+                <default>false</default>
+                <label>College Credit Certificate</label>
+            </value>
+            <value>
+                <fullName>DDS</fullName>
+                <default>false</default>
+                <label>Dentistry</label>
+            </value>
+            <value>
+                <fullName>DP</fullName>
+                <default>false</default>
+                <label>Diploma</label>
+            </value>
+            <value>
+                <fullName>DCT</fullName>
+                <default>false</default>
+                <label>Diploma Col Tchg</label>
+            </value>
+            <value>
+                <fullName>DE</fullName>
+                <default>false</default>
+                <label>Diploma On Educ</label>
+            </value>
+            <value>
+                <fullName>MDV</fullName>
+                <default>false</default>
+                <label>Divinity</label>
+            </value>
+            <value>
+                <fullName>DBA</fullName>
+                <default>false</default>
+                <label>Doc Of Business Adm</label>
+            </value>
+            <value>
+                <fullName>DJ</fullName>
+                <default>false</default>
+                <label>Doc Of Jurisprudence</label>
+            </value>
+            <value>
+                <fullName>DHL</fullName>
+                <default>false</default>
+                <label>Doct. Hebrew Lit</label>
+            </value>
+            <value>
+                <fullName>DT</fullName>
+                <default>false</default>
+                <label>Doct of Theology</label>
+            </value>
+            <value>
+                <fullName>DOCT</fullName>
+                <default>false</default>
+                <label>Doctoral</label>
+            </value>
+            <value>
+                <fullName>EDD</fullName>
+                <default>false</default>
+                <label>Doctorate of Education</label>
+            </value>
+            <value>
+                <fullName>DHS</fullName>
+                <default>false</default>
+                <label>Doctorate Of Health Science</label>
+            </value>
+            <value>
+                <fullName>PHD</fullName>
+                <default>false</default>
+                <label>Doctorate of Philosophy</label>
+            </value>
+            <value>
+                <fullName>DS</fullName>
+                <default>false</default>
+                <label>Doctorate of Science</label>
+            </value>
+            <value>
+                <fullName>DMIN</fullName>
+                <default>false</default>
+                <label>Doctor In Ministry</label>
+            </value>
+            <value>
+                <fullName>DIBA</fullName>
+                <default>false</default>
+                <label>Doctor International Bus Adm</label>
+            </value>
+            <value>
+                <fullName>DA</fullName>
+                <default>false</default>
+                <label>Doctor of Arts</label>
+            </value>
+            <value>
+                <fullName>DC</fullName>
+                <default>false</default>
+                <label>Doctor Of Chiroprac</label>
+            </value>
+            <value>
+                <fullName>DSD</fullName>
+                <default>false</default>
+                <label>Doctor of Dental Surgery</label>
+            </value>
+            <value>
+                <fullName>DD</fullName>
+                <default>false</default>
+                <label>Doctor Of Divinity</label>
+            </value>
+            <value>
+                <fullName>DHA</fullName>
+                <default>false</default>
+                <label>Doctor Of Health Admin</label>
+            </value>
+            <value>
+                <fullName>DMGT</fullName>
+                <default>false</default>
+                <label>Doctor Of Management</label>
+            </value>
+            <value>
+                <fullName>DOM</fullName>
+                <default>false</default>
+                <label>Doctor Of Ministry</label>
+            </value>
+            <value>
+                <fullName>DML</fullName>
+                <default>false</default>
+                <label>Doctor Of Modern Language</label>
+            </value>
+            <value>
+                <fullName>DM</fullName>
+                <default>false</default>
+                <label>Doctor Of Music</label>
+            </value>
+            <value>
+                <fullName>DNP</fullName>
+                <default>false</default>
+                <label>Doctor Of Nursing Practice</label>
+            </value>
+            <value>
+                <fullName>OD</fullName>
+                <default>false</default>
+                <label>Doctor of Optometry</label>
+            </value>
+            <value>
+                <fullName>PD</fullName>
+                <default>false</default>
+                <label>Doctor of Pharmacy</label>
+            </value>
+            <value>
+                <fullName>DPSY</fullName>
+                <default>false</default>
+                <label>Doctor of Psychology</label>
+            </value>
+            <value>
+                <fullName>DPM</fullName>
+                <default>false</default>
+                <label>Dr. Podiatric Medici</label>
+            </value>
+            <value>
+                <fullName>DMOL</fullName>
+                <default>false</default>
+                <label>Dr Mgt. Organiza Leader Tech</label>
+            </value>
+            <value>
+                <fullName>DPT</fullName>
+                <default>false</default>
+                <label>Dr of Physical Therapist</label>
+            </value>
+            <value>
+                <fullName>EDM</fullName>
+                <default>false</default>
+                <label>EDM Education</label>
+            </value>
+            <value>
+                <fullName>EDS</fullName>
+                <default>false</default>
+                <label>Education Specialist</label>
+            </value>
+            <value>
+                <fullName>ENG</fullName>
+                <default>false</default>
+                <label>ENG. Engineering</label>
+            </value>
+            <value>
+                <fullName>WFB</fullName>
+                <default>false</default>
+                <label>HS dipl Coll Prep and Alt Assess</label>
+            </value>
+            <value>
+                <fullName>WFA</fullName>
+                <default>false</default>
+                <label>HS diploma CollPrep and Alt Assm</label>
+            </value>
+            <value>
+                <fullName>W10</fullName>
+                <default>false</default>
+                <label>HS Performance Based Diploma</label>
+            </value>
+            <value>
+                <fullName>WGA</fullName>
+                <default>false</default>
+                <label>HS Performance-Based Diploma</label>
+            </value>
+            <value>
+                <fullName>JD</fullName>
+                <default>false</default>
+                <label>Juris Doctorate</label>
+            </value>
+            <value>
+                <fullName>MJ</fullName>
+                <default>false</default>
+                <label>Jurisprudence Master</label>
+            </value>
+            <value>
+                <fullName>LLB</fullName>
+                <default>false</default>
+                <label>Law</label>
+            </value>
+            <value>
+                <fullName>PHL</fullName>
+                <default>false</default>
+                <label>Licentiate in Philosophy</label>
+            </value>
+            <value>
+                <fullName>LLD</fullName>
+                <default>false</default>
+                <label>LLD Law</label>
+            </value>
+            <value>
+                <fullName>LLM</fullName>
+                <default>false</default>
+                <label>LLM Law</label>
+            </value>
+            <value>
+                <fullName>MAEC</fullName>
+                <default>false</default>
+                <label>M.A. Eastern Classics</label>
+            </value>
+            <value>
+                <fullName>MAT</fullName>
+                <default>false</default>
+                <label>M.A. in Teaching</label>
+            </value>
+            <value>
+                <fullName>MAE</fullName>
+                <default>false</default>
+                <label>MAE Education</label>
+            </value>
+            <value>
+                <fullName>MCP</fullName>
+                <default>false</default>
+                <label>Master/ City Planning</label>
+            </value>
+            <value>
+                <fullName>MAS</fullName>
+                <default>false</default>
+                <label>Master Admin. Science</label>
+            </value>
+            <value>
+                <fullName>MATM</fullName>
+                <default>false</default>
+                <label>Master Applied Theory Metholog</label>
+            </value>
+            <value>
+                <fullName>MATS</fullName>
+                <default>false</default>
+                <label>Master Arts Theological Stud</label>
+            </value>
+            <value>
+                <fullName>MCMS</fullName>
+                <default>false</default>
+                <label>Master Clinical Medical Scienc</label>
+            </value>
+            <value>
+                <fullName>MCIS</fullName>
+                <default>false</default>
+                <label>Master Computer and Info Science</label>
+            </value>
+            <value>
+                <fullName>MEE</fullName>
+                <default>false</default>
+                <label>Master Education Specialist</label>
+            </value>
+            <value>
+                <fullName>MET</fullName>
+                <default>false</default>
+                <label>Master Entertainment Techno</label>
+            </value>
+            <value>
+                <fullName>MGMB</fullName>
+                <default>false</default>
+                <label>Master Genetic and Molecular Bio</label>
+            </value>
+            <value>
+                <fullName>MCPS</fullName>
+                <default>false</default>
+                <label>Master in Counseling/Psycho</label>
+            </value>
+            <value>
+                <fullName>MCJ</fullName>
+                <default>false</default>
+                <label>Master in Crim Justice</label>
+            </value>
+            <value>
+                <fullName>MDS</fullName>
+                <default>false</default>
+                <label>Master in Design St</label>
+            </value>
+            <value>
+                <fullName>MDIV</fullName>
+                <default>false</default>
+                <label>Master in Divinity</label>
+            </value>
+            <value>
+                <fullName>MSS</fullName>
+                <default>false</default>
+                <label>Master in Sports Science</label>
+            </value>
+            <value>
+                <fullName>MLIS</fullName>
+                <default>false</default>
+                <label>Master Library and Infor Science</label>
+            </value>
+            <value>
+                <fullName>MOTH</fullName>
+                <default>false</default>
+                <label>Master Occupational Therapy He</label>
+            </value>
+            <value>
+                <fullName>MAFM</fullName>
+                <default>false</default>
+                <label>Master of Acct and Finan Mgmt</label>
+            </value>
+            <value>
+                <fullName>MAUD</fullName>
+                <default>false</default>
+                <label>Master of Arch Urban Design</label>
+            </value>
+            <value>
+                <fullName>AM</fullName>
+                <default>false</default>
+                <label>Master of Arts</label>
+            </value>
+            <value>
+                <fullName>MA</fullName>
+                <default>false</default>
+                <label>Master of Arts Degree</label>
+            </value>
+            <value>
+                <fullName>MBA</fullName>
+                <default>false</default>
+                <label>Master of Business Admin</label>
+            </value>
+            <value>
+                <fullName>MEBM</fullName>
+                <default>false</default>
+                <label>Master of E-Business Mangt</label>
+            </value>
+            <value>
+                <fullName>MECI</fullName>
+                <default>false</default>
+                <label>Master of Education Curri Inst</label>
+            </value>
+            <value>
+                <fullName>MFA</fullName>
+                <default>false</default>
+                <label>Master of Fine Arts</label>
+            </value>
+            <value>
+                <fullName>MFAT</fullName>
+                <default>false</default>
+                <label>Master of Fine Arts in Theatre</label>
+            </value>
+            <value>
+                <fullName>MFAL</fullName>
+                <default>false</default>
+                <label>Master of Fine Arts Languages</label>
+            </value>
+            <value>
+                <fullName>MF</fullName>
+                <default>false</default>
+                <label>Master of Forestry</label>
+            </value>
+            <value>
+                <fullName>MHCA</fullName>
+                <default>false</default>
+                <label>Master of Health Care Admin</label>
+            </value>
+            <value>
+                <fullName>MHM</fullName>
+                <default>false</default>
+                <label>Master of Health Management</label>
+            </value>
+            <value>
+                <fullName>MHS</fullName>
+                <default>false</default>
+                <label>Master of Health Science</label>
+            </value>
+            <value>
+                <fullName>MHSA</fullName>
+                <default>false</default>
+                <label>Master of Health Services Admi</label>
+            </value>
+            <value>
+                <fullName>MHIS</fullName>
+                <default>false</default>
+                <label>Master of History</label>
+            </value>
+            <value>
+                <fullName>MHHA</fullName>
+                <default>false</default>
+                <label>Master of Hosp. and Health Admin</label>
+            </value>
+            <value>
+                <fullName>MHR</fullName>
+                <default>false</default>
+                <label>Master of Human Relations</label>
+            </value>
+            <value>
+                <fullName>MIE</fullName>
+                <default>false</default>
+                <label>Master of Industrial Education</label>
+            </value>
+            <value>
+                <fullName>MISM</fullName>
+                <default>false</default>
+                <label>Master of Info. Systems Mgment</label>
+            </value>
+            <value>
+                <fullName>MIS</fullName>
+                <default>false</default>
+                <label>Master of Information Speciali</label>
+            </value>
+            <value>
+                <fullName>MISY</fullName>
+                <default>false</default>
+                <label>Master of Information System</label>
+            </value>
+            <value>
+                <fullName>MIT</fullName>
+                <default>false</default>
+                <label>Master of Information Technolo</label>
+            </value>
+            <value>
+                <fullName>MIA</fullName>
+                <default>false</default>
+                <label>Master of International Affair</label>
+            </value>
+            <value>
+                <fullName>MIB</fullName>
+                <default>false</default>
+                <label>Master of International Busine</label>
+            </value>
+            <value>
+                <fullName>MLA</fullName>
+                <default>false</default>
+                <label>Master of Landscape Architect</label>
+            </value>
+            <value>
+                <fullName>ML</fullName>
+                <default>false</default>
+                <label>Master of Laws</label>
+            </value>
+            <value>
+                <fullName>MLST</fullName>
+                <default>false</default>
+                <label>Master of Liberal Studies</label>
+            </value>
+            <value>
+                <fullName>MLS</fullName>
+                <default>false</default>
+                <label>Master of Library Science</label>
+            </value>
+            <value>
+                <fullName>MMGT</fullName>
+                <default>false</default>
+                <label>Master of Management</label>
+            </value>
+            <value>
+                <fullName>MMC</fullName>
+                <default>false</default>
+                <label>Master of Mass Communication</label>
+            </value>
+            <value>
+                <fullName>MMS</fullName>
+                <default>false</default>
+                <label>Master of Medical Science</label>
+            </value>
+            <value>
+                <fullName>MMAS</fullName>
+                <default>false</default>
+                <label>Master of Military Art and Science</label>
+            </value>
+            <value>
+                <fullName>MMST</fullName>
+                <default>false</default>
+                <label>Master of Military Studies</label>
+            </value>
+            <value>
+                <fullName>MM</fullName>
+                <default>false</default>
+                <label>Master of Music</label>
+            </value>
+            <value>
+                <fullName>MMA</fullName>
+                <default>false</default>
+                <label>Master of Musical Arts</label>
+            </value>
+            <value>
+                <fullName>MME</fullName>
+                <default>false</default>
+                <label>Master of Music Education</label>
+            </value>
+            <value>
+                <fullName>MNCM</fullName>
+                <default>false</default>
+                <label>Master of Network and Communicat</label>
+            </value>
+            <value>
+                <fullName>MNM</fullName>
+                <default>false</default>
+                <label>Master of Nonprofit Management</label>
+            </value>
+            <value>
+                <fullName>MO</fullName>
+                <default>false</default>
+                <label>Master of Oceanography</label>
+            </value>
+            <value>
+                <fullName>MP</fullName>
+                <default>false</default>
+                <label>Master of Philosophy</label>
+            </value>
+            <value>
+                <fullName>MPT</fullName>
+                <default>false</default>
+                <label>Master of Physical Therapy</label>
+            </value>
+            <value>
+                <fullName>MPAS</fullName>
+                <default>false</default>
+                <label>Master of Physician Assistant</label>
+            </value>
+            <value>
+                <fullName>MPAC</fullName>
+                <default>false</default>
+                <label>Master of Prof. Accounting</label>
+            </value>
+            <value>
+                <fullName>MPSC</fullName>
+                <default>false</default>
+                <label>Master of Professional Science</label>
+            </value>
+            <value>
+                <fullName>MPS</fullName>
+                <default>false</default>
+                <label>Master of Professional Studies</label>
+            </value>
+            <value>
+                <fullName>MPA</fullName>
+                <default>false</default>
+                <label>Master of Public Administratio</label>
+            </value>
+            <value>
+                <fullName>MPIA</fullName>
+                <default>false</default>
+                <label>Master of Public and Intl Affair</label>
+            </value>
+            <value>
+                <fullName>MPH</fullName>
+                <default>false</default>
+                <label>Master of Public Health</label>
+            </value>
+            <value>
+                <fullName>MPP</fullName>
+                <default>false</default>
+                <label>Master of Public Policy</label>
+            </value>
+            <value>
+                <fullName>MPPM</fullName>
+                <default>false</default>
+                <label>Master of Public Policy and Mgt</label>
+            </value>
+            <value>
+                <fullName>MRC</fullName>
+                <default>false</default>
+                <label>Master of Rehab Counseling</label>
+            </value>
+            <value>
+                <fullName>MRE</fullName>
+                <default>false</default>
+                <label>Master of Religious Education</label>
+            </value>
+            <value>
+                <fullName>MS</fullName>
+                <default>false</default>
+                <label>Master of Science</label>
+            </value>
+            <value>
+                <fullName>MSAR</fullName>
+                <default>false</default>
+                <label>Master of Science Architecture</label>
+            </value>
+            <value>
+                <fullName>MSC</fullName>
+                <default>false</default>
+                <label>Master of Science Cybernetics</label>
+            </value>
+            <value>
+                <fullName>MCA</fullName>
+                <default>false</default>
+                <label>Master of Science in Adm.</label>
+            </value>
+            <value>
+                <fullName>MSED</fullName>
+                <default>false</default>
+                <label>Master of Science in Education</label>
+            </value>
+            <value>
+                <fullName>MFIN</fullName>
+                <default>false</default>
+                <label>Master of Science in Finance</label>
+            </value>
+            <value>
+                <fullName>MSN</fullName>
+                <default>false</default>
+                <label>Master of Science in Nursing</label>
+            </value>
+            <value>
+                <fullName>MSTX</fullName>
+                <default>false</default>
+                <label>Master of Science in Taxation</label>
+            </value>
+            <value>
+                <fullName>MST</fullName>
+                <default>false</default>
+                <label>Master of Science in Teaching</label>
+            </value>
+            <value>
+                <fullName>MSW</fullName>
+                <default>false</default>
+                <label>Master of Social Work</label>
+            </value>
+            <value>
+                <fullName>MSFE</fullName>
+                <default>false</default>
+                <label>Master of Software Engineering</label>
+            </value>
+            <value>
+                <fullName>MTS</fullName>
+                <default>false</default>
+                <label>Master of Technical Science</label>
+            </value>
+            <value>
+                <fullName>THM</fullName>
+                <default>false</default>
+                <label>Master of Theology</label>
+            </value>
+            <value>
+                <fullName>MTM</fullName>
+                <default>false</default>
+                <label>Master of Tourism Management</label>
+            </value>
+            <value>
+                <fullName>MUA</fullName>
+                <default>false</default>
+                <label>Master of Urban Affairs</label>
+            </value>
+            <value>
+                <fullName>MUP</fullName>
+                <default>false</default>
+                <label>Master of Urban Planning</label>
+            </value>
+            <value>
+                <fullName>MCE</fullName>
+                <default>false</default>
+                <label>Master Science Counselor Educ</label>
+            </value>
+            <value>
+                <fullName>MACC</fullName>
+                <default>false</default>
+                <label>Masters of Accounting</label>
+            </value>
+            <value>
+                <fullName>MACP</fullName>
+                <default>false</default>
+                <label>Masters of Arts in Cous and Psyc</label>
+            </value>
+            <value>
+                <fullName>MAIS</fullName>
+                <default>false</default>
+                <label>Masters of Arts Inter Studies</label>
+            </value>
+            <value>
+                <fullName>MENG</fullName>
+                <default>false</default>
+                <label>Mast in Engineering</label>
+            </value>
+            <value>
+                <fullName>MBAA</fullName>
+                <default>false</default>
+                <label>MBA in Aviation</label>
+            </value>
+            <value>
+                <fullName>MD</fullName>
+                <default>false</default>
+                <label>MD in Medicine</label>
+            </value>
+            <value>
+                <fullName>MDP</fullName>
+                <default>false</default>
+                <label>MDP in Medicine</label>
+            </value>
+            <value>
+                <fullName>ME</fullName>
+                <default>false</default>
+                <label>ME. Engineering</label>
+            </value>
+            <value>
+                <fullName>MED</fullName>
+                <default>false</default>
+                <label>MED Education</label>
+            </value>
+            <value>
+                <fullName>DMD</fullName>
+                <default>false</default>
+                <label>Medical Dentistry</label>
+            </value>
+            <value>
+                <fullName>MSF</fullName>
+                <default>false</default>
+                <label>MSF-Master of Science in Finance</label>
+            </value>
+            <value>
+                <fullName>MSBA</fullName>
+                <default>false</default>
+                <label>MS in Business Administration</label>
+            </value>
+            <value>
+                <fullName>MSCE</fullName>
+                <default>false</default>
+                <label>MS in Continuing Education</label>
+            </value>
+            <value>
+                <fullName>MSCP</fullName>
+                <default>false</default>
+                <label>MS in Counseling and Psychology</label>
+            </value>
+            <value>
+                <fullName>MSCJ</fullName>
+                <default>false</default>
+                <label>MS in Criminal Justice</label>
+            </value>
+            <value>
+                <fullName>MSDT</fullName>
+                <default>false</default>
+                <label>MS in Diagnostic Technology</label>
+            </value>
+            <value>
+                <fullName>MSEC</fullName>
+                <default>false</default>
+                <label>MS in Elec. and Computer Eng</label>
+            </value>
+            <value>
+                <fullName>MSE</fullName>
+                <default>false</default>
+                <label>MS in Engineering</label>
+            </value>
+            <value>
+                <fullName>MSEM</fullName>
+                <default>false</default>
+                <label>MS in Engineering Management</label>
+            </value>
+            <value>
+                <fullName>MSEP</fullName>
+                <default>false</default>
+                <label>MS in Engineering Physics</label>
+            </value>
+            <value>
+                <fullName>MSHR</fullName>
+                <default>false</default>
+                <label>MS in Human Resources</label>
+            </value>
+            <value>
+                <fullName>MSHS</fullName>
+                <default>false</default>
+                <label>MS in Human Services</label>
+            </value>
+            <value>
+                <fullName>MSLS</fullName>
+                <default>false</default>
+                <label>MS in Library Science</label>
+            </value>
+            <value>
+                <fullName>MSM</fullName>
+                <default>false</default>
+                <label>MS in Management</label>
+            </value>
+            <value>
+                <fullName>MSMS</fullName>
+                <default>false</default>
+                <label>MS in Management Info. System</label>
+            </value>
+            <value>
+                <fullName>MSLE</fullName>
+                <default>false</default>
+                <label>MS in Modern Language Educatio</label>
+            </value>
+            <value>
+                <fullName>MSPE</fullName>
+                <default>false</default>
+                <label>MS in Physical Education</label>
+            </value>
+            <value>
+                <fullName>MSRE</fullName>
+                <default>false</default>
+                <label>MS in Reading Education</label>
+            </value>
+            <value>
+                <fullName>MSVE</fullName>
+                <default>false</default>
+                <label>MS in Vocational Education</label>
+            </value>
+            <value>
+                <fullName>MASS</fullName>
+                <default>false</default>
+                <label>Mstr Appld Social Sc</label>
+            </value>
+            <value>
+                <fullName>MCT</fullName>
+                <default>false</default>
+                <label>Mstr Art Col Tchg</label>
+            </value>
+            <value>
+                <fullName>MCD</fullName>
+                <default>false</default>
+                <label>Mstr of Comm Disordr</label>
+            </value>
+            <value>
+                <fullName>DMA</fullName>
+                <default>false</default>
+                <label>Musical Arts</label>
+            </value>
+            <value>
+                <fullName>NDG</fullName>
+                <default>false</default>
+                <label>Non-Degree Seeking</label>
+            </value>
+            <value>
+                <fullName>DOPT</fullName>
+                <default>false</default>
+                <label>Optometry</label>
+            </value>
+            <value>
+                <fullName>DO</fullName>
+                <default>false</default>
+                <label>Osteopathy</label>
+            </value>
+            <value>
+                <fullName>DOPY</fullName>
+                <default>false</default>
+                <label>Pharmacy</label>
+            </value>
+            <value>
+                <fullName>PHDB</fullName>
+                <default>false</default>
+                <label>PHD in Business Administration</label>
+            </value>
+            <value>
+                <fullName>PHDC</fullName>
+                <default>false</default>
+                <label>PHD in Communication</label>
+            </value>
+            <value>
+                <fullName>PHDE</fullName>
+                <default>false</default>
+                <label>PHD in Educational Leadership</label>
+            </value>
+            <value>
+                <fullName>PHDT</fullName>
+                <default>false</default>
+                <label>PHD in Theatre Arts</label>
+            </value>
+            <value>
+                <fullName>PMD</fullName>
+                <default>false</default>
+                <label>Professional Music Diploma</label>
+            </value>
+            <value>
+                <fullName>DPA</fullName>
+                <default>false</default>
+                <label>PUBLIC ADMIN</label>
+            </value>
+            <value>
+                <fullName>WPR</fullName>
+                <default>false</default>
+                <label>Puerto Rico High School Gradua</label>
+            </value>
+            <value>
+                <fullName>SLRP</fullName>
+                <default>false</default>
+                <label>Self Reported Degree</label>
+            </value>
+            <value>
+                <fullName>W09</fullName>
+                <default>false</default>
+                <label>Special Cert. of Completion</label>
+            </value>
+            <value>
+                <fullName>W07</fullName>
+                <default>false</default>
+                <label>Special Diploma</label>
+            </value>
+            <value>
+                <fullName>W27</fullName>
+                <default>false</default>
+                <label>Special Diploma (option 2)</label>
+            </value>
+            <value>
+                <fullName>SCT</fullName>
+                <default>false</default>
+                <label>Specialist College Teaching</label>
+            </value>
+            <value>
+                <fullName>SAS</fullName>
+                <default>false</default>
+                <label>Specialist in Admin Supervisio</label>
+            </value>
+            <value>
+                <fullName>SJD</fullName>
+                <default>false</default>
+                <label>Specialist Juridicial Science</label>
+            </value>
+            <value>
+                <fullName>W6B</fullName>
+                <default>false</default>
+                <label>Stan.HS dipl. Career Prep Opt.</label>
+            </value>
+            <value>
+                <fullName>WFT</fullName>
+                <default>false</default>
+                <label>Stand. HS diploma Alt Assesmnt</label>
+            </value>
+            <value>
+                <fullName>W06</fullName>
+                <default>false</default>
+                <label>Standard High School Diploma</label>
+            </value>
+            <value>
+                <fullName>WXT</fullName>
+                <default>false</default>
+                <label>Standard HS Diploma(ACCEL-Conc</label>
+            </value>
+            <value>
+                <fullName>WXW</fullName>
+                <default>false</default>
+                <label>Standard HS Diploma (Waiver)</label>
+            </value>
+            <value>
+                <fullName>WXL</fullName>
+                <default>false</default>
+                <label>Standard HS diploma ACCEL Opt.</label>
+            </value>
+            <value>
+                <fullName>WCO</fullName>
+                <default>false</default>
+                <label>Standard HS Diploma COVID-19</label>
+            </value>
+            <value>
+                <fullName>WD1</fullName>
+                <default>false</default>
+                <label>Standard HS Diploma-Deferred</label>
+            </value>
+            <value>
+                <fullName>WFW</fullName>
+                <default>false</default>
+                <label>Standard HS Diploma FCAT waive</label>
+            </value>
+            <value>
+                <fullName>WRW</fullName>
+                <default>false</default>
+                <label>Standard HS Diploma-Res.Waiver</label>
+            </value>
+            <value>
+                <fullName>WEL</fullName>
+                <default>false</default>
+                <label>Stand HS diploma (ELL)</label>
+            </value>
+            <value>
+                <fullName>W6A</fullName>
+                <default>false</default>
+                <label>Stand HS diploma College Prep</label>
+            </value>
+            <value>
+                <fullName>WGD</fullName>
+                <default>false</default>
+                <label>State of FL Diploma (GED exit)</label>
+            </value>
+            <value>
+                <fullName>DVM</fullName>
+                <default>false</default>
+                <label>Veterinary Medicine</label>
+            </value>
+            <value>
+                <fullName>HS</fullName>
+                <default>false</default>
+                <label>High School Diploma</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

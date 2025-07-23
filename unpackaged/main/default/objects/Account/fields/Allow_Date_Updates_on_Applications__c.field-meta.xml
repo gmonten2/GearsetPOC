@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Allow_Date_Updates_on_Applications__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>This field is used to control a TDTM that will make important date changes update all existing child applications.</description>
+    <inlineHelpText>This field is used to control a TDTM that will make important date changes update all existing child applications.</inlineHelpText>
+    <label>Allow Date Updates on Applications</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

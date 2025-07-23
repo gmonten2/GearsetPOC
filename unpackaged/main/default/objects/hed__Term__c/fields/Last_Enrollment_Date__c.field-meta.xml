@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Last_Enrollment_Date__c</fullName>
+    <description>Last Date a Student is able to register for this term including all mini terms. GioM 7/72023</description>
+    <inlineHelpText>Last Date a Student is able to register for this term including all mini terms.</inlineHelpText>
+    <label>Last Enrollment Date</label>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

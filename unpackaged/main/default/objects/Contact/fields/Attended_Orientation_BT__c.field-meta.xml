@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Attended_Orientation_BT__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Checked if student has attended an orientation event. Checked by Flow</description>
+    <inlineHelpText>Checked if student has attended an orientation event.</inlineHelpText>
+    <label>Attended Orientation (BT)</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

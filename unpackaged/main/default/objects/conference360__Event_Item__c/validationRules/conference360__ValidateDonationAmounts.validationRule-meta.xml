@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>conference360__ValidateDonationAmounts</fullName>
+    <active>true</active>
+    <description>Validation for Event item Donation Amounts to make sure it has the correct format.</description>
+    <errorConditionFormula>AND(ISPICKVAL(conference360__Type__c , &#39;Donation&#39;),NOT(REGEX(conference360__Donation_Amounts2__c, &#39;^[0-9,]*$&#39;)))</errorConditionFormula>
+    <errorMessage>Donation Amounts should contain only numbers separated by commas. Do not include spaces.</errorMessage>
+</ValidationRule>

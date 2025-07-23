@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSetGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>BT Base
+BT Events Limited
+SSA Attendee Permissions</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Blackthorn Lite Access</label>
+    <permissionSets>SSA_Attendee_Permissions</permissionSets>
+    <permissionSets>bt_base__Blackthorn_Base_User</permissionSets>
+    <permissionSets>conference360__Blackthorn_Events_Limited_Access</permissionSets>
+    <status>Updated</status>
+</PermissionSetGroup>

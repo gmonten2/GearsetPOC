@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <description>SMS Message Record Create/Update Actions and Related Record</description>
+    <environments>Default</environments>
+    <label>SMS Message Record Actions and Related Record</label>
+    <processType>AutoLaunchedFlow</processType>
+</Flow>

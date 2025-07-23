@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>traa_Scholarship_Essay__c</fullName>
+    <deprecated>false</deprecated>
+    <description>This field stores scholarship essay related to the application</description>
+    <inlineHelpText>Provided scholarship essay related to the application</inlineHelpText>
+    <label>Scholarship Essay</label>
+    <length>32768</length>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Html</type>
+    <visibleLines>10</visibleLines>
+</CustomField>

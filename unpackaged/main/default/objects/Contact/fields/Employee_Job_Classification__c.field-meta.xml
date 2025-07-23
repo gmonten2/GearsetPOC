@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Employee_Job_Classification__c</fullName>
+    <description>Used by Marketing Cloud. This is the primary job classification.</description>
+    <inlineHelpText>Used by Marketing Cloud. This is the primary job classification.</inlineHelpText>
+    <label>Employee Job Classification</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>FTF</fullName>
+                <default>false</default>
+                <label>FTF</label>
+            </value>
+            <value>
+                <fullName>PTI</fullName>
+                <default>false</default>
+                <label>PTI</label>
+            </value>
+            <value>
+                <fullName>PNC</fullName>
+                <default>false</default>
+                <label>PNC</label>
+            </value>
+            <value>
+                <fullName>DFT</fullName>
+                <default>false</default>
+                <label>DFT</label>
+            </value>
+            <value>
+                <fullName>PEC</fullName>
+                <default>false</default>
+                <label>PEC</label>
+            </value>
+            <value>
+                <fullName>NES</fullName>
+                <default>false</default>
+                <label>NES</label>
+            </value>
+            <value>
+                <fullName>SNE</fullName>
+                <default>false</default>
+                <label>SNE</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

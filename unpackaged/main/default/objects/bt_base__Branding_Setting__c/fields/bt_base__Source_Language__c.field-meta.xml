@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>bt_base__Source_Language__c</fullName>
+    <deprecated>false</deprecated>
+    <inlineHelpText>Set the Language of your Store’s text. Can be used with or without Language Selector. If left blank, the source language will be English.</inlineHelpText>
+    <label>Source Language</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>bt_base__Supported_Languages</valueSetName>
+    </valueSet>
+</CustomField>

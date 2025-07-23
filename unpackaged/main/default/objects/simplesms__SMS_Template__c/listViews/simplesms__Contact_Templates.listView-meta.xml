@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>simplesms__Contact_Templates</fullName>
+    <columns>NAME</columns>
+    <columns>simplesms__IsActive__c</columns>
+    <columns>simplesms__Code__c</columns>
+    <columns>simplesms__Body__c</columns>
+    <columns>simplesms__Phone_Field__c</columns>
+    <columns>simplesms__Object__c</columns>
+    <columns>OBJECT_ID</columns>
+    <columns>simplesms__From_Number__c</columns>
+    <columns>simplesms__Phone_Number__c</columns>
+    <columns>OWNER.ALIAS</columns>
+    <columns>OWNER.FIRST_NAME</columns>
+    <columns>OWNER.LAST_NAME</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>simplesms__Object__c</field>
+        <operation>equals</operation>
+        <value>Contact</value>
+    </filters>
+    <label>Contact Templates</label>
+</ListView>

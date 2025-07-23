@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>x2243_Opportunities_Wolfson</fullName>
+    <columns>Onboarding_Cohort__c</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Primary_PCA__c</columns>
+    <columns>Secondary_PCA__c</columns>
+    <columns>Student_Type__c</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>Student_Onboarding_Type__c</columns>
+    <columns>Academic_Program_Name__c</columns>
+    <columns>Home_Campus__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Home_Campus__c</field>
+        <operation>equals</operation>
+        <value>Wolfson</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.traa_Academic_Program_Applications</value>
+    </filters>
+    <filters>
+        <field>Term__c</field>
+        <operation>equals</operation>
+        <value>2245</value>
+    </filters>
+    <label>2245 Opportunities Wolfson</label>
+    <sharedTo>
+        <group>CRM_Core_Team</group>
+        <group>Wolfson_Campus_Public_Group</group>
+    </sharedTo>
+</ListView>

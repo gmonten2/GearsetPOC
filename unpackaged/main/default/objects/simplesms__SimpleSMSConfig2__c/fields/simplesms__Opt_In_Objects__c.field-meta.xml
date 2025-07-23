@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>simplesms__Opt_In_Objects__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The default objects to check opt-In verification for Outbound messages. If Null/Blank system will check for all sObjects.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The default objects to check opt-In verification for Outbound messages. If Null/Blank system will check for all sObjects.</inlineHelpText>
+    <label>Opt-In Objects</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

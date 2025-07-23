@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Orientation_Events</fullName>
+    <columns>Term__c</columns>
+    <columns>conference360__Organizer_Account__c</columns>
+    <columns>NAME</columns>
+    <columns>conference360__Event_Start_Date__c</columns>
+    <columns>conference360__Event_Start_Time__c</columns>
+    <columns>conference360__Registered__c</columns>
+    <columns>conference360__Remaining_Capacity__c</columns>
+    <columns>conference360__Attended__c</columns>
+    <columns>conference360__Status_Formula__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>conference360__Event_Start_Date__c</field>
+        <operation>greaterThan</operation>
+        <value>YESTERDAY</value>
+    </filters>
+    <filters>
+        <field>NAME</field>
+        <operation>notContain</operation>
+        <value>clone</value>
+    </filters>
+    <filters>
+        <field>conference360__Category__c</field>
+        <operation>equals</operation>
+        <value>Orientation</value>
+    </filters>
+    <filters>
+        <field>conference360__Visible__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>All Active Orientation Events</label>
+    <sharedTo>
+        <group>CRM_Core_Team</group>
+        <group>Info_Center</group>
+    </sharedTo>
+</ListView>

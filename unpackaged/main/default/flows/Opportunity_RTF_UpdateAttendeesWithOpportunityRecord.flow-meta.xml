@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Updates Attendee with lookup to the Opportunity</description>
+        <name>Assign_Opp_to_Attendee</name>
+        <label>Assign Opp to Attendee</label>
+        <locationX>440</locationX>
+        <locationY>971</locationY>
+        <assignmentItems>
+            <assignToReference>Loop_Attendees_to_Update.Recruitment_Opportunity__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_AttendeeLoopCollection</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_Attendees_to_Update</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Attendees_to_Update</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Count_Opportunities</name>
+        <label>Count Opportunities</label>
+        <locationX>176</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>countOpps</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>Get_All_Opps_associated_with_Student</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Get_Terms</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>How_many_Opps_associated_with_Student</name>
+        <label>How many Opps associated with Student?</label>
+        <locationX>176</locationX>
+        <locationY>647</locationY>
+        <defaultConnector>
+            <targetReference>Get_current_Attendee_records_for_Applicant</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>X1_Opp</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>countOpps</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>1.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Terms.Last_Enrollment_Date__c</leftValueReference>
+                <operator>LessThan</operator>
+                <rightValue>
+                    <elementReference>today</elementReference>
+                </rightValue>
+            </conditions>
+            <label>1 Opp in the past</label>
+        </rules>
+    </decisions>
+    <description>When Opp is created, updates all Attendee records where Start Date &gt; 7 days ago with Opportunity lookup + Contact record
+v3: Add node to update CurrentOpp on Contact
+v4: Added decision to check if Current term = term of the new Opp created.
+v8: Added check for new opps with a past term</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>fx_7dAgo</name>
+        <dataType>Date</dataType>
+        <expression>{!$Flow.CurrentDate} - 7</expression>
+    </formulas>
+    <formulas>
+        <name>today</name>
+        <dataType>Date</dataType>
+        <expression>TODAY()</expression>
+    </formulas>
+    <interviewLabel>Opportunity_RTF_UpdateAttendeesWithOpportunityRecord {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Opportunity_RTF_Update Attendees and Contact With Opportunity</label>
+    <loops>
+        <description>Loops through all Attendee records and updates with Opportunity record</description>
+        <name>Loop_Attendees_to_Update</name>
+        <label>Loop Attendees to Update</label>
+        <locationX>352</locationX>
+        <locationY>863</locationY>
+        <collectionReference>Get_current_Attendee_records_for_Applicant</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Assign_Opp_to_Attendee</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Update_all_Attendees_with_Opp</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_All_Opps_associated_with_Student</name>
+        <label>Get All Opps associated with Student</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Count_Opportunities</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>traa_Applicant__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.traa_Applicant__r.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>hed__Desired_Start_Term__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <sortField>Term__c</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Gets all Attendee records for Contact where Start Date &gt; 7 Days Ago</description>
+        <name>Get_current_Attendee_records_for_Applicant</name>
+        <label>Get current Attendee records for Applicant</label>
+        <locationX>352</locationX>
+        <locationY>755</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_Attendees_to_Update</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>conference360__Contact__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.traa_Applicant__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>conference360__Event_Start_Date__c</field>
+            <operator>GreaterThan</operator>
+            <value>
+                <elementReference>fx_7dAgo</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>conference360__Attendee__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Gets Term record associated with the new Opportunity that triggered this flow</description>
+        <name>Get_Terms</name>
+        <label>Get Terms</label>
+        <locationX>176</locationX>
+        <locationY>539</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>How_many_Opps_associated_with_Student</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Term__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>hed__Term__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Updates all Attendee records with Opp lookup</description>
+        <name>Update_all_Attendees_with_Opp</name>
+        <label>Update all Attendees with Opp</label>
+        <locationX>352</locationX>
+        <locationY>1163</locationY>
+        <connector>
+            <targetReference>Update_Contact_with_Opportunity</targetReference>
+        </connector>
+        <inputReference>var_AttendeeLoopCollection</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Updates Current Opportunity on related Contact</description>
+        <name>Update_Contact_with_Opportunity</name>
+        <label>Update Contact with Opportunity</label>
+        <locationX>352</locationX>
+        <locationY>1271</locationY>
+        <inputAssignments>
+            <field>Current_Opportunity__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.traa_Applicant__r</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_All_Opps_associated_with_Student</targetReference>
+        </connector>
+        <object>Opportunity</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Draft</status>
+    <variables>
+        <description>Count the number of opportunities associated with student</description>
+        <name>countOpps</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <name>var_AttendeeLoopCollection</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>conference360__Attendee__c</objectType>
+    </variables>
+</Flow>

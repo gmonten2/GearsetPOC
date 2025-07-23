@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Last_Orientation_Attendee__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Lookup to the latest orientation record for the student. This is only populated if a student attended orientation.</description>
+    <inlineHelpText>Lookup to the latest orientation record for the student. This is only populated if a student attended orientation.</inlineHelpText>
+    <label>Last Orientation Attendee</label>
+    <referenceTo>conference360__Attendee__c</referenceTo>
+    <relationshipLabel>Contacts (Last Orientation Attendee)</relationshipLabel>
+    <relationshipName>Contacts</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

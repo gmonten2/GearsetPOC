@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSetGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Collection of Blackthorn related permission sets and muting permissions for SSAs</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>SSA Blackthorn PermSet Group</label>
+    <mutingPermissionSets>SSA_Blackthorn_PermSet_Group_Muted</mutingPermissionSets>
+    <permissionSets>Access_to_Cases</permissionSets>
+    <permissionSets>SSA_Attendee_Permissions</permissionSets>
+    <permissionSets>Staff_CRED</permissionSets>
+    <permissionSets>bt_base__Blackthorn_Base_User</permissionSets>
+    <permissionSets>conference360__Blackthorn_Events_Community_Platform_User</permissionSets>
+    <permissionSets>conference360__Blackthorn_Events_Limited_Access</permissionSets>
+    <permissionSets>pi__Pardot</permissionSets>
+    <status>Updated</status>
+</PermissionSetGroup>

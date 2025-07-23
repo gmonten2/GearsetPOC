@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Orientation_22</fullName>
+    <columns>NAME</columns>
+    <columns>conference360__Venue_Name__c</columns>
+    <columns>Calendar_Link_for_SSO_Events__c</columns>
+    <columns>conference360__Visible__c</columns>
+    <columns>conference360__Campaign__c</columns>
+    <columns>conference360__Confirmation_Email__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>conference360__Event_End_Date_Time__c</columns>
+    <columns>conference360__Invited__c</columns>
+    <columns>conference360__Registered__c</columns>
+    <columns>conference360__Attended__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>conference360__Event_Start_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>NAME</field>
+        <operation>contains</operation>
+        <value>Orientation</value>
+    </filters>
+    <filters>
+        <field>Term__c</field>
+        <operation>equals</operation>
+        <value>2257</value>
+    </filters>
+    <filters>
+        <field>NAME</field>
+        <operation>notContain</operation>
+        <value>clone,template</value>
+    </filters>
+    <label>Orientation 2257 (CRM CORE View)</label>
+    <sharedTo>
+        <group>CRM_Core_Team</group>
+    </sharedTo>
+</ListView>

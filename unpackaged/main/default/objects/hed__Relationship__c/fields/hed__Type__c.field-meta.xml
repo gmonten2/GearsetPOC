@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>hed__Type__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Describes how the Related Contact is connected to the Contact, for example, friend, coworker, aunt, etc.</description>
+    <inlineHelpText>Describes how the Related Contact is connected to the Contact, for example, friend, coworker, aunt, etc.</inlineHelpText>
+    <label>Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>ADVR</fullName>
+                <default>false</default>
+                <label>Academic Advisor</label>
+            </value>
+            <value>
+                <fullName>Advisee (ADVR)</fullName>
+                <default>false</default>
+                <label>Advisee (ADVR)</label>
+            </value>
+            <value>
+                <fullName>Advisee (SCSS)</fullName>
+                <default>false</default>
+                <label>Advisee (SCSS)</label>
+            </value>
+            <value>
+                <fullName>Child</fullName>
+                <default>false</default>
+                <label>Child</label>
+            </value>
+            <value>
+                <fullName>Cousin</fullName>
+                <default>false</default>
+                <label>Cousin</label>
+            </value>
+            <value>
+                <fullName>Coworker</fullName>
+                <default>false</default>
+                <label>Coworker</label>
+            </value>
+            <value>
+                <fullName>Family</fullName>
+                <default>false</default>
+                <label>Family</label>
+            </value>
+            <value>
+                <fullName>Foster Child</fullName>
+                <default>false</default>
+                <label>Foster Child</label>
+            </value>
+            <value>
+                <fullName>Foster Parent</fullName>
+                <default>false</default>
+                <label>Foster Parent</label>
+            </value>
+            <value>
+                <fullName>Friend</fullName>
+                <default>false</default>
+                <label>Friend</label>
+            </value>
+            <value>
+                <fullName>Grandchild</fullName>
+                <default>false</default>
+                <label>Grandchild</label>
+            </value>
+            <value>
+                <fullName>Grandparent</fullName>
+                <default>false</default>
+                <label>Grandparent</label>
+            </value>
+            <value>
+                <fullName>Parent/Guardian</fullName>
+                <default>false</default>
+                <label>Parent/Guardian</label>
+            </value>
+            <value>
+                <fullName>Parent&#39;s Sibling</fullName>
+                <default>false</default>
+                <label>Parent&#39;s Sibling</label>
+            </value>
+            <value>
+                <fullName>Sibling</fullName>
+                <default>false</default>
+                <label>Sibling</label>
+            </value>
+            <value>
+                <fullName>Sibling&#39;s Child</fullName>
+                <default>false</default>
+                <label>Sibling&#39;s Child</label>
+            </value>
+            <value>
+                <fullName>Spouse/Partner</fullName>
+                <default>false</default>
+                <label>Spouse/Partner</label>
+            </value>
+            <value>
+                <fullName>Stepchild</fullName>
+                <default>false</default>
+                <label>Stepchild</label>
+            </value>
+            <value>
+                <fullName>Stepparent</fullName>
+                <default>false</default>
+                <label>Stepparent</label>
+            </value>
+            <value>
+                <fullName>SCSS</fullName>
+                <default>false</default>
+                <label>Student Success Advisor</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>simplesms__Stale_Conversations</fullName>
+    <columns>NAME</columns>
+    <columns>simplesms__Conversation_Start__c</columns>
+    <columns>simplesms__Last_Message_Date_Time__c</columns>
+    <columns>simplesms__Sub_Status__c</columns>
+    <columns>OWNER.ALIAS</columns>
+    <columns>simplesms__Lead__c</columns>
+    <columns>simplesms__Contact__c</columns>
+    <columns>simplesms__Account__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>simplesms__Status__c</field>
+        <operation>equals</operation>
+        <value>Open</value>
+    </filters>
+    <filters>
+        <field>simplesms__Last_Message_Date_Time__c</field>
+        <operation>lessOrEqual</operation>
+        <value>N_DAYS_AGO:7</value>
+    </filters>
+    <label>Stale Conversations</label>
+</ListView>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>traa_Opp_2_Declined_Reason_Other</fullName>
+    <active>true</active>
+    <description>When Opportunity Stage is Declined and Declined Reason is Other, then Other declined reason field should not be blank.</description>
+    <errorConditionFormula>TEXT(StageName) = &quot;Declined&quot;  
+&amp;&amp; ISPICKVAL( traa_Declined_Reason__c , &#39;Other&#39;)
+&amp;&amp; ISBLANK(traa_Decision_Notes__c)</errorConditionFormula>
+    <errorDisplayField>traa_Decision_Notes__c</errorDisplayField>
+    <errorMessage>Opportunity 2: Please Fill Other Declined Reason.</errorMessage>
+</ValidationRule>

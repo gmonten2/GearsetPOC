@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Shark_Intake_Results__c</fullName>
+    <description>Link that takes users to Shark Intake Results. Used for SSAs to view results of students that registered for orientation.</description>
+    <externalId>false</externalId>
+    <formula>IF(ISBLANK(Student_Employee_ID__c), 
+   NULL, 
+   HYPERLINK(
+      &#39;http://ssrs.mdc.edu/ReportServer/Pages/ReportViewer.aspx?%2fStudent%2fDirect_Entry_PS%2fCheck+List_ps%2fAdvisorCheckListDetails_ps&amp;rs:Command=Render&amp;StudentMDID=&#39; &amp; Student_Employee_ID__c,
+      &#39;Click here for Shark Intake Results&#39;
+   )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Shark Intake Results</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

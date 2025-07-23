@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>traa_Program_of_Interest__c</fullName>
+    <deprecated>false</deprecated>
+    <description>This field is used to capture the primary program of interest of a lead. There should only be one program of interest that corresponds to an Academic Program&#39;s Admissions Cycle.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Used to capture one academic program admissions cycle account record. The free-form text must match a academic program account record to automatically populate  the academic program of an opportunity on lead conversion.</inlineHelpText>
+    <label>Program of Interest</label>
+    <length>255</length>
+    <required>false</required>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

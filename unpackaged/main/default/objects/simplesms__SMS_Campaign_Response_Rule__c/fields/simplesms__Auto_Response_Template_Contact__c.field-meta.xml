@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>simplesms__Auto_Response_Template_Contact__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <description>The template to use when replying to a Contact.</description>
+    <inlineHelpText>The template to use when replying to a Contact.</inlineHelpText>
+    <label>Auto Response Template (Contact)</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>simplesms__SMS_Template__c.simplesms__Object__c</field>
+            <operation>equals</operation>
+            <value>Contact</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>simplesms__SMS_Template__c</referenceTo>
+    <relationshipLabel>SMS Campaign Response Rules Contacts</relationshipLabel>
+    <relationshipName>SMS_Campaign_Response_Rules_Contacts</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

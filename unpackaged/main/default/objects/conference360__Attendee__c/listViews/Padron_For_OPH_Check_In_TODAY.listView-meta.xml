@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Padron_For_OPH_Check_In_TODAY</fullName>
+    <columns>conference360__Attendance_Status__c</columns>
+    <columns>Attendee_Type__c</columns>
+    <columns>conference360__Contact__c</columns>
+    <columns>conference360__Attendee_Group__c</columns>
+    <columns>conference360__Email2__c</columns>
+    <columns>conference360__Phone2__c</columns>
+    <columns>conference360__Event__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Event_Category__c</field>
+        <operation>equals</operation>
+        <value>Open House</value>
+    </filters>
+    <filters>
+        <field>conference360__Registration_Status__c</field>
+        <operation>equals</operation>
+        <value>Registered</value>
+    </filters>
+    <filters>
+        <field>conference360__Event_Start_Date__c</field>
+        <operation>equals</operation>
+        <value>TODAY</value>
+    </filters>
+    <filters>
+        <field>Event_Campus__c</field>
+        <operation>equals</operation>
+        <value>Padron Campus</value>
+    </filters>
+    <label>Padron - For OPH Check-In - TODAY</label>
+    <sharedTo>
+        <group>Padron_Campus_Public_Group</group>
+    </sharedTo>
+</ListView>

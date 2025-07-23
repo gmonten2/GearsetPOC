@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>simplesms__My_Scheduled_Messages</fullName>
+    <columns>simplesms__Message__c</columns>
+    <columns>simplesms__Message_Date__c</columns>
+    <columns>simplesms__Status__c</columns>
+    <columns>simplesms__To__c</columns>
+    <columns>simplesms__From_Num__c</columns>
+    <columns>NAME</columns>
+    <columns>simplesms__Media_Attachments__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>simplesms__Status__c</field>
+        <operation>equals</operation>
+        <value>Scheduled</value>
+    </filters>
+    <label>My Scheduled Messages</label>
+</ListView>

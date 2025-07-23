@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>simplesms__My_Unread_Messages</fullName>
+    <columns>simplesms__Message_Date__c</columns>
+    <columns>simplesms__Message_Full__c</columns>
+    <columns>simplesms__Contact__c</columns>
+    <columns>simplesms__Lead__c</columns>
+    <columns>simplesms__Account__c</columns>
+    <columns>NAME</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>simplesms__Type__c</field>
+        <operation>equals</operation>
+        <value>Incoming</value>
+    </filters>
+    <filters>
+        <field>simplesms__Status__c</field>
+        <operation>equals</operation>
+        <value>Received</value>
+    </filters>
+    <label>My Unread Messages</label>
+</ListView>

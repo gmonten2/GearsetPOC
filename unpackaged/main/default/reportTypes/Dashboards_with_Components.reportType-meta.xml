@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject>Dashboard</baseObject>
+    <category>other</category>
+    <deployed>true</deployed>
+    <description>Dashboards with Component report</description>
+    <join>
+        <outerJoin>false</outerJoin>
+        <relationship>DashboardComponents</relationship>
+    </join>
+    <label>Dashboards with Components</label>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Dashboard ID</displayNameOverride>
+            <field>Id</field>
+            <table>Dashboard</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Owner Name</displayNameOverride>
+            <field>Owner</field>
+            <table>Dashboard</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Folder</displayNameOverride>
+            <field>Folder</field>
+            <table>Dashboard</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Title</displayNameOverride>
+            <field>Title</field>
+            <table>Dashboard</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Dashboard Unique Name</displayNameOverride>
+            <field>DeveloperName</field>
+            <table>Dashboard</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Namespace Prefix</displayNameOverride>
+            <field>NamespacePrefix</field>
+            <table>Dashboard</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Description</displayNameOverride>
+            <field>Description</field>
+            <table>Dashboard</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Left Size</displayNameOverride>
+            <field>LeftSize</field>
+            <table>Dashboard</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Middle Size</displayNameOverride>
+            <field>MiddleSize</field>
+            <table>Dashboard</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Right Size</displayNameOverride>
+            <field>RightSize</field>
+            <table>Dashboard</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Date</displayNameOverride>
+            <field>CreatedDate</field>
+            <table>Dashboard</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created By</displayNameOverride>
+            <field>CreatedBy</field>
+            <table>Dashboard</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified Date</displayNameOverride>
+            <field>LastModifiedDate</field>
+            <table>Dashboard</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified By</displayNameOverride>
+            <field>LastModifiedBy</field>
+            <table>Dashboard</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Running User</displayNameOverride>
+            <field>RunningUser</field>
+            <table>Dashboard</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Title Size</displayNameOverride>
+            <field>TitleSize</field>
+            <table>Dashboard</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Background Fade Direction</displayNameOverride>
+            <field>BackgroundDirection</field>
+            <table>Dashboard</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Dashboard Running User</displayNameOverride>
+            <field>Type</field>
+            <table>Dashboard</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Using Grid Layout</displayNameOverride>
+            <field>GridLayout</field>
+            <table>Dashboard</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Color Palette</displayNameOverride>
+            <field>ColorPalette</field>
+            <table>Dashboard</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Chart Background</displayNameOverride>
+            <field>ChartTheme</field>
+            <table>Dashboard</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Id</field>
+            <table>Dashboard.DashboardComponents</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CustomReport</field>
+            <table>Dashboard.DashboardComponents</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ComponentType</field>
+            <table>Dashboard.DashboardComponents</table>
+        </columns>
+        <masterLabel>Dashboards</masterLabel>
+    </sections>
+</ReportType>

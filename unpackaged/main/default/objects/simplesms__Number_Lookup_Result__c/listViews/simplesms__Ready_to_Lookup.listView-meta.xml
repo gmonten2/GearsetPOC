@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>simplesms__Ready_to_Lookup</fullName>
+    <columns>NAME</columns>
+    <columns>simplesms__Carrier_Name__c</columns>
+    <columns>simplesms__Number_Type__c</columns>
+    <columns>simplesms__Phone_Number__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>simplesms__Expiration_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>simplesms__DoNotSMS__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>simplesms__Lookup_Pending__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>Ready to Lookup</label>
+</ListView>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Placement_Scores__c</fullName>
+    <description>Used by Pardot for Onboarding email templates</description>
+    <formula>IF( OR ( Current_Opportunity__r.Has_Usable_Placement_Scores_in_All_Areas__c = TRUE, ISPICKVAL( Current_Opportunity__r.DevEd_Exemption_Status__c , &quot;Yes&quot;)), TRUE,FALSE)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Placement Scores</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

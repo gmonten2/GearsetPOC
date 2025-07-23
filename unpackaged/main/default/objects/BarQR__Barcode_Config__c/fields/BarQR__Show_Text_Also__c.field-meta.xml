@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BarQR__Show_Text_Also__c</fullName>
+    <defaultValue>true</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Option to decide if barcode text also needs to be shown</description>
+    <inlineHelpText>Checkbox to denote if the text also needs to be rendered next to barcode</inlineHelpText>
+    <label>Show Text Also?</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Email_SMS_Message_Owner_of_New_Message</fullName>
+        <description>Email SMS Message Owner of New Message</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>simplesms__Simple_SMS/simplesms__NewSMSMessage</template>
+    </alerts>
+    <alerts>
+        <fullName>simplesms__EmailSMSMessageOwnerofNewMessage</fullName>
+        <description>Email SMS Message Owner of New Message</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>simplesms__Simple_SMS/simplesms__NewSMSMessage</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>simplesms__Update_From_Phone</fullName>
+        <field>simplesms__From_Phone__c</field>
+        <formula>IF(
+    LEN(simplesms__From_Num__c) = 5
+   ,simplesms__From_Num__c
+   ,RIGHT(simplesms__From_Num__c, 10)
+)</formula>
+        <name>Update From Phone</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>simplesms__Update_To_Phone</fullName>
+        <description>Update the To Phone field.</description>
+        <field>simplesms__To_Phone__c</field>
+        <formula>IF(
+    LEN(simplesms__To__c) = 5
+   ,simplesms__To__c
+   ,RIGHT(
+      SUBSTITUTE( 
+         SUBSTITUTE(
+             SUBSTITUTE( 
+                 SUBSTITUTE(
+                     simplesms__To__c 
+                    ,&quot;-&quot;
+                    ,&quot;&quot;
+                 )
+                 ,&quot;(&quot;
+                 ,&quot;&quot;
+             )
+            ,&quot;)&quot;
+            ,&quot;&quot;
+          )
+         ,&quot; &quot;
+         ,&quot;&quot;
+       )
+      ,10
+)
+)</formula>
+        <name>Update To Phone</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Email Owner When SMS Message Received</fullName>
+        <actions>
+            <name>Email_SMS_Message_Owner_of_New_Message</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>simplesms__SMS_Message__c.simplesms__Message__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>simplesms__SMS_Message__c.simplesms__Type__c</field>
+            <operation>equals</operation>
+            <value>Incoming</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>simplesms__SMS_Message__c.simplesms__Message__c</field>
+            <operation>notEqual</operation>
+            <value>stop</value>
+        </criteriaItems>
+        <description>Emails the owner of the SMS Message when a new message is received. 
+v2: Filtered out SMS Messages containing &quot;stop&quot;</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>simplesms__Email Owner When SMS Message Received</fullName>
+        <actions>
+            <name>simplesms__EmailSMSMessageOwnerofNewMessage</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>simplesms__SMS_Message__c.simplesms__Message__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>simplesms__SMS_Message__c.simplesms__Type__c</field>
+            <operation>equals</operation>
+            <value>Incoming</value>
+        </criteriaItems>
+        <description>Emails the owner of the SMS Message when a new message is received.</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>simplesms__Populate From Phone Field</fullName>
+        <actions>
+            <name>simplesms__Update_From_Phone</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>simplesms__SMS_Message__c.simplesms__From_Num__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <description>Populate the From phone field.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>simplesms__Populate To Phone Field</fullName>
+        <actions>
+            <name>simplesms__Update_To_Phone</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>simplesms__SMS_Message__c.simplesms__To__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <description>Populate the To phone field.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

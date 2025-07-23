@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Record-Triggered flow when Applicant Current Institution is updated on Application to populate same field on related Opp and Campus Assigned to High School
+
+v6: Add mapping for school code</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>ApplicantCurrentInstituion</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.School_Code__r.Name}</expression>
+    </formulas>
+    <interviewLabel>update Applicant Current Institution on Opp {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Application_RTFS_Update Applicant Current Institution on Opp</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Opporutnity_Record</name>
+        <label>Update Opporutnity Record</label>
+        <locationX>176</locationX>
+        <locationY>335</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.traa_Opportunity__r.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Applicant_Current_Institution_Text__c</field>
+            <value>
+                <elementReference>ApplicantCurrentInstituion</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Campus_Assigned_to_High_School__c</field>
+            <value>
+                <elementReference>$Record.School_Code__r.Campus_Assigned_to_High_School__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Current_Institution_Code__c</field>
+            <value>
+                <elementReference>$Record.School_Code__r.hed__School_Code__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Opporutnity_Record</targetReference>
+        </connector>
+        <filterFormula>NOT(ISBLANK({!$Record.School_Code__c})) &amp;&amp; (ISNEW() || ISCHANGED({!$Record.School_Code__c}))</filterFormula>
+        <object>hed__Application__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

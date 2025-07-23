@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>traa_Override_source_condition__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>If you want to override the check which checks old source value not equal to new source value</inlineHelpText>
+    <label>Override source condition?</label>
+    <type>Checkbox</type>
+</CustomField>

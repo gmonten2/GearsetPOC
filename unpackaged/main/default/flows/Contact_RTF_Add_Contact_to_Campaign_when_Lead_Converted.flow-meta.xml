@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Sends email to admin when DML operation fails.</description>
+        <name>Flow_Failure_Email_Alert</name>
+        <label>Flow Failure Email Alert</label>
+        <locationX>440</locationX>
+        <locationY>1031</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <stringValue>gmonten2@mdc.edu</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Contact_RTF Add Contact to Campaign when Lead Converted flow failed</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>txt_FlowFailureEmailAlert</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+    </actionCalls>
+    <apiVersion>59.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>When found, it assigns the Campaign Id from the loop into a campaignId variable.</description>
+        <name>Assign_Campaign_to_campaignId_variable</name>
+        <label>Assign Campaign to campaignId variable</label>
+        <locationX>264</locationX>
+        <locationY>647</locationY>
+        <assignmentItems>
+            <assignToReference>campaignId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Loop_Through_Campaigns.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Through_Campaigns</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>Checking if Associated Account Lookup living in the Campaign = UTM Code Id from Contact that triggered the Flow.</description>
+        <name>Check_if_Associated_Account_Id_equals_UTM_code</name>
+        <label>Check if Associated Account Id equals UTM code</label>
+        <locationX>396</locationX>
+        <locationY>539</locationY>
+        <defaultConnector>
+            <targetReference>Loop_Through_Campaigns</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Account_Id_UTM_Code</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Loop_Through_Campaigns.Associated_Account__r.Id</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.UTM_Account_Code__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Campaign_to_campaignId_variable</targetReference>
+            </connector>
+            <label>Account Id = UTM Code</label>
+        </rules>
+    </decisions>
+    <description>Adds a Contact to a Specific Campaign depending if the Contact was converted from Pardot and it has a UTM Code associated with it. Used for School Specific/Campus Specific Forms.
+v2: Added description
+v3-4: Added Fault path with email alert.
+v7: Changed entry condition.</description>
+    <environments>Default</environments>
+    <interviewLabel>Contact_RTF Add Contact to Campaign when Lead Converted {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Contact_RTF Add Contact to Campaign when Lead Converted</label>
+    <loops>
+        <description>Loop through Campaigns Gathered</description>
+        <name>Loop_Through_Campaigns</name>
+        <label>Loop Through Campaigns</label>
+        <locationX>176</locationX>
+        <locationY>431</locationY>
+        <collectionReference>Get_Campaign_Records</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Check_if_Associated_Account_Id_equals_UTM_code</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Create_Campaign_Member</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>Creates a Campaign Member to add to specific Campaign</description>
+        <name>Create_Campaign_Member</name>
+        <label>Create Campaign Member</label>
+        <locationX>176</locationX>
+        <locationY>923</locationY>
+        <faultConnector>
+            <targetReference>Flow_Failure_Email_Alert</targetReference>
+        </faultConnector>
+        <inputAssignments>
+            <field>CampaignId</field>
+            <value>
+                <elementReference>campaignId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ContactId</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Sent</stringValue>
+            </value>
+        </inputAssignments>
+        <object>CampaignMember</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <description>Get all Campaign records that are active and have a Parent Campaign associated with it.</description>
+        <name>Get_Campaign_Records</name>
+        <label>Get Campaign Records</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_Through_Campaigns</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ParentId</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>IsActive</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Associated_Account__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Campaign</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Campaign_Records</targetReference>
+        </connector>
+        <filterFormula>{!$Record__Prior.UTM_Account_Code__c} &lt;&gt; {!$Record.UTM_Account_Code__c}</filterFormula>
+        <object>Contact</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+    <textTemplates>
+        <description>Body for email sent when flow fails.</description>
+        <name>txt_FlowFailureEmailAlert</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Uh-oh, something went wrong. The &quot;Contact_RTF Add Contact to Campaign when Lead Converted&quot; flow failed when trying to create or update a record. Please review records:&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Contact ID:&lt;/strong&gt; {!$Record.Id}&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Contact Name:&lt;/strong&gt; {!$Record.FirstName} &lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;{!$Record.LastName}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;UTM Code:&lt;/strong&gt; {!$Record.UTM_Account_Code__c}&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Error Message:&lt;/strong&gt; {!$Flow.FaultMessage}{!$Flow}&lt;/p&gt;</text>
+    </textTemplates>
+    <variables>
+        <name>campaignId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>contactId</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Contact</objectType>
+    </variables>
+</Flow>

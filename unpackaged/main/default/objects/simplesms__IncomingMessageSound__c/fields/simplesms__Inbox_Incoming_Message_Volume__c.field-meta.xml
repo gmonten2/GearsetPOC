@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>simplesms__Inbox_Incoming_Message_Volume__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Field will be used to check volume status and on the basis of this controlling the volume in inbox component!</description>
+    <label>Inbox Incoming Message Volume</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>simplesms__Short_Links__c</fullName>
+    <deprecated>false</deprecated>
+    <description>If this message contains tracked links the shortened version of each link is shown here.</description>
+    <inlineHelpText>If this message contains tracked links the shortened version of each link is shown here.</inlineHelpText>
+    <label>Short Links</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>TextArea</type>
+</CustomField>

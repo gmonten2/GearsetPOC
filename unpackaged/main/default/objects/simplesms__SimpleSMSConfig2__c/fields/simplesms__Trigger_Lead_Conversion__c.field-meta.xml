@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>simplesms__Trigger_Lead_Conversion__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>When a Lead is converted its messages are related to the new Contact.</description>
+    <inlineHelpText>When a Lead is converted its messages are related to the new Contact.</inlineHelpText>
+    <label>Trigger: Lead Conversion</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>simplesms__Trigger_Match_Campaign__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Match the incoming message to a Campaign based on a keyword.</description>
+    <inlineHelpText>Match the incoming message to a Campaign based on a keyword.</inlineHelpText>
+    <label>Trigger Match Campaign</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

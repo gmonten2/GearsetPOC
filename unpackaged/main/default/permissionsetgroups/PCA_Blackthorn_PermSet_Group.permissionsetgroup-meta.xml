@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSetGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Collection of Blackthorn related permission sets and muting permissions for PCAs</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>PCA Blackthorn PermSet Group</label>
+    <mutingPermissionSets>PCA_Blackthorn_Muting</mutingPermissionSets>
+    <permissionSets>Streaming_API_Access_for_BT_SMS</permissionSets>
+    <permissionSets>bt_base__Blackthorn_Base_User</permissionSets>
+    <permissionSets>bt_stripe__payment360_Userv2</permissionSets>
+    <permissionSets>conference360__Blackthorn_Event_Organizer</permissionSets>
+    <permissionSets>force__EinsteinActivityCaptureIncluded</permissionSets>
+    <permissionSets>pi__Pardot</permissionSets>
+    <permissionSets>simplesms__Textey_Standard_User</permissionSets>
+    <status>Updated</status>
+</PermissionSetGroup>
