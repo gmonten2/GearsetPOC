@@ -62,7 +62,8 @@
 V8: Flow now loops through all Opps associated with the Contact associated with the Attendee, and updates Registered for Orientation = TRUE
 v12: Added decision tree for Attended Orientation
 v13: Added branch to check flag on Contact record when student Attends Orientation event.
-V14-15: Updated branch to update attendance flag.</description>
+V14-15: Updated branch to update attendance flag.
+v16: Added Last Orientation Attendee</description>
     <environments>Default</environments>
     <formulas>
         <name>changeToggle</name>
@@ -151,6 +152,12 @@ V14-15: Updated branch to update attendance flag.</description>
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Last_Orientation_Attendee__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Orientation_Event__c</field>
             <value>
                 <elementReference>$Record.conference360__Event__r.Id</elementReference>
@@ -190,7 +197,7 @@ V14-15: Updated branch to update attendance flag.</description>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>oppCollection</name>
         <dataType>SObject</dataType>
